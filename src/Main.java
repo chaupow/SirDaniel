@@ -1,3 +1,4 @@
+
  import lejos.nxt.Button;
 import lejos.nxt.LCD;
 import lejos.nxt.Motor;
@@ -117,8 +118,7 @@ import lejos.util.Delay;
       public static int convert(int angle) {
     	  return (int) (360 * robotRadius * Math.toRadians(angle) / (wheelDiameter * Math.PI));
       }
-      
-    	
+ 
 }
  
 

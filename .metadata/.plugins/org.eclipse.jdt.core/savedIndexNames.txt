@@ -1,2 +1,0 @@
-INDEX VERSION 1.126+/Users/Chau/Projects/SirDaniel/.metadata/.plugins/org.eclipse.jdt.core
-1387979651.index

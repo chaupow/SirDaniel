@@ -1,6 +1,7 @@
 import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 
+//TODO not working yet.
 public class Calibration {
 	
 	static int saveSpeed = 24;

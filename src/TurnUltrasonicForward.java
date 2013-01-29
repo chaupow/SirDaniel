@@ -1,7 +1,7 @@
 import lejos.nxt.*;
 import lejos.robotics.subsumption.*;
 
-public class ScanForward implements Behavior {
+public class TurnUltrasonicForward implements Behavior {
 	
 	private boolean suppressed = false;
 	

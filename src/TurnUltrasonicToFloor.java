@@ -1,7 +1,7 @@
 import lejos.nxt.*;
 import lejos.robotics.subsumption.*;
 
-public class ScanFloor implements Behavior {
+public class TurnUltrasonicToFloor implements Behavior {
 	
 	private boolean suppressed = false;
 	

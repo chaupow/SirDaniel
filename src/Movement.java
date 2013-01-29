@@ -64,6 +64,10 @@ public final class Movement {
 		Motor.B.setSpeed(convertSpeed(speed));
 	}
 	
+	public static boolean isMoving(){
+		return (Motor.A.isMoving() && Motor.B.isMoving());
+	}
+	
   // convert horizontal angle to rotation angle
   private static int convert(int angle) {
 	  return (int) (empiric * (360 * speedup * robotRadius * Math.toRadians(angle) / (wheelRadius * 2 * Math.PI)));

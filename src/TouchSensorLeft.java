@@ -21,16 +21,22 @@ public class TouchSensorLeft implements Behavior{
 	
 	public void action(){
 		suppressed = false;
-		//anhalten
+		//stop
 		Movement.stop();
 		
-		//rückwärtsfahren
+		//Driving backwards
+		System.out.println("Driving backwards");
 		Movement.backward(1);
 		Delay.msDelay(1000);
-		Movement.stop();
 		
-		//Rechtskurve
+		//Turn
+		System.out.println("Turning right");
 		Movement.turn_right(degree);
+		while(Movement.isMoving() && !suppressed) 
+			Thread.yield();
+		
+		//clean up
+		Movement.stop();
 	}
 	
 	public void suppress(){

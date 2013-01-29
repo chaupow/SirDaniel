@@ -1,11 +1,16 @@
 
 import lejos.nxt.*;
 import lejos.robotics.subsumption.*;
+import lejos.util.Delay;
 
 public class TouchSensorRight implements Behavior{
 	
 	private TouchSensor touch;
-	private boolean suppressed = false;
+	boolean suppressed = false;
+		
+	public TouchSensorRight(SensorPort port) {
+		touch = new TouchSensor(port);
+	}
 	
 	public boolean takeControl() {
 	
@@ -15,10 +20,17 @@ public class TouchSensorRight implements Behavior{
 	public void action() {
 		
 		//anhalten
+		Movement.stop();
 		
 		//zurueckfahren
+		Movement.backwards(1);
+		Delay.msDelay(1000);
+		Movement.stop();		
 		
 		// nach links drehen
+		
+		Movement.turn_left(60);
+		
 	}
 	
 	public void suppress() {

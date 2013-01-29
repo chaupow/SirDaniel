@@ -18,6 +18,10 @@ public class TouchSensorLeft implements Behavior{
 		return touch.isPressed();
 	}
 	
+	public void suppress(){
+		suppressed = true;
+	}
+	
 	
 	public void action(){
 		suppressed = false;
@@ -25,12 +29,10 @@ public class TouchSensorLeft implements Behavior{
 		Movement.stop();
 		
 		//Driving backwards
-		System.out.println("Driving backwards");
 		Movement.backward(1);
 		Delay.msDelay(1000);
 		
 		//Turn
-		System.out.println("Turning right");
 		Movement.turn_right(degree);
 		while(Movement.isMoving() && !suppressed) 
 			Thread.yield();
@@ -39,8 +41,6 @@ public class TouchSensorLeft implements Behavior{
 		Movement.stop();
 	}
 	
-	public void suppress(){
-		suppressed = true;
-	}
+	
 
 }

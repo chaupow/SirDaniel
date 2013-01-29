@@ -7,8 +7,9 @@ public class TouchSensorRight implements Behavior{
 	
 	private TouchSensor touch;
 	boolean suppressed = false;
+	
 		
-	public TouchSensorRight(SensorPort port) {
+	public TouchSensorRight(SensorPort port, int degree) {
 		touch = new TouchSensor(port);
 	}
 	
@@ -29,7 +30,7 @@ public class TouchSensorRight implements Behavior{
 		
 		// nach links drehen
 		
-		Movement.turn_left(60);
+		Movement.turn_left();
 		
 	}
 	

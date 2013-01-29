@@ -15,7 +15,7 @@ public class Main {
 	}
 	
 	
-	/*static void driveForward() {
+	static void driveForward() {
 		
 		right.setSpeed(900);
 		left.setSpeed(900);
@@ -28,4 +28,6 @@ public class Main {
 		right.stop();
 		left.stop();
 	}
+	
+	
 }

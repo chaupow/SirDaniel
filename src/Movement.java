@@ -9,7 +9,7 @@ public class Movement {
 	int degrees;
 
 	// speed has a range of 1(slow) to 6(fast)
-	public void forward(int speed) {
+	public static void forward(int speed) {
 		speed = convertSpeed(speed);
 		Motor.A.setSpeed(speed);
 		Motor.B.setSpeed(speed);
@@ -18,7 +18,7 @@ public class Movement {
 	}
 	
 	// speed has a range of 1(slow) to 6(fast)
-	public void backward(int speed) {
+	public static void backward(int speed) {
 		speed = convertSpeed(speed);
 		Motor.A.setSpeed(speed);
 		Motor.B.setSpeed(speed);
@@ -27,39 +27,39 @@ public class Movement {
 	}
 	
 	// angle has a range of 0 to 360
-	public void turn_right(int angle) {
+	public static void turn_right(int angle) {
 		Motor.B.stop();
 		Motor.A.stop();
-		degrees = convert(angle);
-		Motor.B.rotate(degrees);
-		Motor.A.rotate(-degrees);
+		
+		Motor.B.rotate(convert(angle));
+		Motor.A.rotate(-1* convert(angle));
 	}
 	
 	// angle has a range of 0 to 360
-	public void turn_left(int angle) {
+	public static void turn_left(int angle) {
 		Motor.A.stop();
 		Motor.B.stop();
-		degrees = convert(angle);
-		Motor.A.rotate(degrees);
-		Motor.B.rotate(-degrees);
+		
+		Motor.A.rotate(convert(angle));
+		Motor.B.rotate(-1*convert(angle));
 	}
 
-	public void stop() {
+	public static void stop() {
 		Motor.A.stop();
 		Motor.B.stop();
 	}
 	
-	public void setSpeed(int speed) {
+	public static void setSpeed(int speed) {
 		Motor.A.setSpeed(convertSpeed(speed));
 		Motor.B.setSpeed(convertSpeed(speed));
 	}
 	
   // convert horizontal angle to rotation angle
-  public int convert(int angle) {
+  public static int convert(int angle) {
 	  return (int) (robotRadius * Math.toRadians(angle) / (360 * speedup * wheelRadius * 2 * Math.PI));
   }
 
-  public int convertSpeed(int speed) {
+  public static int convertSpeed(int speed) {
 	  return speed * 180;
   }
 }

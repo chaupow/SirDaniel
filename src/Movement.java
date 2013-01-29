@@ -1,15 +1,23 @@
+import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 
-
-public class Movement {
+public final class Movement {
 	
-	final static float speedup = 1.8f;
-	final static int wheelRadius = 16; // in millimeters 
-	final static int robotRadius = 120; // in millimeters
-	int degrees;
+	final static float speedup = 1.66f; // = 40 / 24
+	final static float wheelRadius = 19; // in millimeters 
+	final static float robotRadius = 72; // in millimeters
+	final static float empiric = 1.25f;
+	static int degrees;
+//	NXTRegulatedMotor a;
+//	NXTRegulatedMotor b;
+	
+//	public Movement(NXTRegulatedMotor a, NXTRegulatedMotor b) {
+//		this.a = a;
+//		this.b = b;
+//	}
 
 	// speed has a range of 1(slow) to 6(fast)
-	public void forward(int speed) {
+	public static void forward(int speed) {
 		speed = convertSpeed(speed);
 		Motor.A.setSpeed(speed);
 		Motor.B.setSpeed(speed);
@@ -18,7 +26,7 @@ public class Movement {
 	}
 	
 	// speed has a range of 1(slow) to 6(fast)
-	public void backward(int speed) {
+	public static void backward(int speed) {
 		speed = convertSpeed(speed);
 		Motor.A.setSpeed(speed);
 		Motor.B.setSpeed(speed);
@@ -27,39 +35,41 @@ public class Movement {
 	}
 	
 	// angle has a range of 0 to 360
-	public void turn_right(int angle) {
-		Motor.B.stop();
-		Motor.A.stop();
-		degrees = convert(angle);
-		Motor.B.rotate(degrees);
-		Motor.A.rotate(-degrees);
-	}
+		public static void turn_right(int angle) {
+			Motor.A.stop();
+			Motor.B.stop();
+			degrees = convert(angle/2);
+			Motor.A.rotate(degrees, true);
+			Motor.B.rotate(-degrees, true);
+		}
 	
 	// angle has a range of 0 to 360
-	public void turn_left(int angle) {
-		Motor.A.stop();
+	public static void turn_left(int angle) {
 		Motor.B.stop();
-		degrees = convert(angle);
-		Motor.A.rotate(degrees);
-		Motor.B.rotate(-degrees);
+		Motor.A.stop();
+		degrees = convert(angle/2);
+		Motor.B.rotate(degrees, true);
+		Motor.A.rotate(-degrees, true);
 	}
+	
+	
 
-	public void stop() {
+	public static void stop() {
 		Motor.A.stop();
 		Motor.B.stop();
 	}
 	
-	public void setSpeed(int speed) {
+	public static void setSpeed(int speed) {
 		Motor.A.setSpeed(convertSpeed(speed));
 		Motor.B.setSpeed(convertSpeed(speed));
 	}
 	
   // convert horizontal angle to rotation angle
-  public int convert(int angle) {
-	  return (int) (robotRadius * Math.toRadians(angle) / (360 * speedup * wheelRadius * 2 * Math.PI));
+  private static int convert(int angle) {
+	  return (int) (empiric * (360 * speedup * robotRadius * Math.toRadians(angle) / (wheelRadius * 2 * Math.PI)));
   }
 
-  public int convertSpeed(int speed) {
+  private static int convertSpeed(int speed) {
 	  return speed * 180;
   }
 }

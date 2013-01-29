@@ -19,7 +19,7 @@ public class TouchSensorRight implements Behavior{
 	}
 	
 	public void action() {
-		
+		suppressed = false;
 		//anhalten
 		Movement.stop();
 		

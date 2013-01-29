@@ -18,9 +18,15 @@ public class ScanFloor implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		Motor.C.rotateTo(floorAngle);
-		while( !suppressed )
-	        Thread.yield();
+				
+		while (!suppressed && floorAngle < 180){
+			
+			Movement.turn_right(floorAngle);
+			Movement.turn_left(floorAngle*2);
+			Movement.turn_right(floorAngle);
+			
+			floorAngle += 60;
+		}
 	}
 	
 

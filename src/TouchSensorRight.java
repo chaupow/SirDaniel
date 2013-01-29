@@ -37,9 +37,6 @@ public class TouchSensorRight implements Behavior{
 		LCD.drawString("Turning left", 0, 0);
 		Movement.turn_left(degree);
 		
-		while(Movement.isMoving() && !suppressed) 
-			Thread.yield();
-		
 		//clean up
 		Movement.stop();
 		

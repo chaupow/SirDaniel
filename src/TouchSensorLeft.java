@@ -34,8 +34,7 @@ public class TouchSensorLeft implements Behavior{
 		
 		//Turn
 		Movement.turn_right(degree);
-		while(Movement.isMoving() && !suppressed) 
-			Thread.yield();
+	
 		
 		//clean up
 		Movement.stop();

@@ -3,7 +3,9 @@ import lejos.robotics.subsumption.*;
 
 public class ScanFloor implements Behavior {
 	
-	private boolean suppressed = false;	
+	private boolean suppressed = false;
+	
+	//TODO find angle
 	private int floorAngle = 30;
 	
 	public boolean takeControl() {

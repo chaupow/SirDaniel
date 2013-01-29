@@ -3,7 +3,9 @@ import lejos.robotics.subsumption.*;
 
 public class ScanForward implements Behavior {
 	
-	private boolean suppressed = false;	
+	private boolean suppressed = false;
+	
+	//TODO find angle
 	private int forwardAngle = 180;
 	
 	public boolean takeControl() {

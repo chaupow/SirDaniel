@@ -24,7 +24,7 @@ public class FollowLine implements Behavior {
 	public void action() {
 		suppressed = false;
 		LCD.drawString("Following a line", 1, 1);
-		Movement.forward(1);
+		Movement.forward(2);
 		while (!suppressed) {
 			Thread.yield();
 		}

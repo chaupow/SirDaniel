@@ -20,9 +20,6 @@ public class DriveForward  implements Behavior {
    public void action() {
      suppressed = false;
      Movement.forward(speed);
-     //TODO
-     LCD.clear();
-     LCD.drawString("Driving forward", 0, 0);
      while( !suppressed ) {
     	 Thread.yield();
      }

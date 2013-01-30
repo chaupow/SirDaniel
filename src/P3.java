@@ -26,11 +26,15 @@ public class P3 implements Behavior{
 
 	@Override
 	public void action() {
-		Behavior b2 = new P3FollowLine(light);
-		Behavior b3 = new P3SearchLine(light);
-		Behavior b4 = new P3EndLine();
-		Behavior b5 = new P3SearchLineAtStart(light);
-		Behavior [] bArray = {b5, b4, b5, b3, b2};
+		Behavior follow = new P3FollowLine(light);
+		Behavior search = new P3SearchLine(light);
+		Behavior end = new P3EndLine();
+		Behavior searchStart = new P3SearchLineAtStart(light);
+		Behavior gap = new P3CheckGap(light);
+		Behavior checkEnd = new P3CheckEndOfLine(light);
+		Behavior random = new P3Random();
+//		Behavior [] bArray = {b5, b4, b5, b3, b2};
+		Behavior [] bArray = {random, searchStart, end, gap, checkEnd, search, follow};
 		Arbitrator arby = new Arbitrator(bArray);
 	    arby.start();
 	}

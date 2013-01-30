@@ -8,8 +8,8 @@ import lejos.util.Delay;
 public class P3CheckGap implements Behavior{
 	LightSensor light;
 	
-	public P3CheckGap(SensorPort s) {
-		this.light = new LightSensor(s);
+	public P3CheckGap(LightSensor light) {
+		this.light = light;
 	}
 
 	@Override

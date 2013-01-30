@@ -29,7 +29,6 @@ public class P3CheckEndOfLine implements Behavior{
 			P3.end = true;
 		}
 		else
-			P3.numberOfSearches++;
 			P3.search = true;
 	}
 

@@ -19,7 +19,7 @@ public class TouchSensorBridge implements Behavior {
 		}
 		
 		public void action(){
-			Movement.stop();
+			//Movement.stop();
 			Movement.turn_right(30);
 		}
 }

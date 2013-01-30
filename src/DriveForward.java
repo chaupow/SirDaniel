@@ -1,8 +1,13 @@
-import lejos.nxt.*;
+import lejos.nxt.LCD;
 import lejos.robotics.subsumption.*;
 
 public class DriveForward  implements Behavior {
    private boolean suppressed = false;
+   private int speed;
+   
+   public DriveForward(int speed){
+	   this.speed = speed;
+   }
    
    public boolean takeControl() {
       return true;
@@ -14,12 +19,11 @@ public class DriveForward  implements Behavior {
 
    public void action() {
      suppressed = false;
-     Motor.A.forward();
-     Motor.B.forward();
+     Movement.forward(speed);
      while( !suppressed ) {
     	 Thread.yield();
      }
-     Motor.A.stop(); // clean up
-     Motor.B.stop();
+     Movement.stop(); // clean up
+     
    }
 }

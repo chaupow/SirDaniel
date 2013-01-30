@@ -22,17 +22,23 @@ public class TouchSensorRight implements Behavior{
 	
 	public void action() {
 		suppressed = false;
-		//anhalten
+		//stop
 		Movement.stop();
 		
-		//zurueckfahren
+		//Driving backwards
+		LCD.clear();
+		LCD.drawString("Driving backwards", 0, 0);
 		Movement.backward(1);
 		Delay.msDelay(1000);
-		Movement.stop();		
+		
 		
 		// nach links drehen
-		
+		LCD.clear();
+		LCD.drawString("Turning left", 0, 0);
 		Movement.turn_left(degree);
+		
+		//clean up
+		Movement.stop();
 		
 	}
 	

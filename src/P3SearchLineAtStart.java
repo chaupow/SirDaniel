@@ -1,10 +1,6 @@
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
-import lejos.nxt.Motor;
-import lejos.nxt.SensorPort;
-import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
 
 public class P3SearchLineAtStart implements Behavior{
@@ -16,13 +12,14 @@ public class P3SearchLineAtStart implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		return !P3.foundLineForFirstTime && !P3.stop && !P3.end;
+		return !P3.foundLineForFirstTime && !P3.end;
 	}
 
 	@Override
 	public void action() {
 		LCD.clear();
-		LCD.drawString("Searching a Line at the beginning", 1, 1);
+		LCD.drawString("Searching a Line ", 1,1);
+		LCD.drawString("at the beginning", 1, 2);
 		Movement.forward(2);
 		while(!P3.foundLineForFirstTime) {
 			if (light.getNormalizedLightValue() >= P3.threshold){

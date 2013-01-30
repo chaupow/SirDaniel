@@ -1,8 +1,6 @@
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
-import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
 
 public class P3SearchLine implements Behavior{
@@ -19,7 +17,7 @@ public class P3SearchLine implements Behavior{
 	@Override
 	public boolean takeControl() {
 		int lightvalue = light.getNormalizedLightValue(); 
-		return (lightvalue < threshold) && P3.foundLineForFirstTime && !P3.stop && !P3.end && P3.search;
+		return (lightvalue < threshold) && P3.foundLineForFirstTime && !P3.end && P3.search;
 	}
 
 	@Override
@@ -40,6 +38,7 @@ public class P3SearchLine implements Behavior{
 			while(Movement.isMoving());
 			if (!suppressed)
 				Movement.turn_right(searchDegree, 1);
+			LCD.drawString("Degree: " + searchDegree, 1,2);
 			searchDegree += 20;
 		}
 		if (searchDegree == 110) {

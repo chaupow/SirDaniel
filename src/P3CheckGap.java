@@ -1,6 +1,6 @@
+
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
-import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Behavior;
 import lejos.util.Delay;
 
@@ -14,7 +14,7 @@ public class P3CheckGap implements Behavior{
 
 	@Override
 	public boolean takeControl() {
-		return (P3.numberOfSearches == 1) && !P3.stop && !P3.search && !P3.end;
+		return (P3.numberOfSearches == 1) && !P3.search && !P3.end;
 	}
 
 	@Override

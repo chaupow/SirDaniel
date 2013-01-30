@@ -3,24 +3,28 @@ import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
-
-public class P3 {
-
+public class P3_Behavior implements Behavior{
 	static public boolean foundLineForFirstTime = false; // false!
 	static public int numberOfSearches = 0;
 	static public boolean stop = false;
 	static public boolean search = true;
 	static public boolean end = false;
 	
-	static LightSensor light = new LightSensor(SensorPort.S4);
+	LightSensor light;
 	
 	static public int threshold = 410;
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+
+	public P3_Behavior() {
+		this.light = new LightSensor(SensorPort.S4);
+	}
+	
+	@Override
+	public boolean takeControl() {
+		return true;
+	}
+
+	@Override
+	public void action() {
 		Behavior follow = new P3FollowLine(light);
 		Behavior search = new P3SearchLine(light);
 		Behavior end = new P3EndLine();
@@ -30,9 +34,12 @@ public class P3 {
 		Behavior random = new P3Random();
 //		Behavior [] bArray = {b5, b4, b5, b3, b2};
 		Behavior [] bArray = {random, searchStart, end, gap, checkEnd, search, follow};
-		Arbitrator arby = new Arbitrator(bArray,true);
+		Arbitrator arby = new Arbitrator(bArray, true);
 	    arby.start();
-
 	}
 
+	@Override
+	public void suppress() {
+	}
+	
 }

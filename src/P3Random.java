@@ -7,7 +7,7 @@ public class P3Random implements Behavior{
 
 	@Override
 	public boolean takeControl() {
-		return !P3.stop && !P3.end && (P3.numberOfSearches == 3);
+		return !P3.end && (P3.numberOfSearches == 3);
 	}
 
 	@Override

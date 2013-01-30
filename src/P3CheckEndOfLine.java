@@ -1,6 +1,5 @@
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
-import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Behavior;
 import lejos.util.Delay;
 
@@ -15,7 +14,7 @@ public class P3CheckEndOfLine implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		return (P3.numberOfSearches == 2) && !P3.stop && !P3.search && !P3.end;
+		return (P3.numberOfSearches == 2) && !P3.end;
 	}
 
 	@Override
@@ -24,6 +23,7 @@ public class P3CheckEndOfLine implements Behavior{
 		LCD.drawString("Checking end of Line", 1, 1);
 		Movement.backward(1);
 		Delay.msDelay(1500);
+		LCD.drawString("Moved backwards", 1, 2);
 		Movement.stop();
 		if (light.getNormalizedLightValue() >= P3.threshold) {
 			P3.end = true;

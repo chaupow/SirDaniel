@@ -37,7 +37,7 @@ public final class Movement {
 	// angle has a range of 0 to 360
 	public static void turn_right(int angle) {
 		LCD.drawString("rechts", 0, 1);
-		Motor.A.stop();
+		Motor.A.stop(true);
 		Motor.B.stop();
 		degrees = convert(angle/2);
 		Motor.A.rotate(degrees, true);
@@ -55,7 +55,8 @@ public final class Movement {
 	// angle has a range of 0 to 360
 	public static void turn_left(int angle) {
 		LCD.drawString("links", 0, 2);
-		Motor.A.stop();
+		Motor.A.stop(true);
+		Motor.B.stop();
 		degrees = convert(angle/2);
 		Motor.B.rotate(degrees, true);
 		Motor.A.rotate(-degrees, false);
@@ -70,7 +71,7 @@ public final class Movement {
 		}
 
 	public static void stop() {
-		Motor.A.stop();
+		Motor.A.stop(true);
 		Motor.B.stop();
 	}
 	

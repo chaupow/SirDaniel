@@ -1,4 +1,3 @@
-import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 
 public final class Movement {

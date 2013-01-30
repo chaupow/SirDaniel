@@ -1,6 +1,6 @@
+import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
-import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
@@ -20,13 +20,14 @@ public class P2 {
 	   
    
 	   Behavior driveRight = new P2_DriveRight(speed, rotationSpeed, angleRight);
-	   Behavior correctRight = new P1_CorrectRight(sonic, speed, rotationSpeed, shouldBe);
-	   Behavior correctLeft = new P1_CorrectLeft(sonic, speed, rotationSpeed, shouldBe);
-	   Behavior turnRight = new P1_TurnRight(sonic, touch, speed, rotationSpeed, shouldBe, minimumDifference);
-	   Behavior turnLeft = new P1_TurnLeft(touch, speed, rotationSpeed);
-	   Behavior [] b = {driveForward, correctRight, correctLeft, turnRight, turnLeft};
+	   Behavior avoidAbyss = new P2_AvoidAbyss(touch, speed, rotationSpeed, angleLeft);
+	   
+	   Behavior [] b = {driveRight, avoidAbyss};
 	   Arbitrator arby = new Arbitrator(b);
+	   
+	   Button.waitForAnyPress();
 	   arby.start();
+	   Button.waitForAnyPress();
    }
 
 

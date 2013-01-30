@@ -1,3 +1,4 @@
+import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
@@ -28,7 +29,10 @@ public class P1 {
 	   Behavior turnLeft = new P1_TurnLeft(touch, speed, rotationSpeed);
 	   Behavior [] b = {driveForward, correctRight, correctLeft, turnRight, turnLeft};
 	   Arbitrator arby = new Arbitrator(b);
+	   
+	   Button.waitForAnyPress();
 	   arby.start();
+	   Button.waitForAnyPress();
    }
 
 

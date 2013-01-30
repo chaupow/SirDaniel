@@ -6,8 +6,8 @@ public final class Movement {
 	
 	
 	final static float speedup = 1.66f; // = 40 / 24
-	final static float wheelDiameter = 37; // in millimeters 
-	final static float robotDiameter = 145; // in millimeters
+	final static float wheelRadius = 19; // in millimeters 
+	final static float robotRadius = 72; // in millimeters
 	final static float empiric = 1.25f;
 	static int degrees;
 //	NXTRegulatedMotor a;

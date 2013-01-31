@@ -21,15 +21,8 @@ public class P3 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Behavior follow = new P3FollowLine(light);
-		Behavior search = new P3SearchLine(light);
-		Behavior end = new P3EndLine();
-		Behavior searchStart = new P3SearchLineAtStart(light);
-		Behavior gap = new P3CheckGap(light);
-		Behavior checkEnd = new P3CheckEndOfLine(light);
-		Behavior random = new P3Random();
-//		Behavior [] bArray = {b5, b4, b5, b3, b2};
-		Behavior [] bArray = {random, searchStart, end, gap, checkEnd, search, follow};
+		Behavior p3 = new P3_Behavior();
+		Behavior [] bArray = {p3};
 		Arbitrator arby = new Arbitrator(bArray,true);
 	    arby.start();
 

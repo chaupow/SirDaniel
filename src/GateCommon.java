@@ -1,4 +1,4 @@
-package test;
+
 /**
  * @author Sebastian
  * @version 11.12.2011, 17:00

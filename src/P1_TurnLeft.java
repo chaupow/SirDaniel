@@ -9,6 +9,7 @@ public class P1_TurnLeft implements Behavior {
 	int speed;
 	int rotationSpeed;
 	boolean suppressed;
+	Movement movement = new Movement();
 
 	public P1_TurnLeft( TouchSensor touch, int speed, int rotationSpeed) {
 		this.touch = touch;
@@ -22,12 +23,12 @@ public class P1_TurnLeft implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		Movement.backward(speed);
+		movement.backward(speed);
 		Delay.msDelay(1000);
-		Movement.turn_left(90, rotationSpeed);
-		Movement.forward(speed);
+		movement.turn_left(90, rotationSpeed);
+		movement.forward(speed);
 		Delay.msDelay(1000);
-		Movement.stop();
+		movement.stop();
 	}
 	
 	public void suppress() {

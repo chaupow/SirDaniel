@@ -6,6 +6,7 @@ public class P3_DriveForward  implements Behavior {
    private boolean suppressed = false;
    private int speed;
    LightSensor light;
+   Movement movement = new Movement();
    
    public P3_DriveForward(int speed, LightSensor light){
 	   this.speed = speed;
@@ -22,11 +23,11 @@ public class P3_DriveForward  implements Behavior {
 
    public void action() {
      suppressed = false;
-     Movement.forward(speed);
+     movement.forward(speed);
      while( !suppressed ) {
     	 Thread.yield();
      }
-     Movement.stop(); // clean up
+     movement.stop(); // clean up
      
    }
 }

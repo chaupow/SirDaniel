@@ -9,6 +9,8 @@ public class P2_AvoidAbyss implements Behavior {
    private int speed;
    private int angle;
    private int rotationSpeed;
+	Movement movement = new Movement();
+   
    
    public P2_AvoidAbyss(TouchSensor touch, int speed, int rotationSpeed, int angle){
 	   this.speed = speed;
@@ -28,8 +30,8 @@ public class P2_AvoidAbyss implements Behavior {
    public void action() {
      suppressed = false;
      SuperMotor.turn();
-     Movement.turn_left(angle, rotationSpeed);
-     Movement.forward(speed);
+     movement.turn_left(angle, rotationSpeed);
+     movement.forward(speed);
      Delay.msDelay(500);
      SuperMotor.turn();	   
    }

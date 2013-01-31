@@ -7,6 +7,7 @@ public class P2_DriveRight implements Behavior {
    private int speed;
    private int angle;
    private int rotationSpeed;
+   Movement movement = new Movement();
    
    public P2_DriveRight(int speed, int rotationSpeed, int angle){
 	   this.speed = speed;
@@ -25,9 +26,9 @@ public class P2_DriveRight implements Behavior {
    public void action() {
      suppressed = false;
      while( !suppressed ) {
-	     Movement.forward(speed);
+	     movement.forward(speed);
 	     if (!suppressed) Delay.msDelay(100);
-	     if (!suppressed) Movement.turn_right(angle, rotationSpeed);
+	     if (!suppressed) movement.turn_right(angle, rotationSpeed);
      }     
    }
 }

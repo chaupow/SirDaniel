@@ -7,6 +7,7 @@ public class P3_FollowLine implements Behavior {
 	LightSensor light;
 	int threshold;
 	boolean suppressed;
+	Movement movement = new Movement();
 
 	public P3_FollowLine(LightSensor light) {
 		this.light = light;
@@ -21,20 +22,18 @@ public class P3_FollowLine implements Behavior {
 
 	@Override
 	public void action() {
-		if (P3.numberOfSearches == 3) {
-			P3.search = true;
-		}
+		P3.search = true;
 		P3.numberOfSearches = 0;
 		suppressed = false;
 		LCD.clear();
 		LCD.drawString("Following a line", 1, 1);
-		Movement.forward(2);
+		movement.forward(2);
 		while (!suppressed) {
 			if (light.getNormalizedLightValue() < threshold)
 				break;
 			Thread.yield();
 		}
-		Movement.stop();
+		movement.stop();
 	}
 
 	@Override

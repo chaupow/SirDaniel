@@ -1,3 +1,4 @@
+import lejos.nxt.Button;
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Arbitrator;
@@ -20,7 +21,7 @@ public class P3 {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		Button.waitForAnyPress();
 		Behavior p3 = new P3_Behavior();
 		Behavior [] bArray = {p3};
 		Arbitrator arby = new Arbitrator(bArray,true);

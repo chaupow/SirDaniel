@@ -1,20 +1,24 @@
 import lejos.nxt.Motor;
-import lejos.robotics.navigation.DifferentialPilot;
 
-public final class Movement extends DifferentialPilot{
+public final class MovementBackup {
 	
-	public Movement() {
-		super(30, 30, 95, Motor.A, Motor.B, true);
-	}
+	
 	
 	final static float speedup = 1.66f; // = 40 / 24
 	final static float wheelRadius = 19; // in millimeters 
 	final static float robotRadius = 72; // in millimeters
 	final static float empiric = 1.25f;
 	static int degrees;
+//	NXTRegulatedMotor a;
+//	NXTRegulatedMotor b;
 	
+//	public Movement(NXTRegulatedMotor a, NXTRegulatedMotor b) {
+//		this.a = a;
+//		this.b = b;
+//	}
+
 	// speed has a range of 1(slow) to 6(fast)
-	public void backward(int speed) {
+	public static void backward(int speed) {
 		speed = convertSpeed(speed);
 		Motor.A.setSpeed(speed);
 		Motor.B.setSpeed(speed);
@@ -23,7 +27,7 @@ public final class Movement extends DifferentialPilot{
 	}
 	
 	// speed has a range of 1(slow) to 6(fast)
-	public void forward(int speed) {
+	public static void forward(int speed) {
 		speed = convertSpeed(speed);
 		Motor.A.setSpeed(speed);
 		Motor.B.setSpeed(speed);
@@ -32,7 +36,7 @@ public final class Movement extends DifferentialPilot{
 	}
 	
 	// angle has a range of 0 to 360
-	public void turn_right(int angle) {
+	public static void turn_right(int angle) {
 
 		Motor.A.stop(true);
 		Motor.B.stop();
@@ -42,7 +46,7 @@ public final class Movement extends DifferentialPilot{
 	}
 		
 	// angle has a range of 0 to 360
-	public void turn_right(int angle, int speed) {
+	public static void turn_right(int angle, int speed) {
 		int currentSpeed = Motor.A.getSpeed();
 		setSpeed(speed);
 		turn_right(angle);
@@ -50,7 +54,7 @@ public final class Movement extends DifferentialPilot{
 	}
 	
 	// angle has a range of 0 to 360
-	public void turn_left(int angle) {
+	public static void turn_left(int angle) {
 
 		Motor.B.stop(true);
 		Motor.A.stop();
@@ -60,24 +64,33 @@ public final class Movement extends DifferentialPilot{
 	}
 	
 	// angle has a range of 0 to 360
-	public void turn_left(int angle, int speed) {
-		int currentSpeed = Motor.A.getSpeed();
-		setSpeed(speed);
-		turn_left(angle);
-		setSpeed(currentSpeed);
-	}
+		public static void turn_left(int angle, int speed) {
+			int currentSpeed = Motor.A.getSpeed();
+			setSpeed(speed);
+			turn_left(angle);
+			setSpeed(currentSpeed);
+		}
 
-	public void setSpeed(int speed) {
+	public static void stop() {
+		Motor.A.stop(true);
+		Motor.B.stop();
+	}
+	
+	public static void setSpeed(int speed) {
 		Motor.A.setSpeed(convertSpeed(speed));
 		Motor.B.setSpeed(convertSpeed(speed));
 	}
 	
-	  // convert horizontal angle to rotation angle
-	  private static int convert(int angle) {
-		  return (int) (empiric * (360 * speedup * robotRadius * Math.toRadians(angle) / (wheelRadius * 2 * Math.PI)));
-	  }
+	public static boolean isMoving(){
+		return (Motor.A.isMoving() && Motor.B.isMoving());
+	}
 	
-	  private static int convertSpeed(int speed) {
-		  return speed * 180;
-	  }
+  // convert horizontal angle to rotation angle
+  private static int convert(int angle) {
+	  return (int) (empiric * (360 * speedup * robotRadius * Math.toRadians(angle) / (wheelRadius * 2 * Math.PI)));
+  }
+
+  private static int convertSpeed(int speed) {
+	  return speed * 180;
+  }
 }

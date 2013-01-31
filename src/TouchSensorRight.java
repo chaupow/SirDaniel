@@ -8,6 +8,7 @@ public class TouchSensorRight implements Behavior{
 	private TouchSensor touch;
 	boolean suppressed = false;
 	int degree;
+	Movement movement = new Movement();
 	
 		
 	public TouchSensorRight(SensorPort port, int degree) {
@@ -23,22 +24,22 @@ public class TouchSensorRight implements Behavior{
 	public void action() {
 		suppressed = false;
 		//stop
-		Movement.stop();
+		movement.stop();
 		
 		//Driving backwards
 		LCD.clear();
 		LCD.drawString("Driving backwards", 0, 0);
-		Movement.backward(1);
+		movement.backward(1);
 		Delay.msDelay(1000);
 		
 		
 		// nach links drehen
 		LCD.clear();
 		LCD.drawString("Turning left", 0, 0);
-		Movement.turn_left(degree);
+		movement.turn_left(degree);
 		
 		//clean up
-		Movement.stop();
+		movement.stop();
 		
 	}
 	

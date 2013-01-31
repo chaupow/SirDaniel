@@ -4,6 +4,7 @@ public class Labyrinth implements Behavior {
 	
 	UltrasonicSensor sonic;
 	TouchSensor touch;
+	Movement movement = new Movement();
 	
 	boolean isPressed;
 	int sound_dist;
@@ -30,7 +31,7 @@ public class Labyrinth implements Behavior {
 	public void action(){
 		
 		if(isPressed) {
-			Movement.stop();
+			movement.stop();
 		}
 		
 		

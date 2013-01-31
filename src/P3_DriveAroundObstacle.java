@@ -9,6 +9,7 @@ public class P3_DriveAroundObstacle implements Behavior{
 	TouchSensor bumper;
 	LightSensor light;
 	UltrasonicSensor sonic;
+	Movement movement = new Movement();
 	
     // constant values
     int speed = 3;
@@ -41,7 +42,7 @@ public class P3_DriveAroundObstacle implements Behavior{
 		arby.start();
 		
 		
-		Movement.turn_left(50);
+		movement.turn_left(50);
 	}
 
 	@Override

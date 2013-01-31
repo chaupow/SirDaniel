@@ -4,7 +4,8 @@ import lejos.util.Delay;
 
 
 public class P3_EndLine implements Behavior{
-
+	Movement movement = new Movement();
+	
 	@Override
 	public boolean takeControl() {
 		return (P3.end && !P3.stop);
@@ -14,9 +15,9 @@ public class P3_EndLine implements Behavior{
 	public void action() {
 		LCD.clear();
 		LCD.drawString("End Line", 1, 1);
-		Movement.forward(2);
+		movement.forward(2);
 		Delay.msDelay(2000);
-		Movement.stop();
+		movement.stop();
 		P3.stop = true;
 	}
 

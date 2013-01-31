@@ -4,6 +4,7 @@ import lejos.robotics.subsumption.*;
 public class DriveForward  implements Behavior {
    private boolean suppressed = false;
    private int speed;
+	Movement movement = new Movement();
    
    public DriveForward(int speed){
 	   this.speed = speed;
@@ -19,11 +20,11 @@ public class DriveForward  implements Behavior {
 
    public void action() {
      suppressed = false;
-     Movement.forward(speed);
+     movement.forward(speed);
      while( !suppressed ) {
     	 Thread.yield();
      }
-     Movement.stop(); // clean up
+     movement.stop(); // clean up
      
    }
 }

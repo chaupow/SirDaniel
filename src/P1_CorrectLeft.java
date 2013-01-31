@@ -10,10 +10,9 @@ public class P1_CorrectLeft implements Behavior {
 	int speed;
 	int rotationSpeed;
 	int min_dist; // i.e. 10
-	int max_dist;
 	boolean suppressed;
 
-	public P1_CorrectLeft(UltrasonicSensor sonic, int speed, int rotationSpeed, int min_dist, int max_dist) {
+	public P1_CorrectLeft(UltrasonicSensor sonic, int speed, int rotationSpeed, int min_dist) {
 		this.sonic = sonic;
 		this.speed = speed;
 		this.rotationSpeed = rotationSpeed;
@@ -21,7 +20,7 @@ public class P1_CorrectLeft implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (isInRange(sonic.getDistance()));
+		return (sonic.getDistance() <= min_dist);
 	}
 	
 	public void action() {
@@ -33,11 +32,7 @@ public class P1_CorrectLeft implements Behavior {
 		suppressed = true;
 	}
 	
-	
-	private boolean isInRange(int dist){
-		
-		return (dist < max_dist && dist >= min_dist);
-	}
+
 	
 
 }

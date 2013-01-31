@@ -1,5 +1,7 @@
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
+import lejos.nxt.TouchSensor;
+import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
@@ -9,13 +11,18 @@ public class P3_Behavior implements Behavior{
 	static public boolean stop = false;
 	static public boolean search = true;
 	static public boolean end = false;
+	static public boolean isbumped = false;
 	
 	LightSensor light;
+	TouchSensor bumper;
+	UltrasonicSensor sonic;
 	
 	static public int threshold = 410;
 
 	public P3_Behavior() {
 		this.light = new LightSensor(SensorPort.S4);
+		this.bumper = new TouchSensor(SensorPort.S2);
+		this.sonic = new UltrasonicSensor(SensorPort.S3);
 	}
 	
 	@Override
@@ -25,15 +32,15 @@ public class P3_Behavior implements Behavior{
 
 	@Override
 	public void action() {
-		Behavior follow = new P3FollowLine(light);
-		Behavior search = new P3SearchLine(light);
-		Behavior end = new P3EndLine();
-		Behavior searchStart = new P3SearchLineAtStart(light);
-		Behavior gap = new P3CheckGap(light);
-		Behavior checkEnd = new P3CheckEndOfLine(light);
-		Behavior random = new P3Random();
-//		Behavior [] bArray = {b5, b4, b5, b3, b2};
-		Behavior [] bArray = {random, searchStart, end, gap, checkEnd, search, follow};
+		Behavior follow = new P3_FollowLine(light);
+		Behavior search = new P3_SearchLine(light);
+		Behavior end = new P3_EndLine();
+		Behavior searchStart = new P3_SearchLineAtStart(light);
+		Behavior gap = new P3_CheckGap(light);
+		Behavior checkEnd = new P3_CheckEndOfLine(light);
+		Behavior random = new P3_Random();
+		Behavior obstacle = new P3_DriveAroundObstacle(bumper, light, sonic);
+		Behavior [] bArray = {random, searchStart, end, gap, checkEnd, search, follow, obstacle};
 		Arbitrator arby = new Arbitrator(bArray, true);
 	    arby.start();
 	}

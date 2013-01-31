@@ -18,7 +18,7 @@ public final class Movement {
 //	}
 
 	// speed has a range of 1(slow) to 6(fast)
-	public static void forward(int speed) {
+	public static void backward(int speed) {
 		speed = convertSpeed(speed);
 		Motor.A.setSpeed(speed);
 		Motor.B.setSpeed(speed);
@@ -27,7 +27,7 @@ public final class Movement {
 	}
 	
 	// speed has a range of 1(slow) to 6(fast)
-	public static void backward(int speed) {
+	public static void forward(int speed) {
 		speed = convertSpeed(speed);
 		Motor.A.setSpeed(speed);
 		Motor.B.setSpeed(speed);
@@ -41,8 +41,8 @@ public final class Movement {
 		Motor.A.stop(true);
 		Motor.B.stop();
 		degrees = convert(angle/2);
-		Motor.A.rotate(degrees, true);
-		Motor.B.rotate(-degrees, false);
+		Motor.A.rotate(-degrees, true);
+		Motor.B.rotate(degrees, false);
 	}
 		
 	// angle has a range of 0 to 360
@@ -59,8 +59,8 @@ public final class Movement {
 		Motor.B.stop(true);
 		Motor.A.stop();
 		degrees = convert(angle/2);
-		Motor.B.rotate(degrees, true);
-		Motor.A.rotate(-degrees, false);
+		Motor.B.rotate(-degrees, true);
+		Motor.A.rotate(degrees, false);
 	}
 	
 	// angle has a range of 0 to 360

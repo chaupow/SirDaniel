@@ -13,7 +13,7 @@ public final class SuperMotor {
 			right = false;
 		} else {
 			// turn Ultrasonic right and Touch down
-			Motor.C.rotateTo(0);
+			Motor.C.rotateTo(-5);
 			right = true;
 		}
 	}

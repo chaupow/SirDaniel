@@ -18,13 +18,15 @@ public class P1 {
 	   // constant values
 	   int speed = 3;
 	   int rotationSpeed = 2;
+	   int min_int = 10;
+	   int max_int = 15;
 	   int shouldBe = 10;
 	   int minimumDifference = 20;
 	   
    
 	   Behavior driveForward = new DriveForward(speed);
-	   Behavior correctRight = new P1_CorrectRight(sonic, speed, rotationSpeed, shouldBe);
-	   Behavior correctLeft = new P1_CorrectLeft(sonic, speed, rotationSpeed, shouldBe);
+	   Behavior correctRight = new P1_CorrectRight(sonic, speed, rotationSpeed, min_int, max_int);
+	   Behavior correctLeft = new P1_CorrectLeft(sonic, speed, rotationSpeed, min_int, max_int);
 	   Behavior turnRight = new P1_TurnRight(sonic, touch, speed, rotationSpeed, shouldBe, minimumDifference);
 	   Behavior turnLeft = new P1_TurnLeft(touch, speed, rotationSpeed);
 	   Behavior [] b = {driveForward, correctRight, correctLeft, turnRight, turnLeft};

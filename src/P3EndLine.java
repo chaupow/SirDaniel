@@ -7,7 +7,7 @@ public class P3EndLine implements Behavior{
 
 	@Override
 	public boolean takeControl() {
-		return P3.end;
+		return (P3.end && !P3.stop);
 	}
 
 	@Override
@@ -17,6 +17,7 @@ public class P3EndLine implements Behavior{
 		Movement.forward(2);
 		Delay.msDelay(2000);
 		Movement.stop();
+		P3.stop = true;
 	}
 
 	@Override

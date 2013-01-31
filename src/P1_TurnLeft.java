@@ -1,5 +1,4 @@
 import lejos.nxt.TouchSensor;
-import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import lejos.util.Delay;
 

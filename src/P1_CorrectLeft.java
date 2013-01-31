@@ -1,7 +1,5 @@
-import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
 
 public class P1_CorrectLeft implements Behavior {

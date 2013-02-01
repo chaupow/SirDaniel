@@ -94,7 +94,7 @@ public final class Movement extends DifferentialPilot{
 	
 	// return value in m/s
 	public float getVelocity() {
-		return (float) (measuredSpeedAt3 * convert(3) / getTravelSpeed());
+		return measuredSpeedAt3;
 	}
 	
 //	public void stop() {

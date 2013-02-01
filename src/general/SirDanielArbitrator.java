@@ -31,7 +31,7 @@ public class SirDanielArbitrator implements Runnable
   private int _highestPriority = NONE;
   private int _active = NONE; //  active behavior; set by montior, used by start();
   private boolean _returnWhenInactive;
-  private boolean running;
+  private boolean running = true;
   /**
    * Monitor is an inner class.  It polls the behavior array to find the behavior of hightst
    * priority.  If higher than the active behavior, it calls active.suppress()

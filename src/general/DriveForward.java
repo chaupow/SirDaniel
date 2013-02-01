@@ -1,5 +1,4 @@
 package general;
-import lejos.nxt.LCD;
 import lejos.robotics.subsumption.*;
 
 public class DriveForward  implements Behavior {

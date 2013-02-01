@@ -3,7 +3,6 @@ import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
-import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 import general.SirDanielArbitrator;
 import general.DriveForward;

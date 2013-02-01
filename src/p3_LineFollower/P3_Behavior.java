@@ -21,6 +21,7 @@ public class P3_Behavior implements Behavior{
 	UltrasonicSensor sonic;
 	Movement movement;
 	SirDanielArbitrator arby;
+	Thread t;
 	
 	static public int threshold = 410;
 
@@ -51,7 +52,8 @@ public class P3_Behavior implements Behavior{
 	@Override
 	public void action() {
 		
-	    arby.run();
+		t = new Thread(arby);
+	    t.run();
 	}
 
 	@Override

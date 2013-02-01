@@ -1,17 +1,21 @@
 import lejos.nxt.LCD;
+import lejos.nxt.LightSensor;
 import lejos.robotics.subsumption.*;
 
-public class DriveForward  implements Behavior {
+public class P3_DriveForward  implements Behavior {
    private boolean suppressed = false;
    private int speed;
-	Movement movement = Movement.getInstance();
+   LightSensor light;
+   Movement movement;
    
-   public DriveForward(int speed){
+   public P3_DriveForward(int speed, LightSensor light, Movement movement) {
+		this.movement = movement;
 	   this.speed = speed;
+	   this.light = light;
    }
    
    public boolean takeControl() {
-      return true;
+      return light.getNormalizedLightValue() < P3_Behavior.threshold;
    }
 
    public void suppress() {

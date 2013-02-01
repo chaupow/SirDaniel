@@ -1,7 +1,5 @@
-import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
 
 public class P1_CorrectRight implements Behavior {
@@ -9,31 +7,31 @@ public class P1_CorrectRight implements Behavior {
 	UltrasonicSensor sonic;
 	int speed;
 	int rotationSpeed;
-	int shouldBe; // i.e. 10
+	int max_dist;
 	boolean suppressed;
+	Movement movement = Movement.getInstance();
 
-	public P1_CorrectRight(UltrasonicSensor sonic, int speed, int rotationSpeed, int shouldBe) {
+	public P1_CorrectRight(UltrasonicSensor sonic, int speed, int rotationSpeed, int max_dist) {
 		this.sonic = sonic;
 		this.speed = speed;
 		this.rotationSpeed = rotationSpeed;
-		this.shouldBe = shouldBe;
+		this.max_dist = max_dist;
 	}
 	
 	public boolean takeControl() {
-		return (sonic.getDistance() > shouldBe);
+		return (sonic.getDistance() >= max_dist);
 	}
 	
 	public void action() {
 		suppressed = false;
-		Movement.turn_right(5, rotationSpeed);
+		movement.turn_right(5, rotationSpeed);
 	}
 	
 	public void suppress() {
 		suppressed = true;
 	}
 	
-	
-	
+
 
 }
 

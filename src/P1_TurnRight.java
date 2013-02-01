@@ -30,12 +30,12 @@ public class P1_TurnRight implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		movement.forward(speed);
+		movement.setSpeed(speed);
+		movement.setRotationSpeed(rotationSpeed);
+		
+		movement.backward();
 		Delay.msDelay(1000);
-		movement.turn_right(90, rotationSpeed);
-		movement.forward(speed);
-		Delay.msDelay(1000);
-		movement.stop();
+		movement.turn_right(90);
 	}
 	
 	public void suppress() {

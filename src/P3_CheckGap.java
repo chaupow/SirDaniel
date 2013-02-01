@@ -20,9 +20,12 @@ public class P3_CheckGap implements Behavior{
 
 	@Override
 	public void action() {
+		//TODO LCD raus
 		LCD.clear();
 		LCD.drawString("Checking Gap", 1, 1);
-		movement.forward(1);
+		
+		movement.setSpeed(1);
+		movement.forward();
 		Delay.msDelay(4000);
 		movement.stop();
 		P3.search = true;;

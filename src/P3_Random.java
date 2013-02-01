@@ -18,9 +18,13 @@ public class P3_Random implements Behavior{
 	@Override
 	public void action() {
 		suppressed = false;
+		
+		//TODO LCD raus
 		LCD.clear();
 		LCD.drawString("Random", 1, 1);
-		movement.forward(1);
+		
+		movement.setSpeed(1);
+		movement.forward();
 		while (!suppressed)
 			Thread.yield();
 		movement.stop();

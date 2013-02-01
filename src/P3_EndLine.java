@@ -17,9 +17,12 @@ public class P3_EndLine implements Behavior{
 
 	@Override
 	public void action() {
+		//TODO LCD raus
 		LCD.clear();
 		LCD.drawString("End Line", 1, 1);
-		movement.forward(2);
+		
+		movement.setSpeed(2);
+		movement.forward();
 		Delay.msDelay(2000);
 		movement.stop();
 		P3.stop = true;

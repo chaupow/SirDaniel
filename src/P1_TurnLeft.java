@@ -23,12 +23,14 @@ public class P1_TurnLeft implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		movement.backward(speed);
+		movement.setSpeed(speed);
+		movement.setRotationSpeed(rotationSpeed);
+
+		movement.backward();
 		Delay.msDelay(1000);
-		movement.turn_left(90, rotationSpeed);
-		movement.forward(speed);
-		Delay.msDelay(1000);
-		movement.stop();
+		
+		movement.turn_left(90);		
+		
 	}
 	
 	public void suppress() {

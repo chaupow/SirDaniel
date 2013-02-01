@@ -24,7 +24,7 @@ public class P1_CorrectLeft implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		movement.turn_left(5, rotationSpeed);
+		movement.turn_left(5);
 	}
 	
 	public void suppress() {

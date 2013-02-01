@@ -1,20 +1,13 @@
-import lejos.nxt.LCD;
-import lejos.nxt.Motor;
-
-//TODO not working yet.
 public class Calibration {
 	
-	static int saveSpeed = 24;
+	/** Brightness value for line. */
+	static int lineBrightness = 25;
 	
-	public static void calibrateUltrasonicMotor() {
-		Motor.C.setSpeed(saveSpeed);
-		Motor.C.forward();
-		while(true) {
-			LCD.clear();
-			LCD.drawInt(Motor.C.getRotationSpeed(), 5, 5);
-			LCD.refresh();
-		}
-		
-	}
+	/** Brightness value for background. */
+	static int backgroundBrightness = 50;
+	
+	/** width of a coding stripe in meters. */
+	static double stripeWidth = 0.025;
+	
 
 }

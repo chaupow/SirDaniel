@@ -9,7 +9,7 @@ public class P1_TurnLeft implements Behavior {
 	int speed;
 	int rotationSpeed;
 	boolean suppressed;
-	Movement movement = new Movement();
+	Movement movement = Movement.getInstance();
 
 	public P1_TurnLeft( TouchSensor touch, int speed, int rotationSpeed) {
 		this.touch = touch;

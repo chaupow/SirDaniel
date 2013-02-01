@@ -3,7 +3,7 @@ import lejos.robotics.subsumption.Behavior;
 
 
 public class P1_CorrectLeft implements Behavior {
-	Movement movement = new Movement();
+	Movement movement = Movement.getInstance();
 	
 	UltrasonicSensor sonic;
 	int speed;

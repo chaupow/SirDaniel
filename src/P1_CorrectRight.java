@@ -9,7 +9,7 @@ public class P1_CorrectRight implements Behavior {
 	int rotationSpeed;
 	int max_dist;
 	boolean suppressed;
-	Movement movement = new Movement();
+	Movement movement = Movement.getInstance();
 
 	public P1_CorrectRight(UltrasonicSensor sonic, int speed, int rotationSpeed, int max_dist) {
 		this.sonic = sonic;

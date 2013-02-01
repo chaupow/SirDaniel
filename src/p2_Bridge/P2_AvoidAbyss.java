@@ -1,5 +1,4 @@
 package p2_Bridge;
-import lejos.nxt.LCD;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.subsumption.*;
 import lejos.util.Delay;
@@ -27,7 +26,7 @@ public class P2_AvoidAbyss implements Behavior {
    }
 
    public void suppress() {
-      suppressed = true;
+      this.suppressed = true;
    }
 
    public void action() {

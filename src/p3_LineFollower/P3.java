@@ -2,7 +2,6 @@ package p3_LineFollower;
 import lejos.nxt.Button;
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
-import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 import general.SirDanielArbitrator;
 

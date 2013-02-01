@@ -10,8 +10,8 @@ public class P3_CheckEndOfLine implements Behavior{
 	LightSensor light;
 	Movement movement;
 	
-	public P3_CheckEndOfLine(LightSensor light, Movement movement) {
-		this.movement = movement;
+	public P3_CheckEndOfLine(LightSensor light) {
+		this.movement = Movement.getInstance();
 		this.light = light;
 	}
 	

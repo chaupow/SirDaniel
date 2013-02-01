@@ -7,8 +7,8 @@ public class P3_SearchLineAtStart implements Behavior{
 	LightSensor light;
 	Movement movement;
 	
-	public P3_SearchLineAtStart(LightSensor light, Movement movement) {
-		this.movement = movement;
+	public P3_SearchLineAtStart(LightSensor light) {
+		this.movement = Movement.getInstance();
 		this.light = light;
 	}
 	

@@ -10,8 +10,8 @@ public class P3_SearchLine implements Behavior{
 	int searchDegree = 10;
 	Movement movement;
 	
-	public P3_SearchLine(LightSensor light, Movement movement) {
-		this.movement = movement;
+	public P3_SearchLine(LightSensor light) {
+		this.movement = Movement.getInstance();
 		this.light = light;
 		this.threshold = P3.threshold;
 	}

@@ -7,9 +7,10 @@ public class P3_FollowLine implements Behavior {
 	LightSensor light;
 	int threshold;
 	boolean suppressed;
-	Movement movement = new Movement();
+	Movement movement;
 
-	public P3_FollowLine(LightSensor light) {
+	public P3_FollowLine(LightSensor light, Movement movement) {
+		this.movement = movement;
 		this.light = light;
 		this.threshold = P3.threshold;
 	}

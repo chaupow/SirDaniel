@@ -7,7 +7,7 @@ public class TouchSensorLeft implements Behavior{
 	TouchSensor touch;
 	boolean suppressed = false;
 	int degree;
-	Movement movement = new Movement();
+	Movement movement = Movement.getInstance();
 	
 	public TouchSensorLeft(SensorPort port, int degree) {
 		

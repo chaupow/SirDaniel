@@ -8,7 +8,7 @@ import lejos.util.Delay;
 public class test {
 
 	public static void main (String[] args) {
-		Movement movement = new Movement(); 
+		Movement movement = Movement.getInstance(); 
 		Button.waitForAnyPress();
 		movement.forward(1);
 		LCD.drawString("Movement forward", 1, 1);

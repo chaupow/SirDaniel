@@ -9,7 +9,7 @@ public class P2_AvoidAbyss implements Behavior {
    private int speed;
    private int angle;
    private int rotationSpeed;
-	Movement movement = new Movement();
+	Movement movement = Movement.getInstance();
    
    
    public P2_AvoidAbyss(TouchSensor touch, int speed, int rotationSpeed, int angle){

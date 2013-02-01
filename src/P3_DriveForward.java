@@ -6,9 +6,10 @@ public class P3_DriveForward  implements Behavior {
    private boolean suppressed = false;
    private int speed;
    LightSensor light;
-   Movement movement = new Movement();
+   Movement movement;
    
-   public P3_DriveForward(int speed, LightSensor light){
+   public P3_DriveForward(int speed, LightSensor light, Movement movement) {
+		this.movement = movement;
 	   this.speed = speed;
 	   this.light = light;
    }

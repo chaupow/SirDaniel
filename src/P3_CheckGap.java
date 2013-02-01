@@ -6,9 +6,10 @@ import lejos.util.Delay;
 
 public class P3_CheckGap implements Behavior{
 	LightSensor light;
-	Movement movement = new Movement();
+	Movement movement;
 	
-	public P3_CheckGap(LightSensor light) {
+	public P3_CheckGap(LightSensor light, Movement movement) {
+		this.movement = movement;
 		this.light = light;
 	}
 
@@ -22,7 +23,7 @@ public class P3_CheckGap implements Behavior{
 		LCD.clear();
 		LCD.drawString("Checking Gap", 1, 1);
 		movement.forward(1);
-		Delay.msDelay(1000);
+		Delay.msDelay(4000);
 		movement.stop();
 		P3.search = true;;
 	}

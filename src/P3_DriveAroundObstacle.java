@@ -9,7 +9,7 @@ public class P3_DriveAroundObstacle implements Behavior{
 	TouchSensor bumper;
 	LightSensor light;
 	UltrasonicSensor sonic;
-	Movement movement = new Movement();
+	Movement movement;
 	
     // constant values
     int speed = 3;
@@ -19,7 +19,8 @@ public class P3_DriveAroundObstacle implements Behavior{
     int shouldBe = 10;
     int minimumDifference = 20;
 	
-	public P3_DriveAroundObstacle(TouchSensor bumper, LightSensor light, UltrasonicSensor sonic) {
+	public P3_DriveAroundObstacle(TouchSensor bumper, LightSensor light, UltrasonicSensor sonic, Movement movement) {
+		this.movement = movement;
 		this.bumper = bumper;
 		this.light = light;
 		this.sonic = sonic;
@@ -32,11 +33,11 @@ public class P3_DriveAroundObstacle implements Behavior{
 
 	@Override
 	public void action() {
-		Behavior turnLeft = new P3_TurnLeft(bumper, speed, rotationSpeed);
-		Behavior turnRight = new P3_TurnRight(sonic, bumper, speed, rotationSpeed, shouldBe, minimumDifference, light);
-		Behavior correctRight = new P3_CorrectRight(sonic, speed, rotationSpeed, max_dist, light);
-		Behavior correctLeft = new P3_CorrectLeft(sonic, speed, rotationSpeed, min_dist, light);
-		Behavior forward = new P3_DriveForward(rotationSpeed, light);
+		Behavior turnLeft = new P3_TurnLeft(bumper, speed, rotationSpeed, movement);
+		Behavior turnRight = new P3_TurnRight(sonic, bumper, speed, rotationSpeed, shouldBe, minimumDifference, light, movement);
+		Behavior correctRight = new P3_CorrectRight(sonic, speed, rotationSpeed, max_dist, light, movement);
+		Behavior correctLeft = new P3_CorrectLeft(sonic, speed, rotationSpeed, min_dist, light, movement);
+		Behavior forward = new P3_DriveForward(rotationSpeed, light, movement);
 		Behavior [] bArray = {forward, correctRight, correctLeft, turnRight, turnLeft};
 		Arbitrator arby = new Arbitrator(bArray, true);
 		arby.start();

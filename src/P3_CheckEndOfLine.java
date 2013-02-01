@@ -8,9 +8,10 @@ import lejos.util.Delay;
 public class P3_CheckEndOfLine implements Behavior{
 
 	LightSensor light;
-	Movement movement = new Movement();
+	Movement movement;
 	
-	public P3_CheckEndOfLine(LightSensor light) {
+	public P3_CheckEndOfLine(LightSensor light, Movement movement) {
+		this.movement = movement;
 		this.light = light;
 	}
 	
@@ -24,7 +25,7 @@ public class P3_CheckEndOfLine implements Behavior{
 		LCD.clear();
 		LCD.drawString("Checking end of Line", 1, 1);
 		movement.backward(1);
-		Delay.msDelay(1500);
+		Delay.msDelay(5000);
 		LCD.drawString("Moved backwards", 1, 2);
 		movement.stop();
 		if (light.getNormalizedLightValue() >= P3.threshold) {

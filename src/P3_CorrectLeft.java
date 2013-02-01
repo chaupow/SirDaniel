@@ -13,9 +13,10 @@ public class P3_CorrectLeft implements Behavior {
 	int min_dist; // i.e. 10
 	boolean suppressed;
 	LightSensor light;
-	Movement movement = new Movement();
+	Movement movement;
 
-	public P3_CorrectLeft(UltrasonicSensor sonic, int speed, int rotationSpeed, int min_dist, LightSensor light) {
+	public P3_CorrectLeft(UltrasonicSensor sonic, int speed, int rotationSpeed, int min_dist, LightSensor light, Movement movement) {
+		this.movement = movement;
 		this.sonic = sonic;
 		this.speed = speed;
 		this.rotationSpeed = rotationSpeed;
@@ -29,7 +30,11 @@ public class P3_CorrectLeft implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		movement.turn_left(5, rotationSpeed);
+		movement.steer(25);
+		while(!suppressed) {
+			Thread.yield();
+		}
+		movement.stop();
 	}
 	
 	public void suppress() {

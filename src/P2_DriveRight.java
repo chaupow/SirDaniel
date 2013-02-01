@@ -7,7 +7,7 @@ public class P2_DriveRight implements Behavior {
    private int speed;
    private int angle;
    private int rotationSpeed;
-   Movement movement = new Movement();
+   Movement movement = Movement.getInstance();
    
    public P2_DriveRight(int speed, int rotationSpeed, int angle){
 	   this.speed = speed;

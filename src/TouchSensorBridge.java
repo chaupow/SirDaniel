@@ -3,7 +3,7 @@ import lejos.nxt.*;
 import lejos.robotics.subsumption.*;
 
 public class TouchSensorBridge implements Behavior {
-	Movement movement = new Movement();
+	Movement movement = Movement.getInstance();
 
 	TouchSensor touch;
 	

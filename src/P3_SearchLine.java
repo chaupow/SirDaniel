@@ -8,9 +8,10 @@ public class P3_SearchLine implements Behavior{
 	LightSensor light;
 	boolean suppressed;
 	int searchDegree = 10;
-	Movement movement = new Movement();
+	Movement movement;
 	
-	public P3_SearchLine(LightSensor light){
+	public P3_SearchLine(LightSensor light, Movement movement) {
+		this.movement = movement;
 		this.light = light;
 		this.threshold = P3.threshold;
 	}
@@ -40,7 +41,7 @@ public class P3_SearchLine implements Behavior{
 			if (!suppressed)
 				movement.turn_right(searchDegree, 1);
 			LCD.drawString("Degree: " + searchDegree, 1,2);
-			searchDegree += 20+i*10;
+			searchDegree = searchDegree + 20 + i*20;
 			if (searchDegree > 110) {
 				P3.numberOfSearches++;
 				P3.search = false;

@@ -6,7 +6,7 @@ import lejos.util.Delay;
 
 
 public class P3_TurnRight implements Behavior {
-	Movement movement = new Movement();
+	Movement movement;
 	UltrasonicSensor sonic;
 	TouchSensor touch;
 	int speed;
@@ -16,7 +16,8 @@ public class P3_TurnRight implements Behavior {
 	boolean suppressed;
 	LightSensor light;
 
-	public P3_TurnRight(UltrasonicSensor sonic, TouchSensor touch, int speed, int rotationSpeed, int shouldBe, int minimumDifference, LightSensor light) {
+	public P3_TurnRight(UltrasonicSensor sonic, TouchSensor touch, int speed, int rotationSpeed, int shouldBe, int minimumDifference, LightSensor light, Movement movement) {
+		this.movement = movement;
 		this.sonic = sonic;
 		this.touch = touch;
 		this.speed = speed;
@@ -32,12 +33,7 @@ public class P3_TurnRight implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		movement.forward(speed);
-		Delay.msDelay(1000);
 		movement.turn_right(90, rotationSpeed);
-		movement.forward(speed);
-		Delay.msDelay(1000);
-		movement.stop();
 	}
 	
 	public void suppress() {

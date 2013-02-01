@@ -4,7 +4,7 @@ public class Labyrinth implements Behavior {
 	
 	UltrasonicSensor sonic;
 	TouchSensor touch;
-	Movement movement = new Movement();
+	Movement movement = Movement.getInstance();
 	
 	boolean isPressed;
 	int sound_dist;

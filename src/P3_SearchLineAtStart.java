@@ -5,9 +5,10 @@ import lejos.robotics.subsumption.Behavior;
 
 public class P3_SearchLineAtStart implements Behavior{
 	LightSensor light;
-	Movement movement = new Movement();
+	Movement movement;
 	
-	public P3_SearchLineAtStart(LightSensor light) {
+	public P3_SearchLineAtStart(LightSensor light, Movement movement) {
+		this.movement = movement;
 		this.light = light;
 	}
 	

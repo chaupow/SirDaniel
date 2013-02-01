@@ -4,13 +4,14 @@ import lejos.util.Delay;
 
 
 public class P3_TurnLeft implements Behavior {
-	Movement movement = new Movement();
+	Movement movement;
 	TouchSensor touch;
 	int speed;
 	int rotationSpeed;
 	boolean suppressed;
 
-	public P3_TurnLeft( TouchSensor touch, int speed, int rotationSpeed) {
+	public P3_TurnLeft( TouchSensor touch, int speed, int rotationSpeed, Movement movement) {
+		this.movement = movement;
 		this.touch = touch;
 		this.speed = speed;
 		this.rotationSpeed = rotationSpeed;
@@ -21,13 +22,7 @@ public class P3_TurnLeft implements Behavior {
 	}
 	
 	public void action() {
-		suppressed = false;
-		movement.backward(speed);
-		Delay.msDelay(1000);
 		movement.turn_left(90, rotationSpeed);
-		movement.forward(speed);
-		Delay.msDelay(1000);
-		movement.stop();
 	}
 	
 	public void suppress() {

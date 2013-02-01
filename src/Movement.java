@@ -3,7 +3,17 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 public final class Movement extends DifferentialPilot{
 	
-	public Movement() {
+	private static Movement instance = null;
+
+	public static Movement getInstance() {
+		if(instance == null) {
+			instance = new Movement();
+		}
+		return instance;
+	}
+	
+	//Singleton!
+	private Movement() {
 		super(30, 30, 95, Motor.A, Motor.B, true);
 	}
 	

@@ -4,8 +4,12 @@ import lejos.robotics.subsumption.Behavior;
 
 public class P3_Random implements Behavior{
 	boolean suppressed;
-	Movement movement = new Movement();
+	Movement movement;
 
+	public P3_Random(Movement movement) {
+		this.movement = movement;
+	}
+	
 	@Override
 	public boolean takeControl() {
 		return !P3.end && (P3.numberOfSearches == 3);

@@ -9,7 +9,7 @@ public final class SuperMotor {
 	public static void turn() {
 		if (right) {
 			// turn Ultrasonic forward and Touch up
-			Motor.C.rotateTo(90);
+			Motor.C.rotateTo(130);
 			right = false;
 		} else {
 			// turn Ultrasonic right and Touch down

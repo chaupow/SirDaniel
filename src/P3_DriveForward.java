@@ -8,8 +8,8 @@ public class P3_DriveForward  implements Behavior {
    LightSensor light;
    Movement movement;
    
-   public P3_DriveForward(int speed, LightSensor light, Movement movement) {
-		this.movement = movement;
+   public P3_DriveForward(int speed, LightSensor light) {
+		this.movement = Movement.getInstance();
 	   this.speed = speed;
 	   this.light = light;
    }

@@ -6,8 +6,8 @@ import lejos.util.Delay;
 public class P3_EndLine implements Behavior{
 	Movement movement;
 	
-	public P3_EndLine(Movement movement) {
-		this.movement = movement;
+	public P3_EndLine() {
+		this.movement = Movement.getInstance();
 	}
 		
 	@Override

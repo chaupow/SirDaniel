@@ -8,8 +8,8 @@ public class P3_CheckGap implements Behavior{
 	LightSensor light;
 	Movement movement;
 	
-	public P3_CheckGap(LightSensor light, Movement movement) {
-		this.movement = movement;
+	public P3_CheckGap(LightSensor light) {
+		this.movement = Movement.getInstance();
 		this.light = light;
 	}
 

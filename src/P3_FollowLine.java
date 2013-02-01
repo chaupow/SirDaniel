@@ -9,8 +9,8 @@ public class P3_FollowLine implements Behavior {
 	boolean suppressed;
 	Movement movement;
 
-	public P3_FollowLine(LightSensor light, Movement movement) {
-		this.movement = movement;
+	public P3_FollowLine(LightSensor light) {
+		this.movement = Movement.getInstance();
 		this.light = light;
 		this.threshold = P3.threshold;
 	}

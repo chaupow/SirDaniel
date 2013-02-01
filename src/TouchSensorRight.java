@@ -2,6 +2,7 @@
 import lejos.nxt.*;
 import lejos.robotics.subsumption.*;
 import lejos.util.Delay;
+import general.Movement;
 
 public class TouchSensorRight implements Behavior{
 	

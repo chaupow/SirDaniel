@@ -3,7 +3,7 @@ import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
-
+import general.Movement;
 
 public class test {
 

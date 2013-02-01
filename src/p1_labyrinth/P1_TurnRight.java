@@ -1,4 +1,5 @@
 package p1_labyrinth;
+import lejos.nxt.LCD;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -35,11 +36,16 @@ public class P1_TurnRight implements Behavior {
 		movement.setSpeed(speed);
 		movement.setRotationSpeed(rotationSpeed);
 		
-		movement.forward();
-		Delay.msDelay(100);
-		movement.turn_right(90);
-		movement.forward();
-		Delay.msDelay(100);
+		//movement.forward();
+		//Delay.msDelay(300);
+		LCD.drawString("steering" , 1, 1);
+		movement.steer(-75);
+		
+		
+		/*while(!suppressed) {
+			movement.forward();
+
+		}	*/
 	}
 	
 	public void suppress() {

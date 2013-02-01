@@ -11,12 +11,12 @@ public class P1_Behavior implements Behavior{
 	
 	SensorPort sonicPort = SensorPort.S3;
 	SensorPort touchPort = SensorPort.S2;
-	int speed = 3;
+	int speed = 2;
 	int rotationSpeed = 2;
 	int min_dist = 8;
-	int max_dist = 13;
+	int max_dist = 20;
 	int shouldBe = 10;
-	int minimumDifference = 20;
+	int minimumDifference = 50;
 	SirDanielArbitrator arby;
 	
 	UltrasonicSensor sonic;

@@ -1,4 +1,5 @@
 package p1_labyrinth;
+import lejos.nxt.LCD;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import general.Movement;
@@ -21,13 +22,16 @@ public class P1_CorrectLeft implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (sonic.getDistance() <= min_dist);
+		return (sonic.getDistance() < min_dist);
 	}
 	
 	public void action() {
 		suppressed = false;
 		movement.setRotationSpeed(rotationSpeed);
-		movement.turn_left(5);
+		
+		LCD.drawString("Correct Left", 1, 1);
+		movement.arc(-6.0, 5.0, true);
+		//movement.turn_left(5);
 	}
 	
 	public void suppress() {

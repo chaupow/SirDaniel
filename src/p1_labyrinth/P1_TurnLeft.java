@@ -31,7 +31,7 @@ public class P1_TurnLeft implements Behavior {
 		movement.backward();
 		Delay.msDelay(1000);
 		
-		movement.turn_left(90);		
+		movement.turn_left(90);	
 		
 	}
 	

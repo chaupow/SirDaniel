@@ -24,22 +24,25 @@ public class P3_SearchLine implements Behavior{
 
 	@Override
 	public void action() {
+		//TODO LCD raus
 		LCD.clear();
 		LCD.drawString("Searching a Line", 1, 1);
+		
 		suppressed = false;
 		searchDegree = 10;
 		int i = 0;
+		movement.setSpeed(1);
 		while (searchDegree <= 110 && !suppressed && light.getNormalizedLightValue() < threshold) { 
 			LCD.clear();
 			LCD.drawInt(light.getNormalizedLightValue() , 1, 1);
 			if (!suppressed)
-				movement.turn_right(searchDegree, 1);
+				movement.turn_right(searchDegree);
 			while(movement.isMoving()); 
 			if (!suppressed)
-				movement.turn_left(2*searchDegree, 1);
+				movement.turn_left(2*searchDegree);
 			while(movement.isMoving());
 			if (!suppressed)
-				movement.turn_right(searchDegree, 1);
+				movement.turn_right(searchDegree);
 			LCD.drawString("Degree: " + searchDegree, 1,2);
 			searchDegree = searchDegree + 20 + i*20;
 			if (searchDegree > 110) {

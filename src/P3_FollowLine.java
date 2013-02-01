@@ -26,9 +26,13 @@ public class P3_FollowLine implements Behavior {
 		P3.search = true;
 		P3.numberOfSearches = 0;
 		suppressed = false;
+		
+		//TODO LCD raus
 		LCD.clear();
 		LCD.drawString("Following a line", 1, 1);
-		movement.forward(2);
+		
+		movement.setSpeed(2);
+		movement.forward();
 		while (!suppressed) {
 			if (light.getNormalizedLightValue() < threshold)
 				break;

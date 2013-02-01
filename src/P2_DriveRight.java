@@ -26,9 +26,12 @@ public class P2_DriveRight implements Behavior {
    public void action() {
      suppressed = false;
      while( !suppressed ) {
-	     movement.forward(speed);
+    	 movement.setSpeed(speed);
+    	 movement.setRotationSpeed(rotationSpeed);
+	     movement.forward();
+	     
 	     if (!suppressed) Delay.msDelay(100);
-	     if (!suppressed) movement.turn_right(angle, rotationSpeed);
+	     if (!suppressed) movement.turn_right(angle);
      }     
    }
 }

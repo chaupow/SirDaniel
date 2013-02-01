@@ -9,13 +9,14 @@ public class test {
 
 	public static void main (String[] args) {
 		Movement movement = Movement.getInstance(); 
+		movement.setSpeed(1);
 		Button.waitForAnyPress();
-		movement.forward(1);
+		movement.forward();
 		LCD.drawString("Movement forward", 1, 1);
 		
 		Button.waitForAnyPress();
 		LCD.clear();
-		movement.backward(1);
+		movement.backward();
 		LCD.drawString("Movement backward", 1, 1);
 		
 		Button.waitForAnyPress();

@@ -22,10 +22,15 @@ public class P3_CheckEndOfLine implements Behavior{
 
 	@Override
 	public void action() {
+		//TODO LCD raus
 		LCD.clear();
 		LCD.drawString("Checking end of Line", 1, 1);
-		movement.backward(1);
+		
+		movement.setSpeed(1);
+		movement.backward();
 		Delay.msDelay(5000);
+		
+		//TODO LCD raus
 		LCD.drawString("Moved backwards", 1, 2);
 		movement.stop();
 		if (light.getNormalizedLightValue() >= P3.threshold) {

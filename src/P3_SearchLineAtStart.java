@@ -19,10 +19,13 @@ public class P3_SearchLineAtStart implements Behavior{
 
 	@Override
 	public void action() {
+		//TODO LCD raus
 		LCD.clear();
 		LCD.drawString("Searching a Line ", 1,1);
 		LCD.drawString("at the beginning", 1, 2);
-		movement.forward(2);
+		
+		movement.setSpeed(2);
+		movement.forward();
 		while(!P3.foundLineForFirstTime) {
 			if (light.getNormalizedLightValue() >= P3.threshold){
 				P3.foundLineForFirstTime = true;

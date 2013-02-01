@@ -14,7 +14,7 @@ public final class Movement extends DifferentialPilot{
 	
 	//Singleton!
 	private Movement() {
-		super(30, 30, 95, Motor.A, Motor.B, true);
+		super(35, 35, 72, Motor.A, Motor.B, true);
 	}
 	
 	final static float speedup = 1.66f; // = 40 / 24
@@ -80,6 +80,11 @@ public final class Movement extends DifferentialPilot{
 	public void setSpeed(int speed) {
 		Motor.A.setSpeed(convertSpeed(speed));
 		Motor.B.setSpeed(convertSpeed(speed));
+	}
+	
+	public void stop() {
+		Motor.A.stop(true);
+		Motor.B.stop();
 	}
 	
 	  // convert horizontal angle to rotation angle

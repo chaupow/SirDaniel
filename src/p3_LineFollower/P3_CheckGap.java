@@ -27,9 +27,7 @@ public class P3_CheckGap implements Behavior{
 		LCD.drawString("Checking Gap", 1, 1);
 		
 		movement.setSpeed(1);
-		movement.forward();
-		Delay.msDelay(4000);
-		movement.stop();
+		movement.travel(30);
 		P3.search = true;;
 	}
 

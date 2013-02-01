@@ -26,9 +26,8 @@ public class P3 {
 		Button.waitForAnyPress();
 		Behavior p3 = new P3_Behavior();
 		Behavior [] bArray = {p3};
-		SirDanielArbitrator arby = new SirDanielArbitrator(bArray,true);
-		Thread t = new Thread(arby);
-	    t.start();
+		Arbitrator arby = new Arbitrator(bArray,true);
+	    arby.start();
 
 	}
 

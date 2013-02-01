@@ -4,13 +4,9 @@ import lejos.robotics.subsumption.*;
 public class LineCoding implements Behavior {
 	private LightSensor light = new LightSensor(SensorPort.S4);
 	
-	/* set up good values for black/white (line/no-line). */
-	//TODO find good values
-	private int whiteValue = 25;
-	private int blackValue = 50;
-	
 	/* delay depends on the current speed of the robot. */
-	private long delay = 1000;
+	// TODO check speed
+	private int delay = (int)(Calibration.stripeWidth / (0.30));
 	
 	/* remember the time of the last measurement. */
 	private long lastTime = System.currentTimeMillis();
@@ -27,8 +23,8 @@ public class LineCoding implements Behavior {
 			LCD.drawString("curLigth: ", 0, 2);
 			LCD.drawInt(currentLightValue, 10, 2);
 		
-			int distanceBlack = Math.abs(blackValue-currentLightValue);
-			int distanceWhite = Math.abs(whiteValue-currentLightValue);
+			int distanceBlack = Math.abs(Calibration.backgroundBrightness-currentLightValue);
+			int distanceWhite = Math.abs(Calibration.lineBrightness-currentLightValue);
 			
 			/* check whether the current measurement is black or white. */
 			boolean lineFound;

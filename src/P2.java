@@ -13,7 +13,7 @@ public class P2 {
 	   TouchSensor touch = new TouchSensor(touchPort);
 	   
 	   // constant values
-	   int speed = 3;
+	   int speed = 5;
 	   int rotationSpeed = 2;
 	   int angleRight = 5;
 	   int angleLeft = 10;

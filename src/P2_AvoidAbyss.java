@@ -30,10 +30,12 @@ public class P2_AvoidAbyss implements Behavior {
    public void action() {
      suppressed = false;
      SuperMotor.turn();
-     movement.turn_left(angle, rotationSpeed);
-     movement.forward(speed);
+     movement.setRotationSpeed(rotationSpeed);
+     movement.turn_left(angle);
+     movement.setSpeed(speed);
+     movement.forward();
      Delay.msDelay(500);
      SuperMotor.turn();	   
-//     Movement.stop();
+     movement.stop();
    }
 }

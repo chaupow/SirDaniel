@@ -30,15 +30,13 @@ public class TouchSensorLeft implements Behavior{
 		movement.stop();
 		
 		//Driving backwards
-		movement.backward(1);
+		movement.setSpeed(1);
+		movement.backward();
 		Delay.msDelay(1000);
 		
 		//Turn
 		movement.turn_right(degree);
 	
-		
-		//clean up
-		movement.stop();
 	}
 	
 	

@@ -26,19 +26,23 @@ public final class Movement extends DifferentialPilot{
 	// speed has a range of 1(slow) to 6(fast)
 	public void backward(int speed) {
 		speed = convertSpeed(speed);
-		Motor.A.setSpeed(speed);
-		Motor.B.setSpeed(speed);
-		Motor.A.forward();
-		Motor.B.forward(); 
+//		Motor.A.setSpeed(speed);
+//		Motor.B.setSpeed(speed);
+//		Motor.A.forward();
+//		Motor.B.forward(); 
+		setSpeed(speed);
+		backward();
 	}
 	
 	// speed has a range of 1(slow) to 6(fast)
 	public void forward(int speed) {
 		speed = convertSpeed(speed);
-		Motor.A.setSpeed(speed);
-		Motor.B.setSpeed(speed);
-		Motor.A.backward();
-		Motor.B.backward();
+//		Motor.A.setSpeed(speed);
+//		Motor.B.setSpeed(speed);
+//		Motor.A.backward(true);
+//		Motor.B.backward();
+		setSpeed(speed);
+		forward();
 	}
 	
 	// angle has a range of 0 to 360

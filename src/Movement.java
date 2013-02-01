@@ -21,6 +21,7 @@ public final class Movement extends DifferentialPilot{
 	final static float wheelRadius = 19; // in millimeters 
 	final static float robotRadius = 72; // in millimeters
 	final static float empiric = 1.27f;
+	final static float measuredSpeedAt3 = 0.29f;
 	static int degrees;
 	
 	// speed has a range of 1(slow) to 6(fast)
@@ -89,6 +90,11 @@ public final class Movement extends DifferentialPilot{
 	
 	public void setRotationSpeed(int speed) {
 		setRotateSpeed(convertSpeed(speed));		
+	}
+	
+	// return value in m/s
+	public float getVelocity() {
+		return (float) (measuredSpeedAt3 * convert(3) / getTravelSpeed());
 	}
 	
 //	public void stop() {

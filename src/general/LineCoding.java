@@ -14,6 +14,8 @@ public class LineCoding implements Behavior {
 	public boolean takeControl() {
 		values.addElement(SensorCache.getInstance().normalizedLightValue);
 		
+		LCD.drawInt(SensorCache.getInstance().normalizedLightValue, 0, 6);
+		
 		Vector<Integer> filtered = new Vector<Integer>(values.size());
 		
 		// first element

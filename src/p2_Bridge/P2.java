@@ -1,4 +1,5 @@
 package p2_Bridge;
+import general.DriveForward;
 import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
@@ -17,10 +18,10 @@ public class P2 {
 	   int speed = 5;
 	   int rotationSpeed = 2;
 	   int angleRight = 5;
-	   int angleLeft = 10;
+	   int angleLeft = 30;
 	   
-   
-	   Behavior driveRight = new P2_DriveRight(speed, rotationSpeed, angleRight);
+//	   Behavior driveForward = new DriveForward(1);
+	   Behavior driveRight = new P2_DriveRight(speed, rotationSpeed, angleRight, touch);
 	   Behavior avoidAbyss = new P2_AvoidAbyss(touch, speed, rotationSpeed, angleLeft);
 	   
 	   Behavior [] b = {driveRight, avoidAbyss};

@@ -21,7 +21,7 @@ public class P3_SearchLine implements Behavior{
 	@Override
 	public boolean takeControl() {
 		int lightvalue = light.getNormalizedLightValue(); 
-		return (lightvalue < threshold) && P3.foundLineForFirstTime && !P3.end && P3.search;
+		return (lightvalue < threshold) && P3.foundLineForFirstTime && P3.search;
 	}
 
 	@Override

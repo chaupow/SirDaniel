@@ -1,4 +1,5 @@
 package p2_Bridge;
+import lejos.nxt.TouchSensor;
 import lejos.robotics.subsumption.*;
 import lejos.util.Delay;
 import general.Movement;
@@ -9,15 +10,17 @@ public class P2_DriveRight implements Behavior {
    private int angle;
    private int rotationSpeed;
    Movement movement = Movement.getInstance();
+   TouchSensor touch;
    
-   public P2_DriveRight(int speed, int rotationSpeed, int angle){
+   public P2_DriveRight(int speed, int rotationSpeed, int angle, TouchSensor touch){
 	   this.speed = speed;
 	   this.angle = angle;
 	   this.rotationSpeed = rotationSpeed;
+	   this.touch = touch;
    }
    
    public boolean takeControl() {
-      return true;
+      return !movement.isMoving();
    }
 
    public void suppress() {
@@ -26,13 +29,20 @@ public class P2_DriveRight implements Behavior {
 
    public void action() {
      suppressed = false;
-     while( !suppressed ) {
-    	 movement.setSpeed(speed);
-    	 movement.setRotationSpeed(rotationSpeed);
-	     movement.forward();
-	     
-	     if (!suppressed) Delay.msDelay(100);
-	     if (!suppressed) movement.turn_right(angle);
-     }     
+     while(!suppressed) {
+    	 if (!movement.isMoving()) {
+    		 movement.steer(-30, -30, true);
+    	 }
+//	 
+//		 movement.forward();
+//		 Thread.yield();
+//    	 movement.setSpeed(speed);
+//    	 movement.setRotationSpeed(rotationSpeed);
+//	     movement.forward();
+//	     
+//	     if (!suppressed) Delay.msDelay(100);
+//	     if (!suppressed) movement.turn_right(angle);
+     }    
+     movement.stop();
    }
 }

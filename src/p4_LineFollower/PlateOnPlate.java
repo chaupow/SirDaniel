@@ -1,23 +1,24 @@
 package p4_LineFollower;
 
 import general.Movement;
+import general.SensorCache;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class PlateOnPlate implements Behavior{
 
-	TouchSensor bumper;
 	Movement movement;
+	SensorCache sensorCache;
 	boolean suppressed;
 	
-	public PlateOnPlate(TouchSensor bumper) {
-		this.bumper = bumper;
+	public PlateOnPlate(SensorCache sensorCache) {
+		this.sensorCache = sensorCache;
 		this.movement = Movement.getInstance();
 	}
 	
 	@Override
 	public boolean takeControl() {
-		return Config.isOnPlate && !bumper.isPressed();
+		return Config.isOnPlate && !sensorCache.bumperPressed;
 	}
 
 	@Override

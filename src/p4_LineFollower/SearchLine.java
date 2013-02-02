@@ -1,24 +1,25 @@
 package p4_LineFollower;
 
 import general.Movement;
+import general.SensorCache;
 import lejos.nxt.LightSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class SearchLine implements Behavior {
-	LightSensor light;
+	SensorCache sensorCache;
 	Movement movement;
 	int threshold;
 	boolean suppressed;
 	
-	public SearchLine(LightSensor light) {
-		this.light = light;
+	public SearchLine(SensorCache sensorCache) {
+		this.sensorCache = sensorCache;
 		this.movement = Movement.getInstance();
 		this.threshold = Config.lightThreshold;
 	}
 	
 	@Override
 	public boolean takeControl() {
-		return light.getNormalizedLightValue() < threshold;
+		return sensorCache.normalizedLightValue < threshold && !Config.finishedSearch;
 	}
 	@Override
 	public void action() {
@@ -37,6 +38,7 @@ public class SearchLine implements Behavior {
 			while(!movement.isMoving());
 			if (i == (degrees.length-1)) {
 				Config.numberOfSearches ++;
+				Config.finishedSearch = true;
 			}
 		}
 	}

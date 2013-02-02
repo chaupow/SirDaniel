@@ -9,4 +9,5 @@ public class Config {
 	public static boolean isPlateRotated = false;
 	public static boolean random = false;
 	public static int numberOfSearches = 0;
+	public static boolean finishedSearch = false;
 }

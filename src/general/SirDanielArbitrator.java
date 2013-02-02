@@ -1,4 +1,5 @@
 package general;
+import lejos.nxt.LCD;
 import lejos.robotics.subsumption.Behavior;
 
 
@@ -131,6 +132,7 @@ public class SirDanielArbitrator implements Runnable
            _highestPriority = NONE;
           for (int i = maxPriority; i >= 0; i--)
           {
+        	SensorCache.getInstance().pollSensors();
             if (_behavior[i].takeControl())
             {
               _highestPriority = i;

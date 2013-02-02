@@ -1,14 +1,17 @@
 package general;
 public class Calibration {
 	
-	/** Brightness value for line. */
-	static int lineBrightness = 25;
+	/** barcode detection threshold. */
+	public static final int THRESHOLD = 300;
 	
-	/** Brightness value for background. */
-	static int backgroundBrightness = 50;
+	/** number of black values after a barcode. */
+	public static final int SUFFIX_BLACK = 20;	
 	
 	/** width of a coding stripe in meters. */
-	static double stripeWidth = 0.025;
+	public static final double STRIPE_WIDTH = 0.025;
+	
+	/** minimum power to move the robot. */
+	public static final int MOVEMENT_POWER = 24;
 	
 
 }

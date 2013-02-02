@@ -3,7 +3,6 @@ import lejos.nxt.LCD;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 import general.Movement;
 
 
@@ -35,17 +34,12 @@ public class P1_TurnRight implements Behavior {
 		suppressed = false;
 		movement.setSpeed(speed);
 		movement.setRotationSpeed(rotationSpeed);
-		
-		//movement.forward();
-		//Delay.msDelay(300);
-		LCD.drawString("steering" , 1, 1);
-		movement.steer(-75);
-		
-		
-		/*while(!suppressed) {
-			movement.forward();
 
-		}	*/
+		LCD.drawString("steering" , 1, 1);
+		movement.arcForward(-70);
+		
+				
+		
 	}
 	
 	public void suppress() {

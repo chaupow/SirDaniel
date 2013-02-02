@@ -10,15 +10,15 @@ public class P1_CorrectLeft implements Behavior {
 	
 	UltrasonicSensor sonic;
 	int speed;
-	int rotationSpeed;
 	int min_dist; // i.e. 10
 	boolean suppressed;
 
 	public P1_CorrectLeft(UltrasonicSensor sonic, int speed, int rotationSpeed, int min_dist) {
 		this.sonic = sonic;
 		this.speed = speed;
-		this.rotationSpeed = rotationSpeed;
 		this.min_dist = min_dist;
+		movement.setRotationSpeed(rotationSpeed);
+
 	}
 	
 	public boolean takeControl() {
@@ -27,10 +27,10 @@ public class P1_CorrectLeft implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		movement.setRotationSpeed(rotationSpeed);
 		
 		LCD.drawString("Correct Left", 1, 1);
-		movement.arc(-6.0, 5.0, true);
+		movement.steer(30, 5, true);
+		//movement.arc(30.0, 5.0, true);
 		//movement.turn_left(5);
 	}
 	

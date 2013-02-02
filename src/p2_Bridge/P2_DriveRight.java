@@ -1,7 +1,5 @@
 package p2_Bridge;
-import lejos.nxt.TouchSensor;
 import lejos.robotics.subsumption.*;
-import lejos.util.Delay;
 import general.Movement;
 
 public class P2_DriveRight implements Behavior {

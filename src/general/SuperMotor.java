@@ -3,19 +3,24 @@ import lejos.nxt.Motor;
 
 
 public final class SuperMotor {
-
-	static boolean right = true;
 	
+	public static void turnTo(int angle) {
+		
+		Motor.C.rotateTo(angle);
 	
-	public static void turn() {
-		if (right) {
-			// turn Ultrasonic forward and Touch up
-			Motor.C.rotateTo(130);
-			right = false;
-		} else {
-			// turn Ultrasonic right and Touch down
-			Motor.C.rotateTo(-5);
-			right = true;
 		}
+	
+	public static void calibrate() {
+		
+		//TODO Threshold anpassen
+		Motor.C.setStallThreshold(5, 1);
+		while (!Motor.C.isStalled()) {
+
+			//TODO richtige Richtung herausfinden
+			Motor.C.backward();
+		}
+		
+		Motor.C.resetTachoCount();
 	}
 }
+

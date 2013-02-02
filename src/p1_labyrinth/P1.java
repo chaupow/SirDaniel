@@ -13,7 +13,6 @@ public class P1 {
    public static void main(String [] args) {
 	   
 	    UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
-		TouchSensor touch = new TouchSensor(SensorPort.S2);
 		int speed = 1;
 		int rotationSpeed = 2;
 		int min_dist = 10;
@@ -25,8 +24,8 @@ public class P1 {
 		Behavior driveRightArc = new P1_DriveRightArc(speed);
 		//Behavior correctRight = new P1_CorrectRight(sonic, speed, rotationSpeed,  max_dist);
 		Behavior correctLeft = new P1_CorrectLeft(sonic, speed, rotationSpeed, min_dist);
-		Behavior turnRight = new P1_TurnRight(sonic, touch, speed, rotationSpeed, shouldBe, minimumDifference);
-		Behavior turnLeft = new P1_TurnLeft(touch, speed, rotationSpeed);
+		Behavior turnRight = new P1_TurnRight(sonic, speed, rotationSpeed, shouldBe, minimumDifference);
+		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);
 		Behavior [] b = {driveRightArc, correctLeft, turnRight, turnLeft};
 		SirDanielArbitrator arby = new SirDanielArbitrator(b);
 		

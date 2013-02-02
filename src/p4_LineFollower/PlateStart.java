@@ -1,23 +1,24 @@
 package p4_LineFollower;
 
 import general.Movement;
+import general.SensorCache;
 import lejos.nxt.LightSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class PlateStart implements Behavior {
 	int threshold;
-	LightSensor light;
+	SensorCache sensorCache;
 	Movement movement;
 	boolean suppressed;
 
-	public PlateStart(LightSensor light){
-		this.light = light;
+	public PlateStart(SensorCache sensorCache){
+		this.sensorCache = sensorCache;
 		this.movement = Movement.getInstance();
 	}
 	
 	@Override
 	public boolean takeControl() {
-		return !Config.lineFoundOnce && light.getNormalizedLightValue() < Config.lightThreshold;
+		return !Config.lineFoundOnce && sensorCache.normalizedLightValue < Config.lightThreshold;
 	}
 
 	@Override

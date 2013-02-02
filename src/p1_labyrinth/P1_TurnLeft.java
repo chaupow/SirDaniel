@@ -21,8 +21,12 @@ public class P1_TurnLeft implements Behavior {
 	
 	public void action() {
 		suppressed = false;
+		movement.setTravelSpeed(100);
+
+		movement.arcBackward(-40);
+		//movement.steerBackward(-40);
 		
-		movement.steerBackward(-200);
+		movement.turn_left(90);
 		
 	}
 	

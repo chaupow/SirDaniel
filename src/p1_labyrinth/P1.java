@@ -14,8 +14,8 @@ public class P1 {
 	   
 	    UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 		int speed = 1;
-		int rotationSpeed = 2;
-		int min_dist = 10;
+		int rotationSpeed = 1;
+		int min_dist = 15;
 		int max_dist = 15;
 		int shouldBe = 10;
 		int minimumDifference = 30;

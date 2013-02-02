@@ -29,17 +29,13 @@ public class P3_CheckEndOfLine implements Behavior{
 		LCD.drawString("Checking end of Line", 1, 1);
 		
 		movement.setSpeed(1);
-		movement.backward();
-		Delay.msDelay(5000);
+		movement.travel(-35);
 		
 		//TODO LCD raus
 		LCD.drawString("Moved backwards", 1, 2);
-		movement.stop();
-		if (light.getNormalizedLightValue() >= P3.threshold) {
-			P3.end = true;
-		}
-		else
-			P3.search = true;
+
+		P3.end = true;
+		P3.search = true;
 	}
 
 	@Override

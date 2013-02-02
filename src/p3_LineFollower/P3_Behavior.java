@@ -19,7 +19,7 @@ public class P3_Behavior implements Behavior{
 	TouchSensor bumper;
 	UltrasonicSensor sonic;
 	Movement movement;
-	Arbitrator arby;
+	SirDanielArbitrator arby;
 	Thread t;
 	
 	static public int threshold = 410;
@@ -40,7 +40,9 @@ public class P3_Behavior implements Behavior{
 		Behavior random = new P3_Random();
 		Behavior obstacle = new P3_DriveAroundObstacle(bumper);
 		Behavior [] bArray = {random, searchStart, end, gap, checkEnd, search, follow, obstacle};
-		arby = new Arbitrator(bArray, true);
+		arby = new SirDanielArbitrator(bArray, true);
+		t = new Thread(arby);
+		
 	}
 	
 	@Override
@@ -51,13 +53,13 @@ public class P3_Behavior implements Behavior{
 	@Override
 	public void action() {
 		
-		arby.start();
+		t.start();
 	}
 
 	@Override
 	public void suppress() {
 		
-		//arby.stop();
+		arby.stop();
 	}
 	
 }

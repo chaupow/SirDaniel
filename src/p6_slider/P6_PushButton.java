@@ -9,7 +9,7 @@ import lejos.util.Delay;
 import general.Calibration;
 import general.Movement;
 
-public class P4_PushButton implements Behavior {
+public class P6_PushButton implements Behavior {
 	
 	private NXTMotor motorA = new NXTMotor(MotorPort.A);
 	private NXTMotor motorB = new NXTMotor(MotorPort.B);

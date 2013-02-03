@@ -13,5 +13,17 @@ public class Calibration {
 	/** minimum power to move the robot. */
 	public static final int MOVEMENT_POWER = 24;
 	
-
+	
+	//TODO Wert anpassen
+	/** Treshold to detect green colored field **/
+	public static final int TRESHOLD_GREEN = 300;
+	
+	//TODO Wert anpassen
+	/** Treshold to detect red colored field **/
+	public static final int TRESHOLD_RED = 400;
+		
+	//TODO Wert anpassen
+	/** Treshold to detect yellow colored field **/
+	public static final int TRESHOLD_YELLOW = 600;
+		
 }

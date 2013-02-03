@@ -18,6 +18,7 @@ public class SensorCache {
 	
 	//Singleton!
 	private SensorCache() {
+		//light.setFloodlight(true);
 		pollSensors();
 	}
 	

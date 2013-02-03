@@ -7,26 +7,26 @@ import lejos.robotics.subsumption.Behavior;
 
 public class PlateStart implements Behavior {
 	int threshold;
-	SensorCache sensorCache;
 	Movement movement;
 	boolean suppressed;
 
-	public PlateStart(SensorCache sensorCache){
-		this.sensorCache = sensorCache;
+	public PlateStart(){
 		this.movement = Movement.getInstance();
 	}
 	
 	@Override
 	public boolean takeControl() {
+		SensorCache sensorCache = SensorCache.getInstance();
 		return !Config.lineFoundOnce && sensorCache.normalizedLightValue < Config.lightThreshold;
 	}
 
 	@Override
 	public void action() {
 		suppressed = false;
-		movement.setSpeed(1);
+		movement.setTravelSpeed(100);
+		movement.setRotateSpeed(100);
 		movement.forward();
-		while (!suppressed) {
+		while (!suppressed && !Config.lineFoundOnce && SensorCache.getInstance().normalizedLightValue < Config.lightThreshold) {
 			Thread.yield();
 		} 
 		movement.stop();

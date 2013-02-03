@@ -1,6 +1,8 @@
 package p4_LineFollower;
 
 import general.Movement;
+import general.SensorCache;
+import lejos.nxt.LCD;
 import lejos.robotics.subsumption.Behavior;
 
 public class GapCrossGap implements Behavior{
@@ -9,19 +11,21 @@ public class GapCrossGap implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		return Config.numberOfSearches >= 1;
+		return Config.numberOfSearches == 1;
 	}
 
 	@Override
 	public void action() {
-		if (Config.numberOfSearches > 1)
-			Config.random = true;
+		LCD.clear();
+		LCD.drawString("GapCrossGap", 1, 1);
 		suppressed = false;
-		movement.setSpeed(1);
+		movement.setTravelSpeed(100);
+		movement.setRotateSpeed(100);
 		// TODO echte Distanz rauskriegen
 		if (!suppressed)
-			movement.travel(30);
-		while (movement.isMoving());
+			movement.travel(34, true);
+		while (movement.isMoving() && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {Thread.yield();}
+		movement.stop();
 		Config.finishedSearch = false;
 	}
 

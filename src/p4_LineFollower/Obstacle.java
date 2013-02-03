@@ -3,17 +3,15 @@ package p4_LineFollower;
 import general.SensorCache;
 import general.SirDanielArbitrator;
 import lejos.nxt.Button;
-import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
-import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
-public class Gap {
-	SensorCache sensorCache;
+public class Obstacle {
+	UltrasonicSensor sonic;
 	
-	public Gap() {
-		this.sensorCache = SensorCache.getInstance();
+	public Obstacle() {
+		this.sonic = new UltrasonicSensor(SensorPort.S3);
 	}
 	
 	public void run() {
@@ -26,15 +24,10 @@ public class Gap {
 		Behavior search = new SearchLine();
 		Behavior forward = new DriveForward();
 		Behavior setForward = new DriveForwardDetect(2);
-		Behavior [] bArray = {crossGap, follow, setCheckEnd, checkEnd, setForward, forward, setRandom, random, search};
+		Behavior detectObstacle = new ObstacleDetect(); 
+		Behavior [] bArray = {crossGap, follow, setCheckEnd, checkEnd, setForward, forward, setRandom, random, search, detectObstacle};
 		SirDanielArbitrator arby = new SirDanielArbitrator(bArray, true);
 		Thread t = new Thread(arby);
 		t.start();
-	}
-	
-	public static void main(String [] args) {
-		Button.waitForAnyPress();
-		Gap gap = new Gap();
-		gap.run();
 	}
 }

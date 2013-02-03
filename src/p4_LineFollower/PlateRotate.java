@@ -6,14 +6,13 @@ import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class PlateRotate implements Behavior {
-	SensorCache sensorCache;
 	
-	public PlateRotate(SensorCache sensorCache) {
-		this.sensorCache = sensorCache;
+	public PlateRotate() {
 	}
 	
 	@Override
 	public boolean takeControl() {
+		SensorCache sensorCache = SensorCache.getInstance();
 		return Config.isOnPlate && sensorCache.bumperPressed && !Config.isPlateRotated;
 	}
 

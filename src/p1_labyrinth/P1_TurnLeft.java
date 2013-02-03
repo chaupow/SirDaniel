@@ -1,37 +1,33 @@
 package p1_labyrinth;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
+import general.Calibration;
 import general.Movement;
+import general.SensorCache;
 
 
 public class P1_TurnLeft implements Behavior {
 	
-	TouchSensor touch;
-	int speed;
-	int rotationSpeed;
 	boolean suppressed;
 	Movement movement = Movement.getInstance();
 
-	public P1_TurnLeft( TouchSensor touch, int speed, int rotationSpeed) {
-		this.touch = touch;
-		this.speed = speed;
-		this.rotationSpeed = rotationSpeed;
+	public P1_TurnLeft(int speed, int rotationSpeed) {
+		movement.setSpeed(speed);
+		movement.setRotationSpeed(rotationSpeed);
 	}
 	
 	public boolean takeControl() {
-		return (touch.isPressed());
+		return (SensorCache.getInstance().bumperPressed && SensorCache.getInstance().normalizedLightValue < Calibration.THRESHOLD);
 	}
 	
 	public void action() {
 		suppressed = false;
-		movement.setSpeed(speed);
-		movement.setRotationSpeed(rotationSpeed);
+		movement.setTravelSpeed(100);
 
-		movement.backward();
-		Delay.msDelay(1000);
+		movement.arcBackward(-40);
+		//movement.steerBackward(-40);
 		
-		movement.turn_left(90);	
+		movement.turn_left(90);
 		
 	}
 	

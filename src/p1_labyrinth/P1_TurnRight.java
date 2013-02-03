@@ -3,8 +3,8 @@ import lejos.nxt.LCD;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 import general.Movement;
+import general.SensorCache;
 
 
 public class P1_TurnRight implements Behavior {
@@ -17,10 +17,10 @@ public class P1_TurnRight implements Behavior {
 	int minimumDifference; // i.e. 20 (--> reacts at value 10 + 20 = 30)
 	boolean suppressed;
 	Movement movement = Movement.getInstance();
+	
 
-	public P1_TurnRight(UltrasonicSensor sonic, TouchSensor touch, int speed, int rotationSpeed, int shouldBe, int minimumDifference) {
+	public P1_TurnRight(UltrasonicSensor sonic, int speed, int rotationSpeed, int shouldBe, int minimumDifference) {
 		this.sonic = sonic;
-		this.touch = touch;
 		this.speed = speed;
 		this.rotationSpeed = rotationSpeed;
 		this.shouldBe = shouldBe;
@@ -28,24 +28,20 @@ public class P1_TurnRight implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (sonic.getDistance() > (shouldBe + minimumDifference) && !touch.isPressed());
+		return (sonic.getDistance() > (shouldBe + minimumDifference) && !SensorCache.getInstance().bumperPressed);
 	}
 	
 	public void action() {
 		suppressed = false;
-		movement.setSpeed(speed);
+		//movement.setSpeed(speed);
+		movement.setTravelSpeed(100);
 		movement.setRotationSpeed(rotationSpeed);
-		
-		//movement.forward();
-		//Delay.msDelay(300);
-		LCD.drawString("steering" , 1, 1);
-		movement.steer(-75);
-		
-		
-		/*while(!suppressed) {
-			movement.forward();
 
-		}	*/
+		LCD.drawString("steering" , 1, 1);
+		movement.arcForward(-60);
+		
+				
+		
 	}
 	
 	public void suppress() {

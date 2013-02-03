@@ -31,8 +31,8 @@ public class P1_Behavior implements Behavior{
 		Behavior driveForward = new DriveForward(speed);
 		Behavior correctRight = new P1_CorrectRight(sonic, speed, rotationSpeed,  max_dist);
 		Behavior correctLeft = new P1_CorrectLeft(sonic, speed, rotationSpeed, min_dist);
-		Behavior turnRight = new P1_TurnRight(sonic, touch, speed, rotationSpeed, shouldBe, minimumDifference);
-		Behavior turnLeft = new P1_TurnLeft(touch, speed, rotationSpeed);
+		Behavior turnRight = new P1_TurnRight(sonic, speed, rotationSpeed, shouldBe, minimumDifference);
+		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);
 		Behavior [] b = {driveForward, correctRight, correctLeft, turnRight, turnLeft};
 		arby = new SirDanielArbitrator(b, true);
 	}

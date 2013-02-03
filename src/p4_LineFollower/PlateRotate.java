@@ -1,19 +1,20 @@
 package p4_LineFollower;
 
+import general.SensorCache;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class PlateRotate implements Behavior {
-	TouchSensor bumper;
+	SensorCache sensorCache;
 	
-	public PlateRotate(TouchSensor bumper) {
-		this.bumper = bumper;
+	public PlateRotate(SensorCache sensorCache) {
+		this.sensorCache = sensorCache;
 	}
 	
 	@Override
 	public boolean takeControl() {
-		return Config.isOnPlate && bumper.isPressed() && !Config.isPlateRotated;
+		return Config.isOnPlate && sensorCache.bumperPressed && !Config.isPlateRotated;
 	}
 
 	@Override

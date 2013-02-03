@@ -27,13 +27,8 @@ public final class SuperMotor {
 	public static void turnTo(int angle, boolean ImmediateReturn) {
 		
 		float roundedAngle = (angle/180.0f)*halfRotation;		
-		int currentTacho = motorC.getTachoCount();
 		
-		if (ImmediateReturn){
-			Motor.C.rotate((int)(roundedAngle-currentTacho), true);
-		}else {
-			Motor.C.rotateTo((int)roundedAngle);
-		}
+		Motor.C.rotateTo((int)roundedAngle, ImmediateReturn);
 		
 		}
 	

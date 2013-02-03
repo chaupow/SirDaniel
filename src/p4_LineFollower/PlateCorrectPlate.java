@@ -6,25 +6,26 @@ import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class PlateCorrectPlate implements Behavior{
-	SensorCache sensorCache;
+
 	UltrasonicSensor sonic;
 	boolean suppressed;
 	
-	public PlateCorrectPlate(SensorCache sensorCache, UltrasonicSensor sonic) {
-		this.sensorCache = sensorCache;
+	public PlateCorrectPlate(UltrasonicSensor sonic) {
 		this.sonic = sonic;
 		// TODO sonic looks forward!
 	}
 	
 	@Override
 	public boolean takeControl() {
+		SensorCache sensorCache = SensorCache.getInstance();
 		return Config.isOnPlate && sensorCache.bumperPressed;
 	}
 
 	@Override
 	public void action() {
 		suppressed = false;
-		if (sonic.getDistance() < Config.sonicThreshold) {
+		// TODO Drehe nach rechts vorne
+		if (sonic.getDistance() < Config.sonicThreshold) { 
 			// TODO Drehe ein wenig nach rechts
 		}
 		else {

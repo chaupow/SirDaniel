@@ -2,24 +2,23 @@ package p4_LineFollower;
 
 import general.Movement;
 import general.SensorCache;
+import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class FollowLine implements Behavior {
 	Movement movement;
-	SensorCache sensorCache;
 	int threshold;
 	boolean suppressed;
 	
-	public FollowLine(SensorCache sensorCache) {
+	public FollowLine() {
 		this.movement = Movement.getInstance();
-		this.sensorCache = sensorCache;
 		this.threshold = Config.lightThreshold;
 	}
 	
 	@Override
 	public boolean takeControl() {
-		int lightvalue = sensorCache.normalizedLightValue;
+		int lightvalue = SensorCache.getInstance().normalizedLightValue;
 		return (lightvalue >= threshold);
 	}
 	
@@ -28,11 +27,13 @@ public class FollowLine implements Behavior {
 		Config.random = false;
 		Config.finishedSearch = false;
 		Config.numberOfSearches = 0;
+		Config.foundObstacle = false;
 		suppressed = false;
+		LCD.clear();
+		LCD.drawString("FollowLine", 1, 1);
 		movement.setSpeed(2);
-		movement.forward();
-		while(!suppressed) {
-			Thread.yield();
+		while(!suppressed && (SensorCache.getInstance().normalizedLightValue >= threshold)) {
+			movement.travel(10, true);
 		}
 		movement.stop();
 	}

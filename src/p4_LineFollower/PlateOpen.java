@@ -7,17 +7,16 @@ import lejos.robotics.subsumption.Behavior;
 
 public class PlateOpen implements Behavior{
 
-	SensorCache sensorCache;
 	Movement movement;
 	boolean suppressed;
 	
-	public PlateOpen(SensorCache sensorCache) {
-		this.sensorCache = sensorCache;
+	public PlateOpen() {
 		this.movement = Movement.getInstance();
 	}
 	
 	@Override
 	public boolean takeControl() {
+		SensorCache sensorCache = SensorCache.getInstance();
 		return sensorCache.bumperPressed && !Config.isOnPlate;
 	}
 

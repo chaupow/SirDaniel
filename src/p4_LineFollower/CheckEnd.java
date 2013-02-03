@@ -5,26 +5,26 @@ import general.SensorCache;
 import lejos.nxt.LCD;
 import lejos.robotics.subsumption.Behavior;
 
-public class GapCrossGap implements Behavior{
+public class CheckEnd implements Behavior{
 	Movement movement = Movement.getInstance();
 	boolean suppressed;
 	
 	@Override
 	public boolean takeControl() {
-		return Config.numberOfSearches == 1;
+		return Config.isCheckingEnd;
 	}
 
 	@Override
 	public void action() {
-		LCD.clear();
-		LCD.drawString("GapCrossGap", 1, 1);
 		suppressed = false;
-		movement.setSpeed(1);
-		// TODO echte Distanz rauskriegen
-		if (!suppressed)
-			movement.travel(200, true);
-		while (movement.isMoving() && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {Thread.yield();}
+		LCD.clear();
+		LCD.drawString("CheckEnd", 1, 1);
+		movement.travel(-300, true);
+		while (!suppressed && movement.isMoving() && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {Thread.yield();}
 		movement.stop();
+		if (SensorCache.getInstance().normalizedLightValue >= Config.lightThreshold)
+			Config.foundEnd = true;
+		Config.isCheckingEnd = false;
 		Config.finishedSearch = false;
 	}
 

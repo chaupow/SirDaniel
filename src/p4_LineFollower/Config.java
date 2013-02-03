@@ -1,7 +1,7 @@
 package p4_LineFollower;
 
 public class Config {
-	public static int lightThreshold = 380;
+	public static int lightThreshold = 390;
 	// TODO finde sonic Threshold
 	public static int sonicThreshold = 15; 
 	public static boolean lineFoundOnce = false;

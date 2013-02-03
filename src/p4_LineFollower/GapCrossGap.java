@@ -19,10 +19,11 @@ public class GapCrossGap implements Behavior{
 		LCD.clear();
 		LCD.drawString("GapCrossGap", 1, 1);
 		suppressed = false;
-		movement.setSpeed(1);
+		movement.setTravelSpeed(100);
+		movement.setRotateSpeed(100);
 		// TODO echte Distanz rauskriegen
 		if (!suppressed)
-			movement.travel(200, true);
+			movement.travel(34, true);
 		while (movement.isMoving() && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {Thread.yield();}
 		movement.stop();
 		Config.finishedSearch = false;

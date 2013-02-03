@@ -19,7 +19,7 @@ public class FollowLine implements Behavior {
 	@Override
 	public boolean takeControl() {
 		int lightvalue = SensorCache.getInstance().normalizedLightValue;
-		return (lightvalue >= threshold);
+		return (lightvalue >= threshold)  && !Config.foundEnd;
 	}
 	
 	@Override
@@ -31,7 +31,8 @@ public class FollowLine implements Behavior {
 		suppressed = false;
 		LCD.clear();
 		LCD.drawString("FollowLine", 1, 1);
-		movement.setSpeed(2);
+		movement.setTravelSpeed(150);
+		movement.setRotateSpeed(150);
 		while(!suppressed && (SensorCache.getInstance().normalizedLightValue >= threshold)) {
 			movement.travel(10, true);
 		}

@@ -18,16 +18,16 @@ public class SearchLine implements Behavior {
 	
 	@Override
 	public boolean takeControl() {
-		return (SensorCache.getInstance().normalizedLightValue < threshold) && !Config.finishedSearch;
+		return (SensorCache.getInstance().normalizedLightValue < threshold) && !Config.finishedSearch && !Config.foundEnd;
 	}
 	@Override
 	public void action() {
 		LCD.clear();
 		LCD.drawString("SearchLine", 1, 1);
-		movement.setTravelSpeed(150);
-		movement.setRotateSpeed(150);
+		movement.setTravelSpeed(100);
+		movement.setRotateSpeed(100);
 		suppressed = false;
-		int [] degrees = {5, 10, 90, 110};
+		int [] degrees = {10, 20, 90, 110};
 		int i = 0;
 		while (i < degrees.length && (SensorCache.getInstance().normalizedLightValue < threshold) && !Config.finishedSearch) {
 			if (suppressed) {

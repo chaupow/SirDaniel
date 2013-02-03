@@ -23,7 +23,8 @@ public class PlateStart implements Behavior {
 	@Override
 	public void action() {
 		suppressed = false;
-		movement.setSpeed(1);
+		movement.setTravelSpeed(100);
+		movement.setRotateSpeed(100);
 		movement.forward();
 		while (!suppressed && !Config.lineFoundOnce && SensorCache.getInstance().normalizedLightValue < Config.lightThreshold) {
 			Thread.yield();

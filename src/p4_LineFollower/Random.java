@@ -1,6 +1,7 @@
 package p4_LineFollower;
 
 import general.Movement;
+import general.SensorCache;
 import lejos.nxt.LCD;
 import lejos.robotics.subsumption.Behavior;
 
@@ -20,12 +21,14 @@ public class Random implements Behavior{
 		LCD.drawString("Random", 1, 1);
 		// TODO Spirale fahren
 		suppressed = false;
-		movement.setSpeed(1);
+		movement.setTravelSpeed(100);
+		movement.setRotateSpeed(100);
 		movement.forward();
-		while (!suppressed) {
+		while (!suppressed && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {
 			Thread.yield();
 		}
 		movement.stop();
+		Config.random = false;
 	}
 
 	@Override

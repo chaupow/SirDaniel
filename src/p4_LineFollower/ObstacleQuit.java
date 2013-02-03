@@ -4,27 +4,24 @@ import general.Movement;
 import general.SensorCache;
 import lejos.robotics.subsumption.Behavior;
 
-public class ObstacleDetect implements Behavior{
+public class ObstacleQuit implements Behavior{
 	Movement movement = Movement.getInstance();
-	
-	public ObstacleDetect () {
-		//this.sensorCache = sensorCache;
-	}
 
 	@Override
 	public boolean takeControl() {
-		return SensorCache.getInstance().bumperPressed;
+		return Config.foundObstacle && SensorCache.getInstance().normalizedLightValue >= Config.lightThreshold;
 	}
 
 	@Override
 	public void action() {
 		movement.rotate(90, false);
-		// TODO SuperMotor nach rechts drehen
-		Config.foundObstacle = true;
+		// TODO Super Motor nach vorne
+		Config.foundObstacle = false;
 	}
 
 	@Override
 	public void suppress() {
+		// TODO Auto-generated method stub
 		
 	}
 

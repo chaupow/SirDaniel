@@ -23,7 +23,8 @@ public class PlateOnPlate implements Behavior{
 	@Override
 	public void action() {
 		suppressed = false;
-		movement.setSpeed(1);
+		movement.setTravelSpeed(100);
+		movement.setRotateSpeed(100);
 		// TODO Echte Distanz rausfinden
 		if (!suppressed)
 			movement.travel(30);

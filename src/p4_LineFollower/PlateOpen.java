@@ -24,10 +24,11 @@ public class PlateOpen implements Behavior{
 	public void action() {
 		suppressed = false;
 		// TODO Rufe den Drehteller
-		// TODO Genaue Distanz ermitteln!
-		movement.setSpeed(1);
+		movement.setTravelSpeed(100);
+		movement.setRotateSpeed(100);
 		movement.turn_left(180);
-		movement.travel(-30);
+		// TODO Genaue Distanz ermitteln!
+		movement.travel(-300);
 		Config.isOnPlate = true;
 		while (!suppressed);
 		movement.stop();

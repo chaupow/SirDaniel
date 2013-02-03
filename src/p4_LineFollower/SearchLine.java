@@ -10,6 +10,7 @@ public class SearchLine implements Behavior {
 	Movement movement;
 	int threshold;
 	boolean suppressed;
+	SuperMotor supmoto = new SuperMotor();
 	
 	public SearchLine() {
 		this.movement = Movement.getInstance();
@@ -36,6 +37,7 @@ public class SearchLine implements Behavior {
 			if (!suppressed) {
 				LCD.clear();
 				LCD.drawString( degrees[i]+" Degrees", 1, 2);
+				SuperMotor
 				movement.rotate(-degrees[i], true);
 			}
 			while(movement.isMoving() && !suppressed && (SensorCache.getInstance().normalizedLightValue < threshold)){Thread.yield();};

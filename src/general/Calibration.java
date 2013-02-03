@@ -11,8 +11,7 @@ public class Calibration {
 	public static final double STRIPE_WIDTH = 0.025;
 	
 	/** minimum power to move the robot. */
-	public static final int MOVEMENT_POWER = 24;
-	
+	public static final int MOVEMENT_POWER = 24;	
 	
 	//TODO Wert anpassen
 	/** Treshold to detect green colored field **/

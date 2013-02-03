@@ -22,11 +22,11 @@ public class P1 {
 		
 		//Behavior driveForward = new DriveForward(speed);
 		Behavior driveRightArc = new P1_DriveRightArc(speed);
-		//Behavior correctRight = new P1_CorrectRight(sonic, speed, rotationSpeed,  max_dist);
+		Behavior correctRight = new P1_CorrectRight(sonic, speed, rotationSpeed,  max_dist);
 		Behavior correctLeft = new P1_CorrectLeft(sonic, speed, rotationSpeed, min_dist);
 		Behavior turnRight = new P1_TurnRight(sonic, speed, rotationSpeed, shouldBe, minimumDifference);
 		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);
-		Behavior [] b = {driveRightArc, correctLeft, turnRight, turnLeft};
+		Behavior [] b = {driveRightArc, correctLeft,correctRight, turnRight, turnLeft};
 		SirDanielArbitrator arby = new SirDanielArbitrator(b);
 		
 		Thread t = new Thread(arby);

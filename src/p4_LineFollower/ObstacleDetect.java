@@ -2,24 +2,29 @@ package p4_LineFollower;
 
 import general.Movement;
 import general.SensorCache;
+import general.SuperMotor;
+import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class ObstacleDetect implements Behavior{
+	SuperMotor supmoto = new SuperMotor();
 	Movement movement = Movement.getInstance();
+	UltrasonicSensor sonic;
 	
-	public ObstacleDetect () {
-		//this.sensorCache = sensorCache;
+	public ObstacleDetect (UltrasonicSensor sonic) {
+		this.sonic = sonic;
 	}
 
 	@Override
 	public boolean takeControl() {
-		return SensorCache.getInstance().bumperPressed;
+		return sonic.getDistance() < Config.sonicThreshold;
 	}
 
 	@Override
 	public void action() {
 		movement.rotate(90, false);
 		// TODO SuperMotor nach rechts drehen
+		supmoto.turnTo(0, false);
 		Config.foundObstacle = true;
 	}
 

@@ -2,10 +2,12 @@ package p4_LineFollower;
 
 import general.Movement;
 import general.SensorCache;
+import general.SuperMotor;
 import lejos.robotics.subsumption.Behavior;
 
 public class ObstacleQuit implements Behavior{
 	Movement movement = Movement.getInstance();
+	SuperMotor supmoto = new SuperMotor();
 
 	@Override
 	public boolean takeControl() {
@@ -16,6 +18,7 @@ public class ObstacleQuit implements Behavior{
 	public void action() {
 		movement.rotate(90, false);
 		// TODO Super Motor nach vorne
+		supmoto.turnTo(90, false);
 		Config.foundObstacle = false;
 	}
 

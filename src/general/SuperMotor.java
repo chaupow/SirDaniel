@@ -30,6 +30,21 @@ public final class SuperMotor {
 		calibrateLeft();
 	}
 	
+	/**Returns the angle of the sensorarm. 0 degree represent it positioned right of, 90 degree in front of and 180 degree left of the roboter.**/
+	public static int getAngleOfArm(){
+		
+		int tachoCount = motorC.getTachoCount();
+		float ratio = tachoCount/(float) halfRotation;
+		float angle = ratio*180;
+		
+		LCD.drawString("TachoCount: " + tachoCount, 0, 2);
+		LCD.drawString("ratio: " + ratio, 0,3);
+		LCD.drawString("angle" + angle, 0, 4);
+		
+		return (int) (angle);
+	}
+	
+	
 	/**Faehrt den Schwenkarm nach rechts und setzt dort den Tacho auf Null**/
 	private static void calibrateRight() {
 		

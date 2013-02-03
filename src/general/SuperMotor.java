@@ -10,7 +10,19 @@ public final class SuperMotor {
 	static NXTMotor motorC = new NXTMotor(MotorPort.C);
 	
 	static int halfRotation = 0; 
+	private static SuperMotor instance = null;
 
+	public static SuperMotor getInstance() {
+		if(instance == null) {
+			instance = new SuperMotor();
+		}
+		return instance;
+	}
+	
+	//Singleton!
+	private SuperMotor() {
+	}
+	
 	
 	public static void turnTo(int angle, boolean ImmediateReturn) {
 		

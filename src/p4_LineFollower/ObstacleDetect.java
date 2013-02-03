@@ -7,7 +7,7 @@ import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class ObstacleDetect implements Behavior{
-	SuperMotor supmoto = new SuperMotor();
+	//SuperMotor supmoto = SuperMotor.getInstance();
 	Movement movement = Movement.getInstance();
 	UltrasonicSensor sonic;
 	
@@ -24,7 +24,7 @@ public class ObstacleDetect implements Behavior{
 	public void action() {
 		movement.rotate(90, false);
 		// TODO SuperMotor nach rechts drehen
-		supmoto.turnTo(0, false);
+		SuperMotor.turnTo(0, false);
 		Config.foundObstacle = true;
 	}
 

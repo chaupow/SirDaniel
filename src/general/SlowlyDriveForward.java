@@ -17,8 +17,7 @@ public class SlowlyDriveForward  implements Behavior {
 
    public void action() {
      suppressed = false;
-     Motor.A.setSpeed(50);
-     Motor.B.setSpeed(50);
+     Movement.getInstance().setTravelSpeed(25);
      Movement.getInstance().forward();
      while( !suppressed ) {
     	 Thread.yield();

@@ -27,7 +27,7 @@ public class P1_DriveRightArc implements Behavior {
 		suppressed = false;
 		Movement.getInstance().setTravelSpeed(100);
 
-		Movement.getInstance().arc(-1000, -360, true);
+		Movement.getInstance().arc(-800, -360, true);
 		
 		while(!suppressed){
 			Thread.yield();

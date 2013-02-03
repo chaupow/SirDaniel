@@ -29,8 +29,10 @@ public class SensorCache {
 	public int normalizedLightValue;
 	public boolean bumperPressed;
 	public boolean bridgePressed;
+	public long timestamp;
 	
 	public void pollSensors() {
+		timestamp = System.currentTimeMillis();
 		normalizedLightValue = light.getNormalizedLightValue();
 		bumperPressed = bumper.isPressed();
 		bridgePressed = bridge.isPressed();

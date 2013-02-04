@@ -1,4 +1,5 @@
 package general;
+
 public class Calibration {
 	
 	/** barcode detection threshold. */

@@ -1,6 +1,7 @@
 package p5_turntable;
 
 import general.SirDanielArbitrator;
+import general.SuperMotor;
 import lejos.nxt.Button;
 import lejos.robotics.subsumption.Behavior;
 import p2_Bridge.P2_AvoidAbyss;
@@ -16,15 +17,18 @@ public class P5 {
 	
 		Behavior follow = new FollowLine();
 		Behavior search = new SearchLine();
-		Behavior random = new Random();
-		Behavior setRandom = new RandomDetect(1);
+		Behavior boxEntry = new BoxEntryDetect(1, 0);
+		Behavior driveIn = new DriveInBox();
 		Behavior turn = new TurnAround();
 	   
-		Behavior [] b = {follow, setRandom, random, search, turn};
+		Behavior [] b = {follow, boxEntry, driveIn, search, turn};
 		SirDanielArbitrator arby = new SirDanielArbitrator(b);
 	   
 		Thread t = new Thread(arby);
 		Button.waitForAnyPress();
+		
+		SuperMotor.calibrate();
+		SuperMotor.turnTo(90, false);
 		t.start();
 	}
 

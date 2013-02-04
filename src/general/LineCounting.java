@@ -6,8 +6,8 @@ import lejos.util.Delay;
 
 public class LineCounting implements Behavior {
 	
-	private final int THRESHOLD = 300;
-	private final int TIME_FOR_SUFFIX = 2000;
+	private final int THRESHOLD = 100;
+	private final int TIME_FOR_SUFFIX = 1000;
 	
 	private int min = 1000;
 	private int max = 0;
@@ -38,6 +38,7 @@ public class LineCounting implements Behavior {
 				if (max-min > THRESHOLD) {
 					lastTimestamp = currentTimestamp;
 					tempLineCount++;
+					LCD.drawString("Temp: " + tempLineCount, 0, 4);
 				}
 				max = min;
 			}
@@ -46,13 +47,14 @@ public class LineCounting implements Behavior {
 		if (currentTimestamp - lastTimestamp > TIME_FOR_SUFFIX) {
 			finalLineCount = tempLineCount;
 			tempLineCount = 0;
+			LCD.drawString("Final: " + finalLineCount, 0, 5);
 		}
 		return finalLineCount >= 3;
 	}
 
 	@Override
 	public void action() {
-		System.out.println("Lines found: "+finalLineCount);
+		LCD.drawString("Lines: " + finalLineCount, 0, 1);
 		
 		if (finalLineCount == 3) {
 			

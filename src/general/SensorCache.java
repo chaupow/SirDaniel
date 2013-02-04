@@ -23,9 +23,9 @@ public class SensorCache {
 		pollSensors();
 	}
 	
-	private TouchSensor bumper = new TouchSensor(SensorPort.S2);
-	private TouchSensor back = new TouchSensor(SensorPort.S1);
-	private LightSensor light = new LightSensor(SensorPort.S4);
+	public TouchSensor bumper = new TouchSensor(SensorPort.S2);
+	public TouchSensor back = new TouchSensor(SensorPort.S1);
+	public LightSensor light = new LightSensor(SensorPort.S4);
 	
 	private int LightValueLightOn;
 	private int LightValueLightOff;

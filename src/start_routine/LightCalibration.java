@@ -1,27 +1,22 @@
 package start_routine;
 
 import general.SensorCache;
-
 import java.util.Arrays;
 
 import lejos.nxt.LCD;
-import lejos.nxt.LightSensor;
-import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Behavior;
 
 public class LightCalibration implements Behavior {
 	
-	private final int NUMBER_OF_LIGHT_VALUES = 200;
+	private final int SAMPLES = 500;
 	private boolean hasBeenCalled = false;
 	
-	private int[] lightValues = new int[200];
+	private int[] lightValues = new int[SAMPLES];
 	private int lightValuesCounter = 0;
-	
-	private LightSensor light = new LightSensor(SensorPort.S4);
 
 	@Override
 	public boolean takeControl() {
-		boolean finishedCollecting = lightValuesCounter >= NUMBER_OF_LIGHT_VALUES;
+		boolean finishedCollecting = lightValuesCounter >= SAMPLES;
 		
 		if (!finishedCollecting) {
 			lightValues[lightValuesCounter] = SensorCache.getInstance().normalizedLightValue;
@@ -34,13 +29,13 @@ public class LightCalibration implements Behavior {
 	public void action() {
 		Arrays.sort(lightValues);
 		
-		int lowAvg = getAverage(10,20);
-		light.setLow(lowAvg);
+		int lowAvg = getAverage(50,100);
+		SensorCache.getInstance().light.setLow(lowAvg);
 		
-		int highAvg = getAverage(180,190);
-		light.setHigh(highAvg);
+		int highAvg = getAverage(400,450);
+		SensorCache.getInstance().light.setHigh(highAvg);
 		
-		System.out.println("Light: "+ lowAvg + " " + highAvg);
+		LCD.drawString("Light: "+ lowAvg + " " + highAvg, 0, 0);
 		
 		hasBeenCalled = true;
 	}

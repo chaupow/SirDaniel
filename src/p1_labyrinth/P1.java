@@ -7,6 +7,7 @@ import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import general.Calibration;
 import general.DriveForward;
+import general.Movement;
 import general.SirDanielArbitrator;
 
 public class P1 {
@@ -30,6 +31,7 @@ public class P1 {
 		Behavior [] b = {forward,correct, turnRight, turnLeft};
 		SirDanielArbitrator arby = new SirDanielArbitrator(b,true);
 		
+		Movement.getInstance().setTravelSpeed(180);
 		Thread t = new Thread(arby);
 		Button.waitForAnyPress();
 		t.start();

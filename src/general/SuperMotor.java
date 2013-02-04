@@ -32,6 +32,11 @@ public final class SuperMotor {
 		
 		}
 	
+	public static void setSpeed(float speed){
+		
+		Motor.C.setSpeed(speed);
+		
+	}
 	public static void calibrate(){
 		calibrateRight();
 		calibrateLeft();

@@ -7,7 +7,7 @@ public class TurnIt implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return SensorCache.getInstance().bumperPressed;
+		return Config.hasTurned && !Config.hasAdjusted;
 	}
 
 	@Override

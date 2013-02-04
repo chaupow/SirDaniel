@@ -22,13 +22,15 @@ public class Gap {
 	public void run() {
 		
 		Behavior random = new Random();
-		Behavior setRandom = new RandomDetect(3);
-		Behavior checkEnd = new CheckEnd(2); 
+		Behavior setRandom = new RandomDetect(2);
+//		Behavior checkEnd = new CheckEnd();
+//		Behavior setCheckEnd = new CheckEndDetect(2); 
 		Behavior crossGap = new GapCrossGap();
 		Behavior follow = new FollowLine();
 		Behavior search = new SearchLine();
-		Behavior forward = new p4_LineFollower.DriveForward(2);
-		Behavior [] bArray = {crossGap, follow, checkEnd, forward, setRandom, random, search};
+//		Behavior forward = new DriveForward();
+//		Behavior setForward = new DriveForwardDetect(2);
+		Behavior [] bArray = {crossGap, follow, setRandom, random, search};
 		SirDanielArbitrator arby = new SirDanielArbitrator(bArray, true);
 		Thread t = new Thread(arby);
 		t.start();

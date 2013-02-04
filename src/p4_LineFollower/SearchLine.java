@@ -46,26 +46,26 @@ public class SearchLine implements Behavior {
 			while(Motor.C.isMoving() && !suppressed && (SensorCache.getInstance().normalizedLightValue < threshold)){
 				Thread.yield();
 			}
+			i++;
 			if (i == (degrees.length-1)) {
 				Config.numberOfSearches++;
 				Config.finishedSearch = true;
 			}	
-			i++;
 		}
 		int angle = (SuperMotor.getAngleOfArm()-90);
-		if (angle != 0 && (SensorCache.getInstance().normalizedLightValue) >= Config.lightThreshold) {
+		if (angle != 0 && (new LightSensor(SensorPort.S4).getNormalizedLightValue()) >= Config.lightThreshold) {
 			LCD.clear();
 			LCD.drawString("Correcting myself", 1, 1);
 			
-			//SuperMotor.turnTo(90, false);
+			SuperMotor.turnTo(90, false);
 			int radius = 40;
 			if (angle < 0 ) {
 				radius = -1*radius;
 			}	
 			movement.arc(radius, angle);
 		}
-		//if (SuperMotor.getAngleOfArm() != 90)
-		SuperMotor.turnTo(90, false);
+		if (SuperMotor.getAngleOfArm() != 90)
+			SuperMotor.turnTo(90, false);
 	}
 	@Override
 	public void suppress() {

@@ -7,7 +7,6 @@ import lejos.robotics.subsumption.Behavior;
 
 public class ObstacleQuit implements Behavior{
 	Movement movement = Movement.getInstance();
-	//SuperMotor supmoto = SuperMotor.getInstance();
 
 	@Override
 	public boolean takeControl() {
@@ -16,16 +15,13 @@ public class ObstacleQuit implements Behavior{
 
 	@Override
 	public void action() {
-		movement.rotate(90, false);
-		// TODO Super Motor nach vorne
+		movement.rotate(-90, false);
 		SuperMotor.turnTo(90, false);
 		Config.foundObstacle = false;
 	}
 
 	@Override
 	public void suppress() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

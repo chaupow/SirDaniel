@@ -58,12 +58,13 @@ public class SearchLine implements Behavior {
 			LCD.drawString("Correcting myself", 1, 1);
 			
 			SuperMotor.turnTo(90, false);
-			int radius = 80;
+			int radius = 40;
 			if (angle < 0 ) {
-				radius = -80;
+				radius = -1*radius;
 			}	
 			movement.arc(radius, angle);
 		}
+		SuperMotor.turnTo(90, false);
 	}
 	@Override
 	public void suppress() {

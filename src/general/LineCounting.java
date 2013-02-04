@@ -6,7 +6,7 @@ import lejos.util.Delay;
 
 public class LineCounting implements Behavior {
 	
-	private final int THRESHOLD = 100;
+	private final int THRESHOLD = 300;
 	private final int TIME_FOR_SUFFIX = 2000;
 	
 	private int min = 1000;
@@ -52,8 +52,42 @@ public class LineCounting implements Behavior {
 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
 		System.out.println("Lines found: "+finalLineCount);
+		
+		if (finalLineCount == 3) {
+			
+		} else if (finalLineCount == 4) {
+			// setup
+			// call
+		} else if (finalLineCount == 5) {
+			// setup
+			// call
+		} else if (finalLineCount == 6) {
+			// setup
+			// call
+		} else if (finalLineCount == 7) {
+			// setup
+			// call
+		} else if (finalLineCount == 8) {
+			// setup
+			// call
+		} else if (finalLineCount == 9) {
+			// setup
+			// call
+		} else if (finalLineCount == 10) {
+			// setup
+			// call
+		} else if (finalLineCount == 11) {
+			// setup
+			// call
+		} else if (finalLineCount == 12) {
+			// setup
+			// call
+		} else {
+			System.out.println("This shouldn't happen.");
+		}
+		
+		// reset line count after calling the actions.
 		finalLineCount = 0;
 	}
 

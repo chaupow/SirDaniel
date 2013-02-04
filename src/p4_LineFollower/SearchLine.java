@@ -64,7 +64,8 @@ public class SearchLine implements Behavior {
 			}	
 			movement.arc(radius, angle);
 		}
-		SuperMotor.turnTo(90, false);
+		if (SuperMotor.getAngleOfArm() != 90)
+			SuperMotor.turnTo(90, false);
 	}
 	@Override
 	public void suppress() {

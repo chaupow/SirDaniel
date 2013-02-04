@@ -8,6 +8,7 @@ import lejos.robotics.subsumption.Behavior;
 import lejos.util.Delay;
 import general.Calibration;
 import general.Movement;
+import general.SensorCache;
 
 public class P6_PushButton implements Behavior {
 	
@@ -21,10 +22,16 @@ public class P6_PushButton implements Behavior {
 	// make sure he doesn't stall at the beginning
 	private int tachoCountA = -1;
 	private int tachoCountB = -1;
-
+	private boolean back;
+	private boolean front;
+	
 	@Override
 	public boolean takeControl() {
-		int power = Calibration.MOVEMENT_POWER;
+		back = SensorCache.getInstance().backPressed;
+		front = SensorCache.getInstance().bumperPressed;
+		return (front || back);
+		
+		/*int power = Calibration.MOVEMENT_POWER;
 		
 		boolean stalled = false;
 		long timePassed = System.currentTimeMillis() - lastTime;
@@ -49,15 +56,27 @@ public class P6_PushButton implements Behavior {
 			tachoCountB = currentCountB;
 			lastTime = System.currentTimeMillis();
 		}
-		return stalled;
+		return stalled;*/
 	}
 
 	@Override
 	public void action() {
-		general.Movement.getInstance().setSpeed(3);
-		general.Movement.getInstance().forward();
-		Delay.msDelay(2000);
-		general.Movement.getInstance().stop();
+		
+		
+		if (front) {
+			
+			if (!back){
+				Movement.getInstance().turn_right(90);
+				Calibration.NumberOfTurns++;
+			}
+		} else {
+			if (Calibration.NumberOfTurns >= 2) {
+				general.Movement.getInstance().setSpeed(3);
+				//TODO reicht das so, auch wenn man am Schieber haegen bleibt?
+				Movement.getInstance().travel(2000, true);
+	
+			}
+		}
 	}
 
 	@Override

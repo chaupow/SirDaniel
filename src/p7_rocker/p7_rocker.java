@@ -1,5 +1,6 @@
 package p7_rocker;
 
+import general.Calibration;
 import general.Movement;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -23,7 +24,7 @@ public class p7_rocker implements Behavior{
 	public boolean takeControl(){
 		
 		//TODO barcode als takeControl
-		return true;
+		return Calibration.rocker;
 	}
 	
 	public void suppress(){
@@ -37,6 +38,8 @@ public class p7_rocker implements Behavior{
 
 			Movement.getInstance().setTravelSpeed(travelSpeed);
 			Movement.getInstance().travel(distance);		
+			
+			Calibration.rocker = false;
 			
 		}
 		

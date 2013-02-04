@@ -35,5 +35,11 @@ public class Calibration {
 	
 	/**Flag indicating that the bridge algorithm should trigger**/
 	public static boolean bridge = false;
+	
+	/**Flag indicating the rocker is reached**/
+	public static boolean rocker = false;
+	
+	/**Flag indicating that the rolls and the slider is reached**/
+	public static boolean slider = false;
 		
 }

@@ -28,11 +28,10 @@ public class P1_CorrectLeft implements Behavior {
 	public void action() {
 		suppressed = false;
 		movement.setTravelSpeed(100);
-
+		
+		LCD.clear();
 		LCD.drawString("Correct Left", 1, 1);
 		movement.steer(30, 5, true);
-		//movement.arc(30.0, 5.0, true);
-		//movement.turn_left(5);
 	}
 	
 	public void suppress() {

@@ -49,41 +49,58 @@ public class LineCounting implements Behavior {
 			tempLineCount = 0;
 			LCD.drawString("Final: " + finalLineCount, 0, 5);
 		}
-		return finalLineCount >= 3;
+		return (finalLineCount >= 3);
 	}
 
 	@Override
 	public void action() {
+		
 		LCD.drawString("Lines: " + finalLineCount, 0, 1);
+		Button.waitForAnyPress();
 		
 		if (finalLineCount == 3) {
-			
+			//Bluetoothtor
 		} else if (finalLineCount == 4) {
 			// setup
+			SuperMotor.turnTo(0, false);
 			// call
 		} else if (finalLineCount == 5) {
+			// Bridge
 			// setup
+			SuperMotor.turnTo(180, false);
 			// call
 		} else if (finalLineCount == 6) {
+			//Haengebruecke einfacher LineFollow
 			// setup
 			// call
 		} else if (finalLineCount == 7) {
-			// setup
+			// setup Labyrinth
+			SuperMotor.turnTo(0, false);
 			// call
 		} else if (finalLineCount == 8) {
-			// setup
+			// setup Farbenlesen
 			// call
 		} else if (finalLineCount == 9) {
-			// setup
+			// setup LineFollow mit allem
 			// call
 		} else if (finalLineCount == 10) {
-			// setup
+			// setup wippe
+			Calibration.rocker = true;
 			// call
 		} else if (finalLineCount == 11) {
-			// setup
+			// setup drehteller
 			// call
 		} else if (finalLineCount == 12) {
-			// setup
+			// setup rollen/slider
+			SuperMotor.turnTo(0, false);
+			// call
+		} else if (finalLineCount == 13) {
+			// setup start 
+			/*warte bis button gedrückt wurde, zähle bis zehn, starte Rennen*/
+			Delay.msDelay(10000);
+			// call
+		} else if (finalLineCount == 14) {
+			// setup Endboss!
 			// call
 		} else {
 			System.out.println("This shouldn't happen.");

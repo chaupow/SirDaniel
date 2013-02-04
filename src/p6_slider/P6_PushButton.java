@@ -16,12 +16,9 @@ public class P6_PushButton implements Behavior {
 	private NXTMotor motorB = new NXTMotor(MotorPort.B);
 
 	// set the interval. 
-	private int DELAY = 100;
-	private long lastTime = System.currentTimeMillis();
 	
 	// make sure he doesn't stall at the beginning
-	private int tachoCountA = -1;
-	private int tachoCountB = -1;
+	
 	private boolean back;
 	private boolean front;
 	
@@ -29,43 +26,16 @@ public class P6_PushButton implements Behavior {
 	public boolean takeControl() {
 		back = SensorCache.getInstance().backPressed;
 		front = SensorCache.getInstance().bumperPressed;
-		return (front || back && Calibration.slider && SensorCache.getInstance().normalizedLightValue < 250);
+		return ((front || back) && Calibration.slider && SensorCache.getInstance().normalizedLightValue < 250);
 		
-		/*int power = Calibration.MOVEMENT_POWER;
-		
-		boolean stalled = false;
-		long timePassed = System.currentTimeMillis() - lastTime;
-		
-		if( timePassed > DELAY) { 
-			motorA.setPower(power);
-			motorB.setPower(power);
-			
-			int currentCountA = motorA.getTachoCount();
-			int currentCountB = motorB.getTachoCount();
-		
-			if (currentCountA == tachoCountA || currentCountB == tachoCountB) {
-				stalled = true;
-				LCD.drawString("I stalled...", 0, 6);
-				LCD.refresh();
-			} else {
-				LCD.drawString("I not stalled...", 0, 6);
-				LCD.refresh();
 			}
-			
-			tachoCountA = currentCountA;
-			tachoCountB = currentCountB;
-			lastTime = System.currentTimeMillis();
-		}
-		return stalled;*/
-	}
 
 	@Override
-	public void action() {
-		
+	public void action() {		
 		
 		if (front) {
 			
-			if (back){
+			if (!back){
 				Movement.getInstance().turn_left(90);
 				Calibration.NumberOfTurns++;
 			}

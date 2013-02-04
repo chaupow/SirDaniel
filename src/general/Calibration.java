@@ -28,6 +28,7 @@ public class Calibration {
 	public static final int TRESHOLD_YELLOW = 600;
 	
 	
+	public static int finalLineCount = 0;
 	
 
 	/**Number of 5 degree turns the robot performed driving across the bridge**/
@@ -43,4 +44,7 @@ public class Calibration {
 	/**Flag indicating that the rolls and the slider is reached**/
 	public static boolean slider = false;
 		
+	/****/
+	public static boolean labyrinth = false;
+	
 }

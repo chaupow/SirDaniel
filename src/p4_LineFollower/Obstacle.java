@@ -8,6 +8,7 @@ import p1_labyrinth.P1_TurnRight;
 import general.DriveForward;
 import general.SensorCache;
 import general.SirDanielArbitrator;
+import general.SuperMotor;
 import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;

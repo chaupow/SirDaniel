@@ -2,6 +2,7 @@ package p4_LineFollower;
 
 import general.SensorCache;
 import general.SirDanielArbitrator;
+import general.SuperMotor;
 import lejos.nxt.Button;
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
@@ -13,10 +14,13 @@ public class Gap {
 	SensorCache sensorCache;
 	
 	public Gap() {
+		SuperMotor.calibrate();
+		SuperMotor.turnTo(90, false);
 		this.sensorCache = SensorCache.getInstance();
 	}
 	
 	public void run() {
+		
 		Behavior random = new Random();
 		Behavior setRandom = new RandomDetect(3);
 		Behavior checkEnd = new CheckEnd();

@@ -21,12 +21,12 @@ public class GapCrossGap implements Behavior{
 		suppressed = false;
 		movement.setTravelSpeed(100);
 		movement.setRotateSpeed(100);
+		Config.finishedSearch = false;
 		// TODO echte Distanz rauskriegen
 		if (!suppressed)
-			movement.travel(34, true);
+			movement.travel(90, true);
 		while (movement.isMoving() && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {Thread.yield();}
 		movement.stop();
-		Config.finishedSearch = false;
 	}
 
 	@Override

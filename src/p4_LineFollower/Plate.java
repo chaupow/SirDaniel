@@ -2,6 +2,7 @@ package p4_LineFollower;
 
 import general.SensorCache;
 import general.SirDanielArbitrator;
+import general.SuperMotor;
 import lejos.nxt.Button;
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
@@ -11,6 +12,7 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Plate {
 	UltrasonicSensor sonic;
+	//SuperMotor supmoto = SuperMotor.getInstance();
 	
 	public Plate() {
 		this.sonic = new UltrasonicSensor(SensorPort.S3);

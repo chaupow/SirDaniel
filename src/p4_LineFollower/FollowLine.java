@@ -2,14 +2,17 @@ package p4_LineFollower;
 
 import general.Movement;
 import general.SensorCache;
+import general.SuperMotor;
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 import lejos.robotics.subsumption.Behavior;
+import lejos.util.Delay;
 
 public class FollowLine implements Behavior {
 	Movement movement;
 	int threshold;
 	boolean suppressed;
+	
 	
 	public FollowLine() {
 		this.movement = Movement.getInstance();
@@ -33,8 +36,10 @@ public class FollowLine implements Behavior {
 		LCD.drawString("FollowLine", 1, 1);
 		movement.setTravelSpeed(150);
 		movement.setRotateSpeed(150);
+		movement.stop();
 		while(!suppressed && (SensorCache.getInstance().normalizedLightValue >= threshold)) {
 			movement.travel(10, true);
+			LCD.drawString(""+SensorCache.getInstance().normalizedLightValue, 1, 2);
 		}
 		movement.stop();
 	}

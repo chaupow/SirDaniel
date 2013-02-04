@@ -44,10 +44,10 @@ public final class SuperMotor {
 		float ratio = tachoCount/(float) halfRotation;
 		float angle = ratio*180;
 		
-		LCD.drawString("TachoCount: " + tachoCount, 0, 2);
-		LCD.drawString("ratio: " + ratio, 0,3);
-		LCD.drawString("angle" + angle, 0, 4);
-		
+//		LCD.drawString("TachoCount: " + tachoCount, 0, 2);
+//		LCD.drawString("ratio: " + ratio, 0,3);
+//		LCD.drawString("angle" + angle, 0, 4);
+//		
 		return (int) (angle);
 	}
 	
@@ -73,11 +73,11 @@ public final class SuperMotor {
 		
 			if (currentCountC == tachoCountC ) {
 				stalled = true;
-				LCD.drawString("I stalled...", 0, 6);
-				LCD.refresh();
+//				LCD.drawString("I stalled...", 0, 6);
+//				LCD.refresh();
 			} else {
-				LCD.drawString("I not stalled...", 0, 6);
-				LCD.refresh();
+//				LCD.drawString("I not stalled...", 0, 6);
+//				LCD.refresh();
 			}
 			
 			tachoCountC = currentCountC;
@@ -85,7 +85,7 @@ public final class SuperMotor {
 		}
 
 		}
-		LCD.drawString("I reseted the TachoCount",1,1);
+//		LCD.drawString("I reseted the TachoCount",1,1);
 		motorC.resetTachoCount();
 		motorC.setPower(0);
 		
@@ -110,18 +110,18 @@ public final class SuperMotor {
 		
 				if (currentCountC == tachoCountC ) {
 					stalled = true;
-					LCD.drawString("I stalled...", 0, 6);
-					LCD.refresh();
+//					LCD.drawString("I stalled...", 0, 6);
+//					LCD.refresh();
 				} else {
-					LCD.drawString("I not stalled...", 0, 6);
-					LCD.refresh();
+//					LCD.drawString("I not stalled...", 0, 6);
+//					LCD.refresh();
 				}	
 			
 				tachoCountC = currentCountC;
 				lastTime = System.currentTimeMillis();
 			}
 		}
-		LCD.drawString("I set the halfRotation", 1, 2);
+//		LCD.drawString("I set the halfRotation", 1, 2);
 		halfRotation = motorC.getTachoCount();
 
 	}

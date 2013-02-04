@@ -5,13 +5,15 @@ import general.SensorCache;
 import general.SuperMotor;
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
+import lejos.nxt.Motor;
+import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Behavior;
+import lejos.util.Delay;
 
 public class SearchLine implements Behavior {
 	Movement movement;
 	int threshold;
 	boolean suppressed;
-	SuperMotor supmoto = new SuperMotor();
 	
 	public SearchLine() {
 		this.movement = Movement.getInstance();
@@ -29,38 +31,38 @@ public class SearchLine implements Behavior {
 		movement.setTravelSpeed(100);
 		movement.setRotateSpeed(100);
 		suppressed = false;
-		int [] degrees = {10, 20, 90};
+		int [] degrees = {5, 10, 20, 30, 40, 50, 80, 90};
 		int i = 0;
-		while (i < degrees.length && (SensorCache.getInstance().normalizedLightValue < threshold) && !Config.finishedSearch) {
-			if (suppressed) {
-				break;
+		while (i < degrees.length && (SensorCache.getInstance().normalizedLightValue < threshold) && !Config.finishedSearch && !suppressed) {
+			if (!suppressed) {
+				SuperMotor.turnTo(90-degrees[i], true);
+			}
+			while(Motor.C.isMoving() && !suppressed && (SensorCache.getInstance().normalizedLightValue < threshold)){
+				Thread.yield();
 			}
 			if (!suppressed) {
-				LCD.clear();
-				LCD.drawString( degrees[i]+" Degrees", 1, 2);
-				//supmoto.turnTo(90-degrees[i], true);
-				movement.rotate(degrees[i], true);
+				SuperMotor.turnTo(90+degrees[i], true);
 			}
-			while(movement.isMoving() && !suppressed && (SensorCache.getInstance().normalizedLightValue < threshold)){Thread.yield();};
-			if (!suppressed) {
-				LCD.clear();
-				LCD.drawString(2*degrees[i]+" Degrees", 1, 2);
-				//supmoto.turnTo(90+degrees[i], true);
-				movement.rotate(-2*degrees[i], true);
+			while(Motor.C.isMoving() && !suppressed && (SensorCache.getInstance().normalizedLightValue < threshold)){
+				Thread.yield();
 			}
-			while(movement.isMoving() && !suppressed && (SensorCache.getInstance().normalizedLightValue < threshold)){Thread.yield();};
-			if (!suppressed) {
-				LCD.clear();
-				LCD.drawString( degrees[i]+" Degrees", 1, 2);
-				//supmoto.turnTo(90-degrees[i], true);
-				movement.rotate(degrees[i], true);
-			}
-			while(movement.isMoving() && !suppressed && (SensorCache.getInstance().normalizedLightValue < threshold)){Thread.yield();};
 			i++;
 			if (i == (degrees.length-1)) {
 				Config.numberOfSearches++;
 				Config.finishedSearch = true;
-			}
+			}	
+		}
+		int angle = (SuperMotor.getAngleOfArm()-90);
+		if (angle != 0 && (new LightSensor(SensorPort.S4).getNormalizedLightValue()) >= Config.lightThreshold) {
+			LCD.clear();
+			LCD.drawString("Correcting myself", 1, 1);
+			
+			SuperMotor.turnTo(90, false);
+			int radius = 80;
+			if (angle < 0 ) {
+				radius = -80;
+			}	
+			movement.arc(radius, angle);
 		}
 	}
 	@Override

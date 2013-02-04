@@ -1,5 +1,6 @@
 package p1_labyrinth;
 
+import general.Calibration;
 import general.Movement;
 import lejos.robotics.subsumption.Behavior;
 
@@ -22,8 +23,6 @@ public class P1_DriveRightArc implements Behavior {
 	}
 	
 	public void action(){
-		
-		//Movement.getInstance().arcForward(-1000);
 		suppressed = false;
 		Movement.getInstance().setTravelSpeed(100);
 

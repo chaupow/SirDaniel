@@ -25,7 +25,8 @@ public class Obstacle {
 		this.sonic = new UltrasonicSensor(SensorPort.S3);
 	}
 	
-	public void run() {
+public void run() {
+		
 		Behavior random = new Random();
 		Behavior setRandom = new RandomDetect(3);
 		Behavior checkEnd = new CheckEnd();
@@ -35,14 +36,16 @@ public class Obstacle {
 		Behavior search = new SearchLine();
 		Behavior forward = new p4_LineFollower.DriveForward();
 		Behavior setForward = new DriveForwardDetect(2);
-		Behavior detectObstacle = new ObstacleDetect(sonic); 
-		Behavior correctRight = new ObstacleCorrectRight(sonic,  max_dist);
-		Behavior correctLeft = new ObstacleCorrectLeft(sonic, min_dist);
-		Behavior turnRight = new ObstacleTurnRight(sonic, shouldBe, minimumDifference);
-		Behavior turnLeft = new ObstacleTurnLeft();
-		Behavior [] bArray = {crossGap, follow, setCheckEnd, checkEnd, setForward, forward, setRandom, random, search, detectObstacle, correctRight, correctLeft, turnRight, turnLeft};
+		Behavior [] bArray = {crossGap, follow, setCheckEnd, checkEnd, setForward, forward, setRandom, random, search};
 		SirDanielArbitrator arby = new SirDanielArbitrator(bArray, true);
 		Thread t = new Thread(arby);
 		t.start();
+	}
+	
+	public static void main(String [] args) {
+		SuperMotor.calibrate();
+		Button.waitForAnyPress();
+		Obstacle gap = new Obstacle();
+		gap.run();
 	}
 }

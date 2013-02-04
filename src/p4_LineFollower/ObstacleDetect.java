@@ -22,9 +22,9 @@ public class ObstacleDetect implements Behavior{
 
 	@Override
 	public void action() {
-		movement.rotate(90, false);
-		// TODO SuperMotor nach rechts drehen
-		SuperMotor.turnTo(0, false);
+		System.out.println("Obstacle");
+		movement.rotate(-90, false);
+		SuperMotor.turnTo(180, false);
 		Config.foundObstacle = true;
 	}
 

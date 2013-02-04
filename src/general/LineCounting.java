@@ -28,8 +28,6 @@ public class LineCounting implements Behavior {
 			if (currentValue < max) {
 				rising = false;
 				min = max;
-				LCD.drawString("falling", 0 , 1);
-				LCD.refresh();
 			}
 		} else {
 			if (currentValue < min) {
@@ -37,14 +35,11 @@ public class LineCounting implements Behavior {
 			}
 			if (currentValue > min) {
 				rising = true;
-				LCD.drawString("dist:" + (max-min), 0 , 3);
 				if (max-min > THRESHOLD) {
 					lastTimestamp = currentTimestamp;
 					tempLineCount++;
 				}
 				max = min;
-				LCD.drawString("rising", 0 , 1);
-				LCD.refresh();
 			}
 		}
 		
@@ -52,17 +47,13 @@ public class LineCounting implements Behavior {
 			finalLineCount = tempLineCount;
 			tempLineCount = 0;
 		}
-		
-		LCD.drawString("temp#:" + tempLineCount, 0 , 0);
-		LCD.refresh();
-		
 		return finalLineCount >= 3;
 	}
 
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
-		Delay.msDelay(2000);
+		System.out.println("Lines found: "+finalLineCount);
 		finalLineCount = 0;
 	}
 

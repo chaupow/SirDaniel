@@ -11,16 +11,15 @@ public class P2 {
 	   
 	  
 	   // constant values
-	   Behavior driveRight = new P2_DriveRight();
+	   Behavior driveRight = new P2_DriveLeft();
 	   Behavior avoidAbyss = new P2_AvoidAbyss();
 	   
 	   Behavior [] b = {driveRight, avoidAbyss};
-	   SirDanielArbitrator arby = new SirDanielArbitrator(b);
+	   SirDanielArbitrator arby = new SirDanielArbitrator(b, true);
 	   
 	   Thread t = new Thread(arby);
 	   Button.waitForAnyPress();
 	   t.start();
-	   Button.waitForAnyPress();
    }
 
 

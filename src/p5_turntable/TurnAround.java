@@ -18,7 +18,7 @@ public class TurnAround implements Behavior {
 		hasTurned = false;
 		Movement.getInstance().setSpeed(1);
 		Movement.getInstance().travel(-30);
-		Movement.getInstance().turn_left(180);
+		Movement.getInstance().turn_left(170);
 		
 	}
 

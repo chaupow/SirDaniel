@@ -43,4 +43,7 @@ public class Calibration {
 	/**Flag indicating that the rolls and the slider is reached**/
 	public static boolean slider = false;
 		
+	/****/
+	public static boolean labyrinth = false;
+	
 }

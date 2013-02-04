@@ -4,8 +4,6 @@ import general.SirDanielArbitrator;
 import general.SuperMotor;
 import lejos.nxt.Button;
 import lejos.robotics.subsumption.Behavior;
-import p2_Bridge.P2_AvoidAbyss;
-import p2_Bridge.P2_DriveRight;
 import p4_LineFollower.FollowLine;
 import p4_LineFollower.Random;
 import p4_LineFollower.RandomDetect;

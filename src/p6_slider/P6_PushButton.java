@@ -29,7 +29,7 @@ public class P6_PushButton implements Behavior {
 	public boolean takeControl() {
 		back = SensorCache.getInstance().backPressed;
 		front = SensorCache.getInstance().bumperPressed;
-		return (front || back && Calibration.slider && SensorCache.getInstance().normalizedLightValue < 250);
+		return ((front || back) && Calibration.slider && SensorCache.getInstance().normalizedLightValue < 250);
 		
 		/*int power = Calibration.MOVEMENT_POWER;
 		
@@ -65,7 +65,7 @@ public class P6_PushButton implements Behavior {
 		
 		if (front) {
 			
-			if (back){
+			if (!back){
 				Movement.getInstance().turn_left(90);
 				Calibration.NumberOfTurns++;
 			}

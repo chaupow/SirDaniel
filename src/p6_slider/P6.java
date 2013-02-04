@@ -24,11 +24,12 @@ public class P6 {
 		Calibration.NumberOfTurns = 0;
 		
 		//TODO Linefollower rein
+		Behavior forward = new DriveForward(1);
 		Behavior correct = new P6_Correct(sonic, min_dist);
 		Behavior backwards = new P6_travelBackwards();
 		Behavior button = new P6_PushButton();
 		
-		Behavior [] b = { correct, backwards, button};
+		Behavior [] b = {forward, correct, backwards, button};
 		SirDanielArbitrator arby = new SirDanielArbitrator(b, true);
 		
 		Thread t = new Thread (arby);

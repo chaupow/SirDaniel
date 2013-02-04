@@ -13,7 +13,6 @@ public class Calibration {
 	/** minimum power to move the robot. */
 	public static final int MOVEMENT_POWER = 24;	
 	
-	public static int NumberOfTurns = 0;
 	
 	//TODO Wert anpassen
 	/** Treshold to detect green colored field **/
@@ -26,5 +25,15 @@ public class Calibration {
 	//TODO Wert anpassen
 	/** Treshold to detect yellow colored field **/
 	public static final int TRESHOLD_YELLOW = 600;
+	
+	
+	
+
+	/**Number of 5 degree turns the robot performed driving across the bridge**/
+	public static int NumberOfTurns = 0;
+	
+	
+	/**Flag indicating that the bridge algorithm should trigger**/
+	public static boolean bridge = false;
 		
 }

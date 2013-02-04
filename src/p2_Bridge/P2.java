@@ -11,7 +11,6 @@ public class P2 {
 	   
 	  
 	   // constant values
-	   Calibration.NumberOfTurns = 10;
 	   Behavior driveRight = new P2_DriveRight();
 	   Behavior avoidAbyss = new P2_AvoidAbyss();
 	   

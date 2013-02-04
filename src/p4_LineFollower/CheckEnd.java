@@ -8,10 +8,15 @@ import lejos.robotics.subsumption.Behavior;
 public class CheckEnd implements Behavior{
 	Movement movement = Movement.getInstance();
 	boolean suppressed;
+	int trigger;
+	
+	public CheckEnd(int trigger){
+		this.trigger = trigger;
+	}
 	
 	@Override
 	public boolean takeControl() {
-		return Config.isCheckingEnd;
+		return Config.numberOfSearches == trigger;
 	}
 
 	@Override
@@ -24,10 +29,13 @@ public class CheckEnd implements Behavior{
 		movement.travel(-80, true);
 		while (!suppressed && movement.isMoving() && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {Thread.yield();}
 		movement.stop();
-		if (SensorCache.getInstance().normalizedLightValue >= Config.lightThreshold)
+		if (SensorCache.getInstance().normalizedLightValue >= Config.lightThreshold){
 			Config.foundEnd = true;
-		Config.isCheckingEnd = false;
-		Config.finishedSearch = false;
+		}
+		else {
+			Config.isCheckingEnd = false;
+			Config.finishedSearch = false;	
+		}
 	}
 
 	@Override

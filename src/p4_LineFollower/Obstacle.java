@@ -29,16 +29,14 @@ public void run() {
 		
 		Behavior random = new Random();
 		Behavior setRandom = new RandomDetect(3);
-		Behavior checkEnd = new CheckEnd();
-		Behavior setCheckEnd = new CheckEndDetect(2); 
+		Behavior checkEnd = new CheckEnd(2);
 		Behavior crossGap = new GapCrossGap();
 		Behavior follow = new FollowLine();
 		Behavior search = new SearchLine();
-		Behavior forward = new p4_LineFollower.DriveForward();
-		Behavior setForward = new DriveForwardDetect(2);
+		Behavior forward = new p4_LineFollower.DriveForward(2);
 		Behavior detectObstacle = new ObstacleDetect(sonic);
 		Behavior quitObstacle = new ObstacleQuit();
-		Behavior [] bArray = {crossGap, follow, setCheckEnd, checkEnd, setForward, forward, setRandom, random, search, detectObstacle, quitObstacle};
+		Behavior [] bArray = {crossGap, follow, checkEnd, forward, setRandom, random, search, detectObstacle, quitObstacle};
 		SirDanielArbitrator arby = new SirDanielArbitrator(bArray, true);
 		Thread t = new Thread(arby);
 		t.start();

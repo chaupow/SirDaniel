@@ -23,10 +23,11 @@ public class P1 {
 		
 		Calibration.labyrinth = true;
 		
+		Behavior forward = new DriveForward(1);
 		Behavior correct = new P1_Correct(sonic, min_dist);
 		Behavior turnRight = new P1_TurnRight(sonic, speed, rotationSpeed, shouldBe, minimumDifference);
 		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);
-		Behavior [] b = {correct, turnRight, turnLeft};
+		Behavior [] b = {forward,correct, turnRight, turnLeft};
 		SirDanielArbitrator arby = new SirDanielArbitrator(b,true);
 		
 		Thread t = new Thread(arby);

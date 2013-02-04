@@ -23,8 +23,7 @@ public class P6 {
 		SuperMotor.turnTo(0, false);
 		Calibration.NumberOfTurns = 0;
 		
-		//Behavior forward = new DriveForward(1);
-		//Behavior arc = new P1_DriveRightArc(1);
+		//TODO Linefollower rein
 		Behavior correct = new P6_Correct(sonic, min_dist);
 		Behavior backwards = new P6_travelBackwards();
 		Behavior button = new P6_PushButton();

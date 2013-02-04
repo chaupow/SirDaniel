@@ -23,7 +23,7 @@ public class Random implements Behavior{
 		suppressed = false;
 		movement.setTravelSpeed(100);
 		movement.setRotateSpeed(100);
-		movement.forward();
+		movement.backward();
 		while (!suppressed && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {
 			Thread.yield();
 		}

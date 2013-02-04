@@ -31,7 +31,7 @@ public class SearchLine implements Behavior {
 		movement.setTravelSpeed(100);
 		movement.setRotateSpeed(100);
 		suppressed = false;
-		int [] degrees = {5, 10, 20, 30, 40, 50, 80, 90};
+		int [] degrees = {10, 45, 90};
 		int i = 0;
 		while (i < degrees.length && (SensorCache.getInstance().normalizedLightValue < threshold) && !Config.finishedSearch && !suppressed) {
 			if (!suppressed) {

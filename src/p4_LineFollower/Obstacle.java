@@ -36,7 +36,9 @@ public void run() {
 		Behavior search = new SearchLine();
 		Behavior forward = new p4_LineFollower.DriveForward();
 		Behavior setForward = new DriveForwardDetect(2);
-		Behavior [] bArray = {crossGap, follow, setCheckEnd, checkEnd, setForward, forward, setRandom, random, search};
+		Behavior detectObstacle = new ObstacleDetect(sonic);
+		Behavior quitObstacle = new ObstacleQuit();
+		Behavior [] bArray = {crossGap, follow, setCheckEnd, checkEnd, setForward, forward, setRandom, random, search, detectObstacle, quitObstacle};
 		SirDanielArbitrator arby = new SirDanielArbitrator(bArray, true);
 		Thread t = new Thread(arby);
 		t.start();

@@ -21,7 +21,7 @@ public class CheckEnd implements Behavior{
 		LCD.drawString("CheckEnd", 1, 1);
 		movement.setTravelSpeed(100);
 		movement.setRotateSpeed(100);
-		movement.travel(-120, true);
+		movement.travel(-80, true);
 		while (!suppressed && movement.isMoving() && SensorCache.getInstance().normalizedLightValue <= Config.lightThreshold) {Thread.yield();}
 		movement.stop();
 		if (SensorCache.getInstance().normalizedLightValue >= Config.lightThreshold)

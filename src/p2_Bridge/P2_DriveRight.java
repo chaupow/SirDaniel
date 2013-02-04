@@ -1,6 +1,9 @@
 package p2_Bridge;
+import lejos.nxt.LCD;
 import lejos.robotics.subsumption.*;
+import general.Calibration;
 import general.Movement;
+import general.SensorCache;
 
 public class P2_DriveRight implements Behavior {
    private boolean suppressed = false;
@@ -8,7 +11,7 @@ public class P2_DriveRight implements Behavior {
    Movement movement = Movement.getInstance();
    
    public boolean takeControl() {
-      return !movement.isMoving();
+      return true;
    }
 
    public void suppress() {
@@ -16,11 +19,17 @@ public class P2_DriveRight implements Behavior {
    }
 
    public void action() {
-     suppressed = false;
-     while(!suppressed) {
-    	 if (!movement.isMoving()) {
-    		 movement.steer(-30, -60, true);
-    	 }
+
+	   Calibration.NumberOfTurns = 0;
+	   Calibration.bridge = true;
+
+	   suppressed = false;
+	   LCD.drawString("driving", 0, 0);
+	   movement.arc(-500, -360, true);
+     
+	   while(!suppressed){
+		   Thread.yield();
+	   }
 //	 
 //		 movement.forward();
 //		 Thread.yield();
@@ -30,7 +39,5 @@ public class P2_DriveRight implements Behavior {
 //	     
 //	     if (!suppressed) Delay.msDelay(100);
 //	     if (!suppressed) movement.turn_right(angle);
-     }    
-     movement.stop();
    }
 }

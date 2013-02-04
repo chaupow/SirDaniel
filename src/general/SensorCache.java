@@ -3,6 +3,7 @@ package general;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
+import lejos.robotics.Color;
 
 
 public class SensorCache {
@@ -23,19 +24,31 @@ public class SensorCache {
 	}
 	
 	private TouchSensor bumper = new TouchSensor(SensorPort.S2);
-	private TouchSensor bridge = new TouchSensor(SensorPort.S1);
+	private TouchSensor back = new TouchSensor(SensorPort.S1);
 	private LightSensor light = new LightSensor(SensorPort.S4);
 	
+	private int LightValueLightOn;
+	private int LightValueLightOff;
 	public int normalizedLightValue;
 	public boolean bumperPressed;
-	public boolean bridgePressed;
+	public boolean backPressed;
 	public long timestamp;
 	
 	public void pollSensors() {
+		
 		timestamp = System.currentTimeMillis();
+		
+		//Fuehre Hell- und Dunkelmessung durch und nimm die Differenz
+		/*LightValueLightOn = light.getNormalizedLightValue();
+		light.setFloodlight(false);
+		LightValueLightOff = light.getNormalizedLightValue();
+		light.setFloodlight(true);
+		
+		normalizedLightValue = LightValueLightOn - LightValueLightOff;*/
+		
 		normalizedLightValue = light.getNormalizedLightValue();
 		bumperPressed = bumper.isPressed();
-		bridgePressed = bridge.isPressed();
+		backPressed = back.isPressed();
 	}
 	
 	

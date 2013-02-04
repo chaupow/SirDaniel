@@ -1,17 +1,20 @@
 package p2_Bridge;
+import lejos.nxt.LCD;
 import lejos.robotics.subsumption.*;
 import lejos.util.Delay;
+import general.Calibration;
 import general.Movement;
 import general.SensorCache;
 
 public class P2_AvoidAbyss implements Behavior {
    private boolean suppressed = false;
-	Movement movement = Movement.getInstance();
-   
 
    public boolean takeControl() {
 	   //TODO Lightvalue anpassen, größer oder kleiner?
-      return (SensorCache.getInstance().normalizedLightValue < 300);
+	   
+	   LCD.drawString("LV: " + SensorCache.getInstance().normalizedLightValue , 0, 3);
+	   
+      return (SensorCache.getInstance().normalizedLightValue < 300 );
    }
 
    public void suppress() {
@@ -21,10 +24,16 @@ public class P2_AvoidAbyss implements Behavior {
    public void action() {
      suppressed = false;
      
-     movement.backward();
-     Delay.msDelay(200);
-     movement.turn_left(20);
-     movement.stop();
+     LCD.drawString("avoiding", 0, 0);
+     LCD.drawString("i: " + Calibration.NumberOfTurns, 0, 4);
+     Movement.getInstance().turn_left(5);
+     Calibration.NumberOfTurns++;
      
+     if(Calibration.NumberOfTurns > 10) {
+    	 //TODO richtige Distanz!
+    	 Movement.getInstance().travel(300);
+    	 if(!suppressed) Movement.getInstance().turn_right(50);
+
+     }
    }
 }

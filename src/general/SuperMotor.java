@@ -9,7 +9,7 @@ public final class SuperMotor {
 
 	static NXTMotor motorC = new NXTMotor(MotorPort.C);
 	
-	static int halfRotation = 0; 
+	static int halfRotation = 748; 
 
 	
 	public static void turnTo(int angle, boolean ImmediateReturn) {

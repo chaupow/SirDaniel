@@ -29,7 +29,7 @@ public class P6_PushButton implements Behavior {
 	public boolean takeControl() {
 		back = SensorCache.getInstance().backPressed;
 		front = SensorCache.getInstance().bumperPressed;
-		return (front || back);
+		return (front || back && Calibration.slider && SensorCache.getInstance().normalizedLightValue < 250);
 		
 		/*int power = Calibration.MOVEMENT_POWER;
 		
@@ -65,14 +65,15 @@ public class P6_PushButton implements Behavior {
 		
 		if (front) {
 			
-			if (!back){
-				Movement.getInstance().turn_right(90);
+			if (back){
+				Movement.getInstance().turn_left(90);
 				Calibration.NumberOfTurns++;
 			}
 		} else {
 			if (Calibration.NumberOfTurns >= 2) {
-				general.Movement.getInstance().setSpeed(3);
+				general.Movement.getInstance().setTravelSpeed(300);
 				//TODO reicht das so, auch wenn man am Schieber haegen bleibt?
+				Calibration.slider = false;
 				Movement.getInstance().travel(2000, true);
 	
 			}

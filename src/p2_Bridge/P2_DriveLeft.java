@@ -5,12 +5,13 @@ import general.Calibration;
 import general.Movement;
 import general.SensorCache;
 
-public class P2_DriveRight implements Behavior {
+public class P2_DriveLeft implements Behavior {
    private boolean suppressed = false;
   
    Movement movement = Movement.getInstance();
    
    public boolean takeControl() {
+	   //TODO return SensorCache.getInstance().NormalizedLightValue > 300;
       return true;
    }
 
@@ -25,7 +26,7 @@ public class P2_DriveRight implements Behavior {
 
 	   suppressed = false;
 	   LCD.drawString("driving", 0, 0);
-	   movement.arc(-500, -360, true);
+	   movement.arc(500, 360, true);
      
 	   while(!suppressed){
 		   Thread.yield();

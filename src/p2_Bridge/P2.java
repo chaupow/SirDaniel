@@ -10,7 +10,6 @@ public class P2 {
 	
 	SirDanielArbitrator arby;
 	
-//   public static void main(String [] args) {
 	public void start() {   
 //	  Settings.bridge = true;
 //	  Calibration.bridge = true;

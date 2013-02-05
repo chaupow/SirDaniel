@@ -11,12 +11,14 @@ public class ClaudisMain {
 	
 	public static void main(String[] args) {
 		Button.waitForAnyPress();
+		SuperMotor.calibrate();
 		searchBarcode();		
 	}
 	
 	public static void searchBarcode() {
 		movement.travel(-20);
 		lineCount = barcodeReader.run();
+		System.out.println("Barcode gelesen");
 		switch (lineCount) {
 		case 3: stateMachine.setState(State.gate); break;
 		case 4: stateMachine.setState(State.swamp); break;

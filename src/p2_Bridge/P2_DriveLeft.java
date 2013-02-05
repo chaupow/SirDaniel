@@ -24,7 +24,6 @@ public class P2_DriveLeft implements Behavior {
    public void action() {
 
 	   Calibration.NumberOfTurns = 0;
-	   Calibration.bridge = true;
 
 	   suppressed = false;
 	   LCD.drawString("driving", 0, 0);

@@ -24,7 +24,8 @@ public class Race implements Section {
 		Behavior turnRight = new P0_TurnRight(sonar, SPEED, ROTATION_SPEED, TARGET_DISTANCE, CURVE_DIFFERENCE);
 		Behavior turnLeft = new P0_TurnLeft(SPEED, ROTATION_SPEED);
 		Behavior avoidObstacle = new AvoidObstacle();
-		Behavior [] b = {forward, correct, turnRight, turnLeft, avoidObstacle};
+		Behavior endOfRace = new EndRace();
+		Behavior [] b = {forward, correct, turnRight, turnLeft, avoidObstacle, endOfRace};
 		
 		arby = new SirDanielArbitrator(b, true);
 		

@@ -1,24 +1,42 @@
 package p2_Bridge;
+import general.Settings;
 import general.SirDanielArbitrator;
 import lejos.nxt.Button;
 import lejos.robotics.subsumption.Behavior;
 
-public class P2 {
-	
-   public static void main(String [] args) {
+public class P2 implements Behavior {
 	   
-	  
-	   // constant values
+   private SirDanielArbitrator arby;
+   private Thread t;
+
+   public P2(){
+	   
+
 	   Behavior driveRight = new P2_DriveLeft();
 	   Behavior avoidAbyss = new P2_AvoidAbyss();
 	   
 	   Behavior [] b = {driveRight, avoidAbyss};
-	   SirDanielArbitrator arby = new SirDanielArbitrator(b, true);
+	   arby = new SirDanielArbitrator(b, true);	   
+	   t = new Thread(arby);
 	   
-	   Thread t = new Thread(arby);
-	   Button.waitForAnyPress();
-	   t.start();
    }
+   
+@Override
+public boolean takeControl() {
+	// TODO Auto-generated method stub
+	return Settings.bridge;
+}
+
+@Override
+public void action() {
+	t.start();
+	}
+
+@Override
+public void suppress() {
+	// TODO Auto-generated method stub
+	Settings.bridge = false;
+}
 
 
 }

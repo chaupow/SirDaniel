@@ -1,5 +1,7 @@
 package general;
 
+import lejos.nxt.Button;
+
 public class BarcodeReader implements Runnable {
 	
 	private int TIME_FOR_SUFFIX = 500;
@@ -59,8 +61,11 @@ public class BarcodeReader implements Runnable {
 	private void startBehavior(int number) {
 		// TODO do cool stuff here
 		System.out.println("Called Behavior: " + number);
-		general.Settings.initRace();
-		general.Settings.race = true;
+		//general.Settings.initRace();
+		//general.Settings.race = true;
+		Button.waitForAnyPress();
+		general.Settings.initLabyrinth();
+		general.Settings.labyrinth = true;
 		
 	}
 

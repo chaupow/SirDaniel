@@ -1,5 +1,6 @@
 package p0_Race;
 import lejos.nxt.Button;
+import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -12,20 +13,17 @@ import p1_labyrinth.*;
 
 public class Race implements Behavior {
 		
-	UltrasonicSensor sonic;
 	int speed = 1;
 	int rotationSpeed = 1;
 	int min_dist = 10;
 	int shouldBe = 10;
 	int minimumDifference = 30;
 	
-	private boolean suppressed = false;
 	private SirDanielArbitrator arby;
 	private Thread t;
 		
 	
 	public Race(UltrasonicSensor sonic) {
-		this.sonic = sonic;
 		
 		Behavior forward = new P0_DriveForward(200);
 		Behavior correct = new P0_Correct(sonic, min_dist);
@@ -34,6 +32,7 @@ public class Race implements Behavior {
 		Behavior avoidObstacle = new AvoidObstacle();
 		Behavior [] b = {forward, correct, turnRight, turnLeft, avoidObstacle};
 		this.arby = new SirDanielArbitrator(b,true);
+		t = new Thread(arby);
 		
 		Constants.alreadyStopped = false;
 	}
@@ -74,14 +73,13 @@ public boolean takeControl() {
 @Override
 public void action() {
 	// TODO Auto-generated method stub
-	arby.run();
-	
+	LCD.drawString("I'm going to race", 0, 5);
+	t.start();
 }
 
 @Override
 public void suppress() {
-	// TODO Auto-generated method stub
-	suppressed = true;
+	Settings.race = false;
 }
 	
 }

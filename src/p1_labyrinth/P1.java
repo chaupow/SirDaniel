@@ -1,25 +1,25 @@
 package p1_labyrinth;
 import lejos.nxt.Button;
+import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import general.LineCounting;
 import general.Movement;
+import general.Settings;
 import general.SirDanielArbitrator;
 
-public class P1 {
+public class P1 implements Behavior {
 		
-	
-   public static void main(String [] args) {
-	   
-	    UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
-		int speed = 1;
-		int rotationSpeed = 1;
-		int min_dist = 10;
-		int shouldBe = 10;
-		int minimumDifference = 30;
-		
-		//Calibration.labyrinth = true;
+	 private Thread t;
+	 private SirDanielArbitrator arby;
+	 private int speed = 1;
+	 private int rotationSpeed = 1;
+	 private int min_dist = 10;
+	 private int shouldBe = 10;
+	 private int minimumDifference = 30;
+			
+	public P1(UltrasonicSensor sonic){
 		
 		Behavior forward = new P1_DriveForward(200);
 		Behavior correct = new P1_Correct(sonic, min_dist);
@@ -27,14 +27,28 @@ public class P1 {
 		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);
 		Behavior read = new LineCounting();
 		Behavior [] b = {forward,correct, turnRight, turnLeft, read};
-		SirDanielArbitrator arby = new SirDanielArbitrator(b,true);
+		arby = new SirDanielArbitrator(b,true);
+		t =  new Thread(arby);
+
 		
-		Movement.getInstance().setTravelSpeed(180);
-		Thread t = new Thread(arby);
-		Button.waitForAnyPress();
-		t.start();
-		
-   }
+	}
+
+@Override
+public boolean takeControl() {
+	// TODO Auto-generated method stub
+	return Settings.labyrinth;
+}
+
+@Override
+public void action() {
+	LCD.drawString("I'm going to labyrinth", 0, 5);
+	t.start();
+}
+
+@Override
+public void suppress() {
+	Settings.labyrinth = false;
+}
 
 
 }

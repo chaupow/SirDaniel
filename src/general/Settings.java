@@ -45,6 +45,7 @@ public class Settings {
 	
 	public static void initBridge() {
 		SuperMotor.turnTo(180, false);
+		Movement.getInstance().turn_right(90);
 	}
 	
 	public static void initLabyrinth(){
@@ -88,6 +89,21 @@ public class Settings {
 	
 	public static void initBoss(){
 		SuperMotor.turnTo(0, false);
+	}
+	
+	public static void reset() {
+		race = false;
+		bridge = false;
+		labyrinth = false;
+		swamp = false;
+		bluetooth = false;
+		turntable = false;
+		slider = false;
+		rocker = false;
+		plank_bridge = false;
+		linefollow = false;
+		colors = false;
+		boss = false;
 	}
 	
 	public static void calibrateLight(){

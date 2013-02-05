@@ -2,10 +2,8 @@ package p8_Line;
 
 import general.Movement;
 import general.SensorCache;
-import general.SuperMotor;
 import lejos.nxt.LCD;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
 public class P8_FindEnd implements Behavior {
 	

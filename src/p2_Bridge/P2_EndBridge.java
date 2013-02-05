@@ -7,12 +7,12 @@ import general.Movement;
 import general.SensorCache;
 import general.Settings;
 
-public class P2_EndOfBridge implements Behavior{
+public class P2_EndBridge implements Behavior{
 
 	   private boolean suppressed = false;
 	   
 	   public boolean takeControl() {
-		   return (SensorCache.getInstance().normalizedLightValue > 450);
+		   return (SensorCache.getInstance().normalizedLightValue > Settings.LIGHT_THRESHOLD);
 	   }
 
 	   public void suppress() {

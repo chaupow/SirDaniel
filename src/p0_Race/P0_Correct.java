@@ -19,8 +19,7 @@ public class P0_Correct implements Behavior{
 	public boolean takeControl() {
 		
 		dist = sonic.getDistance() - min_dist;
-
-		return (Calibration.race && dist != 0);
+		return (dist != 0);
 	}
 
 	@Override

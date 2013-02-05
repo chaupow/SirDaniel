@@ -3,7 +3,6 @@ package p8_Line;
 import general.Movement;
 import general.SensorCache;
 import general.SuperMotor;
-import p4_LineFollower.Config;
 import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 import lejos.robotics.subsumption.Behavior;

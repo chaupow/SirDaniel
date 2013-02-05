@@ -15,7 +15,7 @@ public class P0_DriveForward implements Behavior {
 	   }
 	   
 	   public boolean takeControl() {
-	      return Calibration.race;
+	      return true;
 	   }
 
 	   public void suppress() {
@@ -24,6 +24,7 @@ public class P0_DriveForward implements Behavior {
 
 	   public void action() {
 	     suppressed = false;
+	     movement.setSpeed(speed);
 	     movement.forward();
 	     while( !suppressed ) {
 	    	 Thread.yield();

@@ -1,11 +1,11 @@
 package p0_Race;
+
 import lejos.nxt.LCD;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import general.Movement;
 import general.SensorCache;
-import general.Settings;
 
 
 public class P0_TurnRight implements Behavior {
@@ -34,14 +34,11 @@ public class P0_TurnRight implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		//movement.setSpeed(speed);
 		movement.setTravelSpeed(100);
 		movement.setRotationSpeed(rotationSpeed);
 
 		LCD.drawString("steering" , 1, 1);
 		movement.arcForward(-60);
-		
-				
 		
 	}
 	

@@ -1,31 +1,43 @@
 package p5_turntable;
 
-import general.DriveForward;
+import lejos.robotics.subsumption.Behavior;
+import general.Section;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
-import p4_LineFollower.FollowLine;
-import p4_LineFollower.SearchLine;
-import lejos.nxt.Button;
-import lejos.robotics.subsumption.Behavior;
 
-public class P5 {
-
-	public static void main(String[] args) {
+public class P5 implements Section {
 	
-	Behavior drive = new DriveForward(1);
-	Behavior turn = new TurnAround();
-	Behavior turnIt = new TurnIt();
+	private SirDanielArbitrator arby;
+	private boolean afterLine = false;
 
-	Behavior [] b = {turnIt};
-	SirDanielArbitrator arby = new SirDanielArbitrator(b);
-
-	Thread t = new Thread(arby);
-	Button.waitForAnyPress();
-
-	//SuperMotor.calibrate();
-	//SuperMotor.turnTo(90, false);
-	t.start();
-	
+	@Override
+	public void start() {
+		
+		SuperMotor.turnTo(0, false);
+		
+		Behavior turntable = new P5_Turntable();
+		Behavior [] b = {turntable};
+		
+		arby = new SirDanielArbitrator(b, true);
+		
+		Thread t = new Thread(arby);
+		
+		System.out.println("Race started");
+		t.start();
 	}
 
+	@Override
+	public void stop() {
+		arby.stop();
+	}
+	
+	public void setAfterLine(boolean value) {
+		afterLine = value;
+	}
+	
+	public boolean getAfterLine() {
+		return afterLine;
+	}
+	
 }
+

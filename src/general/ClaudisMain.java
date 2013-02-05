@@ -30,4 +30,11 @@ public class ClaudisMain {
 		case 13: stateMachine.setState(State.race); break;
 		}
 	}
+	
+	public static void restart() {
+		Movement movement = Movement.getInstance();
+		movement.stop();
+		Button.waitForAnyPress();
+		searchBarcode();
+	}
 }

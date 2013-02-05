@@ -71,7 +71,7 @@ public class LineCounting implements Behavior {
 		while (! suppressed) {
 			currentValue = light.getNormalizedLightValue();
 			currentTimestamp = SensorCache.getInstance().timestamp;
-			if (rising) {
+			if (rising && !suppressed) {
 				if (currentValue >= max) {
 					max = currentValue;
 				} else {
@@ -79,7 +79,7 @@ public class LineCounting implements Behavior {
 					min = max;
 				}			
 			} else {
-				if (currentValue <= min) {
+				if (currentValue <= min && !suppressed) {
 					min = currentValue;
 				} else {
 					rising = true;
@@ -91,7 +91,7 @@ public class LineCounting implements Behavior {
 				}
 			}
 			
-			if (currentTimestamp - lastTimestamp > TIME_FOR_SUFFIX) {
+			if (!suppressed && currentTimestamp - lastTimestamp > TIME_FOR_SUFFIX) {
 				finalLineCount = tempLineCount;
 				tempLineCount = 0;
 				suppress();

@@ -3,6 +3,7 @@ import lejos.nxt.LCD;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
+import general.Calibration;
 import general.Movement;
 import general.SensorCache;
 
@@ -28,7 +29,7 @@ public class P1_TurnRight implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (sonic.getDistance() > (shouldBe + minimumDifference) && !SensorCache.getInstance().bumperPressed);
+		return (sonic.getDistance() > (shouldBe + minimumDifference) && !SensorCache.getInstance().bumperPressed && Calibration.labyrinth);
 	}
 	
 	public void action() {

@@ -7,14 +7,15 @@ public class ClaudisMain {
 	static StateMachine stateMachine = new StateMachine();
 	static BarcodeReader barcodeReader = new BarcodeReader();
 	static int lineCount;
+	static Movement movement = Movement.getInstance();
 	
 	public static void main(String[] args) {
 		Button.waitForAnyPress();
-		searchBarcode();
-		
+		searchBarcode();		
 	}
 	
 	public static void searchBarcode() {
+		movement.travel(-20);
 		lineCount = barcodeReader.run();
 		switch (lineCount) {
 		case 3: stateMachine.setState(State.gate); break;
@@ -29,5 +30,11 @@ public class ClaudisMain {
 		case 12: stateMachine.setState(State.slider); break;
 		case 13: stateMachine.setState(State.race); break;
 		}
+	}
+	
+	public static void restart() {
+		movement.stop();
+		Button.waitForAnyPress();
+		searchBarcode();
 	}
 }

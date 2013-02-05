@@ -8,14 +8,18 @@ import general.LineCounting;
 import general.Movement;
 import general.Settings;
 import general.SirDanielArbitrator;
+import general.SuperMotor;
 
-public class P1 implements Behavior {
-		
-	static Thread t;
+public class P1 {
 	
-   public static void main(String [] args) {
-	   
+	SirDanielArbitrator arby;
+	
+   public void start() {
+	   System.out.println("Labyrinth started.");
 	    UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
+	    
+	    SuperMotor.turnTo(180, false);
+	    
 		int speed = 1;
 		int rotationSpeed = 1;
 		int min_dist = 10;
@@ -31,28 +35,16 @@ public class P1 implements Behavior {
 		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);
 		Behavior read = new LineCounting();
 		Behavior [] b = {forward,correct, turnRight, turnLeft, read};
-		SirDanielArbitrator arby = new SirDanielArbitrator(b,true);
-		t =  new Thread(arby);
-
-		
+		arby = new SirDanielArbitrator(b,true);
+		Thread t =  new Thread(arby);
+		t.start();
 	}
+   
+   public void stop() {
+	   System.out.println("Labyrinth stopped.");
+	   arby.stop();
+   }
 
-@Override
-public boolean takeControl() {
-	// TODO Auto-generated method stub
-	return true;
-}
-
-@Override
-public void action() {
-	LCD.drawString("I'm going to labyrinth", 0, 5);
-	t.start();
-}
-
-@Override
-public void suppress() {
-//	Settings.labyrinth = false;
-}
 
 
 }

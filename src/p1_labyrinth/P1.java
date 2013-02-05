@@ -18,7 +18,7 @@ public class P1 {
 	   System.out.println("Labyrinth started.");
 	    UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 	    
-	    SuperMotor.turnTo(180, false);
+	    SuperMotor.turnTo(0, false);
 	    
 		int speed = 1;
 		int rotationSpeed = 1;

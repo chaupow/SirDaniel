@@ -29,12 +29,10 @@ public class P2_AvoidAbyss implements Behavior {
      Movement.getInstance().turn_right(5);
      Calibration.NumberOfTurns++;
      
-     if(Calibration.NumberOfTurns > 7) {
+     if(Calibration.NumberOfTurns > 15) {
     	 //TODO richtige Distanz!
     	// Movement.getInstance().travel(300);
     	Movement.getInstance().turn_left(75);
-    	Calibration.bridge = false;
-
      }
    }
 }

@@ -23,20 +23,21 @@ public class P8_Lost implements Behavior {
 		}
 		
 		public boolean takeControl() {
-			return (SensorCache.getInstance().normalizedLightValue < threshold && P8_Config.numberOfSearches == 1);
+			return (SensorCache.getInstance().normalizedLightValue < threshold && P8_Config.numberOfSearches == 1 && !P8_Config.lost);
 		}
 		
 		public void action() {
 			suppressed = false;
 			int i = 0;
-			movement.stop();
 			SuperMotor.turnTo(90, true);
 			LCD.clear();
 			LCD.drawString("Lost", 0, 3);
-//			P8_Config.lost = true;
-			while (!suppressed && SensorCache.getInstance().normalizedLightValue < threshold) {
-				movement.travel(-10, true);
-			}
+			movement.travel(50);
+			
+			P8_Config.lost = true;
+//			while (!suppressed && SensorCache.getInstance().normalizedLightValue < threshold) {
+//				movement.travel(-10, true);
+//			}
 
 			
 			

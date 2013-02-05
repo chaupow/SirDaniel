@@ -14,15 +14,16 @@ public class P8_FindEnd implements Behavior {
 	Movement movement = Movement.getInstance();
 	
 	public boolean takeControl() {
-		return (SensorCache.getInstance().normalizedLightValue >= threshold && P8_Config.numberOfSearches == 1);
+		return (SensorCache.getInstance().normalizedLightValue < threshold && P8_Config.numberOfSearches == 2);
 	}
 	
 	public void action() {
 		suppressed = false;
+		movement.travel(30);
 		LCD.drawString("Ende", 0, 5);
-		while (!suppressed && SensorCache.getInstance().normalizedLightValue >= threshold) {
-			movement.travel(10, true);
-		}
+//		while (!suppressed && SensorCache.getInstance().normalizedLightValue >= threshold) {
+//			movement.travel(10, true);
+//		}
 		//TODO Ende Variable setzen!
 	}
 	

@@ -1,12 +1,8 @@
 package p1_labyrinth;
-import p6_slider.P6_Correct;
 import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
-import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
-import general.Calibration;
-import general.DriveForward;
 import general.LineCounting;
 import general.Movement;
 import general.SirDanielArbitrator;
@@ -25,7 +21,7 @@ public class P1 {
 		
 		//Calibration.labyrinth = true;
 		
-		Behavior forward = new P1_DriveForward(1);
+		Behavior forward = new P1_DriveForward(200);
 		Behavior correct = new P1_Correct(sonic, min_dist);
 		Behavior turnRight = new P1_TurnRight(sonic, speed, rotationSpeed, shouldBe, minimumDifference);
 		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);

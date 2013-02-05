@@ -1,20 +1,12 @@
 package p6_slider;
 
-import lejos.nxt.LCD;
-import lejos.nxt.Motor;
-import lejos.nxt.MotorPort;
-import lejos.nxt.NXTMotor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
-import general.Calibration;
 import general.Movement;
 import general.SensorCache;
+import general.Settings;
 
 public class P6_PushButton implements Behavior {
 	
-	private NXTMotor motorA = new NXTMotor(MotorPort.A);
-	private NXTMotor motorB = new NXTMotor(MotorPort.B);
-
 	// set the interval. 
 	
 	// make sure he doesn't stall at the beginning
@@ -26,7 +18,7 @@ public class P6_PushButton implements Behavior {
 	public boolean takeControl() {
 		back = SensorCache.getInstance().backPressed;
 		front = SensorCache.getInstance().bumperPressed;
-		return ((front || back) && Calibration.slider && SensorCache.getInstance().normalizedLightValue < 250);
+		return ((front || back) && Settings.slider && SensorCache.getInstance().normalizedLightValue < 250);
 		
 			}
 
@@ -37,13 +29,12 @@ public class P6_PushButton implements Behavior {
 			
 			if (!back){
 				Movement.getInstance().turn_left(90);
-				Calibration.NumberOfTurns++;
+				Config.NumberOfTurns++;
 			}
 		} else {
-			if (Calibration.NumberOfTurns >= 2) {
+			if (Config.NumberOfTurns >= 2) {
 				general.Movement.getInstance().setTravelSpeed(300);
 				//TODO reicht das so, auch wenn man am Schieber haegen bleibt?
-				Calibration.slider = false;
 				Movement.getInstance().travel(2000, true);
 	
 			}

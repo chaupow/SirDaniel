@@ -2,13 +2,14 @@ package p5_turntable;
 
 import general.Movement;
 import general.SensorCache;
+import general.Settings;
 import lejos.robotics.subsumption.Behavior;
 
 public class TurnAround implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return SensorCache.getInstance().bumperPressed && !Config.hasTurned;
+		return SensorCache.getInstance().bumperPressed && !Config.hasTurned && Settings.turntable;
 	}
 
 	@Override

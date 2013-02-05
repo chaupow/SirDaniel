@@ -1,8 +1,6 @@
 package p2_Bridge;
-import general.Calibration;
 import general.SirDanielArbitrator;
 import lejos.nxt.Button;
-import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
 public class P2 {

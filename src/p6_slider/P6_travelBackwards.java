@@ -1,7 +1,7 @@
 package p6_slider;
 
-import general.Calibration;
 import general.Movement;
+import general.Settings;
 import lejos.robotics.subsumption.Behavior;
 
 public class P6_travelBackwards implements Behavior {
@@ -11,7 +11,7 @@ public class P6_travelBackwards implements Behavior {
 	@Override
 	public boolean takeControl() {
 		// TODO Auto-generated method stub
-		return (Calibration.slider && Calibration.NumberOfTurns == 2);
+		return (Settings.slider && Config.NumberOfTurns == 2);
 	}
 
 	@Override

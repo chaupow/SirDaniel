@@ -1,6 +1,6 @@
 package general;
 
-public abstract class Section {
+public interface Section {
 	
 	abstract void start();
 	

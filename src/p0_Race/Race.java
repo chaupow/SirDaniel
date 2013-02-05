@@ -3,9 +3,10 @@ package p0_Race;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
+import general.Section;
 import general.SirDanielArbitrator;
 
-public class Race {
+public class Race implements Section {
 	
 	private SirDanielArbitrator arby;
 	

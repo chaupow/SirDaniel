@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 import lejos.nxt.LCD;
+import lejos.util.Delay;
 import general.Movement;
 import general.SensorCache;
 import general.SuperMotor;
@@ -94,9 +95,16 @@ public class Settings {
 	public static void calibrateLight(){
 		int[] lightValues = new int[LIGHT_CALIBRATION_SAMPLES];
 		
+		Movement.getInstance().setTravelSpeed(50);
+		Movement.getInstance().forward();
+		
 		for (int i = 0; i < LIGHT_CALIBRATION_SAMPLES; i++) {
 			lightValues[i] = SensorCache.getInstance().light.getNormalizedLightValue();
+			Delay.msDelay(10);
 		}
+		
+		Movement.getInstance().stop();
+		
 		
 		
 		Arrays.sort(lightValues);

@@ -21,6 +21,7 @@ public class DriveForward  implements Behavior {
 
    public void action() {
      suppressed = false;
+     movement.setSpeed(speed);
      movement.forward();
      while( !suppressed ) {
     	 Thread.yield();

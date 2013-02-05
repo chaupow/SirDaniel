@@ -21,16 +21,21 @@ import general.SuperMotor;
 public class P8_Line {
 	   public static void main(String [] args) {
 		    
-			
+			UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 			
 			Behavior findLine = new P8_FindLine();
 			Behavior foundLine = new P8_FoundLine();
+			Behavior lost = new P8_Lost();
+			Behavior findEnd = new P8_FindEnd();
+			Behavior avoidObstacle = new P8_AvoidObstacle(sonic);
 			
-			Behavior [] b = {foundLine, findLine};
+			Behavior [] b = {foundLine, findLine, findEnd, lost, avoidObstacle};
 //			Arbitrator arby = new Arbitrator(b, true);
 			SirDanielArbitrator arby = new SirDanielArbitrator(b,true);
 			
 			Movement.getInstance().setTravelSpeed(360);
+//			P8_Config.lost = false;
+			P8_Config.numberOfSearches = 0;
 			Thread t = new Thread(arby);			
 			Button.waitForAnyPress();
 			SuperMotor.setSpeed(380);
@@ -38,6 +43,8 @@ public class P8_Line {
 			SuperMotor.turnTo(90, false);
 			t.start();
 //			arby.start();
+			LCD.drawString("rausgesprungen", 0, 0);
+			Button.waitForAnyPress();
 			
 	   }
 

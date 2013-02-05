@@ -12,6 +12,10 @@ public class P0_Correct implements Behavior{
 	int min_dist = 0;
 	int dist = 0;
 	
+	public P0_Correct (UltrasonicSensor sonic, int min_dist) {
+		this.sonic = sonic;
+		this.min_dist = min_dist;
+	}
 	public boolean takeControl() {
 		
 		dist = sonic.getDistance() - min_dist;

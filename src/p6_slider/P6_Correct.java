@@ -21,7 +21,7 @@ public class P6_Correct implements Behavior {
 	
 	@Override
 	public boolean takeControl() {
-		return (angle != 0 && Settings.slider);
+		return (angle != 0 );
 	}
 
 	@Override

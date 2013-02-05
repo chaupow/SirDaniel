@@ -3,6 +3,7 @@ package p8_Line;
 public class P8_Config {
 	public static int lightThreshold = 400;
 	public static boolean leftTurn = true;
+	public static boolean lost = false;
 	
 	
 	

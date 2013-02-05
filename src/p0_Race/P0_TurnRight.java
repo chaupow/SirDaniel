@@ -29,7 +29,7 @@ public class P0_TurnRight implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (sonic.getDistance() > (shouldBe + minimumDifference) && !SensorCache.getInstance().bumperPressed && Settings.race);
+		return (sonic.getDistance() > (shouldBe + minimumDifference) && !SensorCache.getInstance().bumperPressed);
 	}
 	
 	public void action() {

@@ -9,7 +9,7 @@ public class TurnAround implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return SensorCache.getInstance().bumperPressed && !Config.hasTurned && Settings.turntable;
+		return SensorCache.getInstance().bumperPressed && !Config.hasTurned;
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class P6_PushButton implements Behavior {
 	public boolean takeControl() {
 		back = SensorCache.getInstance().backPressed;
 		front = SensorCache.getInstance().bumperPressed;
-		return ((front || back) && Settings.slider && SensorCache.getInstance().normalizedLightValue < 250);
+		return ((front || back) && SensorCache.getInstance().normalizedLightValue < 250);
 		
 			}
 

@@ -16,7 +16,7 @@ public class TurnIt implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return Settings.turntable;
+		return true;
 		//return Config.hasTurned && !Config.hasAdjusted;
 	}
 

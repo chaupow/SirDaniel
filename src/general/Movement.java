@@ -5,6 +5,7 @@ import lejos.robotics.navigation.DifferentialPilot;
 public final class Movement extends DifferentialPilot{
 	
 	private static Movement instance = null;
+	
 
 	public static Movement getInstance() {
 		if(instance == null) {
@@ -19,10 +20,11 @@ public final class Movement extends DifferentialPilot{
 	}
 	
 	final static float speedup = 1.66f; // = 40 / 24
-	final static float wheelRadius = 19; // in millimeters 
+	final static float wheelRadius = 17.5f; // in millimeters 
 	final static float robotRadius = 72; // in millimeters
 	final static float empiric = 1.27f;
 	final static float measuredSpeedAt3 = 0.29f;
+//	final static float wheelDiameter = 34;
 	static int degrees;
 	
 	// speed has a range of 1(slow) to 6(fast)
@@ -95,7 +97,12 @@ public final class Movement extends DifferentialPilot{
 	
 	// return value in m/s
 	public float getVelocity() {
-		return measuredSpeedAt3;
+		if (getTravelSpeed() < 360) {
+			return 0.28f;
+		} else {
+			return 0.42f;
+		}
+		
 	}
 	
 //	public void stop() {

@@ -23,7 +23,7 @@ public class P1_Correct implements Behavior {
 		
 		dist = sonic.getDistance() - min_dist;
 
-		return (Settings.labyrinth && dist != 0);
+		return (dist != 0);
 	}
 
 	@Override

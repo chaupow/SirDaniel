@@ -25,7 +25,7 @@ public class P2 {
 	   // constant values
 	   Behavior driveLeft = new P2_DriveLeft();
 	   Behavior avoidAbyss = new P2_AvoidAbyss();
-	   Behavior endOfBridge = new P2_EndOfBridge();
+	   Behavior endOfBridge = new P2_EndBridge();
 	   
 	   Behavior [] b = {driveLeft, avoidAbyss, endOfBridge};
 	   arby = new SirDanielArbitrator(b, true);

@@ -2,6 +2,7 @@ package general;
 
 import general.Settings.State;
 import lejos.nxt.Button;
+import lejos.util.Delay;
 
 public class ClaudisMain {
 	static StateMachine stateMachine = new StateMachine();
@@ -19,6 +20,7 @@ public class ClaudisMain {
 		movement.travel(-20);
 		lineCount = barcodeReader.run();
 		System.out.println("Barcode gelesen");
+		Delay.msDelay(1000);
 		switch (lineCount) {
 		case 3: stateMachine.setState(State.gate); break;
 		case 4: stateMachine.setState(State.swamp); break;

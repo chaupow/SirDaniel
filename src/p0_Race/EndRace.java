@@ -6,7 +6,6 @@ import lejos.robotics.subsumption.Behavior;
 
 public class EndRace implements Behavior {
 	
-	private boolean suppressed = false;
 
 	@Override
 	public boolean takeControl() {
@@ -22,7 +21,6 @@ public class EndRace implements Behavior {
 
 	@Override
 	public void suppress() {
-		suppressed = true;
 		
 	}
 

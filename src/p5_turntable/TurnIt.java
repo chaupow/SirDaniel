@@ -2,19 +2,21 @@ package p5_turntable;
 
 import bluetooth.TurnControl;
 import general.SensorCache;
+import lejos.nxt.Button;
 import lejos.robotics.subsumption.Behavior;
 
 public class TurnIt implements Behavior {
 	
 	// ideally this is a divisor of 120;
-	public final int STEPS = 20;
-	public final int turnAngle = 120/STEPS;
+	public final int STEPS = 15;
+	public final int turnAngle = 115/STEPS;
 	
 	TurnControl turntableControl = new TurnControl();
 
 	@Override
 	public boolean takeControl() {
-		return Config.hasTurned && !Config.hasAdjusted;
+		return true;
+		//return Config.hasTurned && !Config.hasAdjusted;
 	}
 
 	@Override
@@ -24,6 +26,7 @@ public class TurnIt implements Behavior {
 		for (int i = 0; i < STEPS; i++) {
 			turntableControl.turnClockwise(turnAngle);
 		}
+		Button.waitForAnyPress();
 		turntableControl.disconnectFromTurntable();
 		
 		Config.hasAdjusted = true;

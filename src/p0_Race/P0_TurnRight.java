@@ -1,11 +1,11 @@
 package p0_Race;
+
 import lejos.nxt.LCD;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import general.Movement;
 import general.SensorCache;
-import general.Settings;
 
 
 public class P0_TurnRight implements Behavior {

@@ -1,5 +1,5 @@
 package p0_Race;
 
-public final class Constants {
-	static boolean alreadyStopped;
+public class Constants {
+	public static boolean alreadyStopped;
 }

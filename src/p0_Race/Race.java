@@ -9,20 +9,20 @@ import general.SirDanielArbitrator;
 public class Race implements Section {
 	
 	private SirDanielArbitrator arby;
+	private UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S4);
+	
+	private static final int SPEED = 1;
+	private static final int ROTATION_SPEED = 1;
+	private static final int MINIMUM_DISTANCE = 10;
+	private static final int TARGET_DISTANCE = 10;
+	private static final int CURVE_DIFFERENCE = 30;
 	
 	public void start() {
 		
-		UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S4);
-		int speed = 1;
-		int rotationSpeed = 1;
-		int min_dist = 10;
-		int shouldBe = 10;
-		int minimumDifference = 30;
-		
 		Behavior forward = new P0_DriveForward(200);
-		Behavior correct = new P0_Correct(sonar, min_dist);
-		Behavior turnRight = new P0_TurnRight(sonar, speed, rotationSpeed, shouldBe, minimumDifference);
-		Behavior turnLeft = new P0_TurnLeft(speed, rotationSpeed);
+		Behavior correct = new P0_Correct(sonar, MINIMUM_DISTANCE);
+		Behavior turnRight = new P0_TurnRight(sonar, SPEED, ROTATION_SPEED, TARGET_DISTANCE, CURVE_DIFFERENCE);
+		Behavior turnLeft = new P0_TurnLeft(SPEED, ROTATION_SPEED);
 		Behavior avoidObstacle = new AvoidObstacle();
 		Behavior [] b = {forward, correct, turnRight, turnLeft, avoidObstacle};
 		

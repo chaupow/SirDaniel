@@ -103,8 +103,6 @@ public class Settings {
 		
 		Movement.getInstance().stop();
 		
-		
-		
 		Arrays.sort(lightValues);
 			
 		int lowAvg = getAverage(50,100,lightValues);

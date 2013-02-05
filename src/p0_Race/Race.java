@@ -68,7 +68,8 @@ public class Race implements Behavior {
 @Override
 public boolean takeControl() {
 	// TODO Auto-generated method stub
-	return Settings.race;
+//	return Settings.race;
+	return true;
 }
 
 @Override

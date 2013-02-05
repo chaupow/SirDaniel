@@ -5,6 +5,7 @@ import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import general.LineCounting;
 import general.Movement;
+import general.Settings;
 import general.SirDanielArbitrator;
 
 public class P1 {
@@ -20,6 +21,7 @@ public class P1 {
 		int minimumDifference = 30;
 		
 		//Calibration.labyrinth = true;
+//		Settings.labyrinth = true;
 		
 		Behavior forward = new P1_DriveForward(200);
 		Behavior correct = new P1_Correct(sonic, min_dist);

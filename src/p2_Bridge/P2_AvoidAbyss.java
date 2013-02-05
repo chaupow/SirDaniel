@@ -5,6 +5,7 @@ import lejos.util.Delay;
 import general.Calibration;
 import general.Movement;
 import general.SensorCache;
+import general.Settings;
 
 public class P2_AvoidAbyss implements Behavior {
    private boolean suppressed = false;
@@ -14,7 +15,7 @@ public class P2_AvoidAbyss implements Behavior {
 	   
 	   LCD.drawString("LV: " + SensorCache.getInstance().normalizedLightValue , 0, 3);
 	   
-      return (SensorCache.getInstance().normalizedLightValue < 300  && Calibration.bridge);
+      return (SensorCache.getInstance().normalizedLightValue < 300  && Settings.bridge && Calibration.bridge);
    }
 
    public void suppress() {
@@ -25,7 +26,6 @@ public class P2_AvoidAbyss implements Behavior {
      suppressed = false;
      
      LCD.drawString("avoiding", 0, 0);
-     LCD.drawString("i: " + Calibration.NumberOfTurns, 0, 4);
      Movement.getInstance().turn_right(5);
      Calibration.NumberOfTurns++;
      

@@ -1,7 +1,7 @@
 package p1_labyrinth;
 
-import general.Calibration;
 import general.Movement;
+import general.Settings;
 import lejos.nxt.LCD;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -23,7 +23,7 @@ public class P1_Correct implements Behavior {
 		
 		dist = sonic.getDistance() - min_dist;
 
-		return (Calibration.labyrinth && dist != 0);
+		return (Settings.labyrinth && dist != 0);
 	}
 
 	@Override

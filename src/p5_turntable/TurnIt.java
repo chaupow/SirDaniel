@@ -2,6 +2,7 @@ package p5_turntable;
 
 import bluetooth.TurnControl;
 import general.SensorCache;
+import general.Settings;
 import lejos.nxt.Button;
 import lejos.robotics.subsumption.Behavior;
 
@@ -15,7 +16,7 @@ public class TurnIt implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return true;
+		return Settings.turntable;
 		//return Config.hasTurned && !Config.hasAdjusted;
 	}
 

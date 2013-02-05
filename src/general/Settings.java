@@ -1,10 +1,8 @@
+package general;
 import java.util.Arrays;
 
 import lejos.nxt.LCD;
 import lejos.util.Delay;
-import general.Movement;
-import general.SensorCache;
-import general.SuperMotor;
 
 
 public class Settings {

@@ -14,6 +14,8 @@ public class Settings {
 	//initRace, ...
 	//reset
 	public enum State {race, bridge, labyrinth, swamp, gate, turntable, slider, line, rocker, colorGate, boss};
+	public static int LIGHT_THRESHOLD = 450;
+	
 	
 //	/**Flag race**/
 //	public static boolean race = false;

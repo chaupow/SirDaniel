@@ -15,7 +15,7 @@ public class P0_DriveForward implements Behavior {
 	   }
 	   
 	   public boolean takeControl() {
-	      return Calibration.race;
+	      return true;
 	   }
 
 	   public void suppress() {

@@ -33,8 +33,7 @@ public class P1 {
 		Behavior correct = new P1_Correct(sonic, min_dist);
 		Behavior turnRight = new P1_TurnRight(sonic, speed, rotationSpeed, shouldBe, minimumDifference);
 		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);
-		Behavior read = new LineCounting();
-		Behavior [] b = {forward,correct, turnRight, turnLeft, read};
+		Behavior [] b = {forward,correct, turnRight, turnLeft};
 		arby = new SirDanielArbitrator(b,true);
 		Thread t =  new Thread(arby);
 		t.start();

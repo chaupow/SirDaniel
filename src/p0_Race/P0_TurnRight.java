@@ -34,14 +34,11 @@ public class P0_TurnRight implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		//movement.setSpeed(speed);
 		movement.setTravelSpeed(100);
 		movement.setRotationSpeed(rotationSpeed);
 
 		LCD.drawString("steering" , 1, 1);
 		movement.arcForward(-60);
-		
-				
 		
 	}
 	

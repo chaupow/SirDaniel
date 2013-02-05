@@ -111,7 +111,7 @@ public class Settings {
 		int highAvg = getAverage(400,450,lightValues);
 		SensorCache.getInstance().light.setHigh(highAvg);
 			
-		LCD.drawString("Light: "+ lowAvg + " " + highAvg, 0, 0);
+		System.out.println("Light: "+ lowAvg + " " + highAvg);
 		
 	}
 	

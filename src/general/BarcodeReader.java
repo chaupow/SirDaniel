@@ -59,6 +59,9 @@ public class BarcodeReader implements Runnable {
 	private void startBehavior(int number) {
 		// TODO do cool stuff here
 		System.out.println("Called Behavior: " + number);
+		general.Settings.initRace();
+		general.Settings.race = true;
+		
 	}
 
 }

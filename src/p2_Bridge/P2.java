@@ -5,6 +5,7 @@ import general.SirDanielArbitrator;
 import lejos.nxt.Button;
 import lejos.robotics.subsumption.Behavior;
 
+
 public class P2 {
 	
 	SirDanielArbitrator arby;
@@ -30,6 +31,7 @@ public class P2 {
 	public void stop() {
 		arby.stop();
 	}
+
 
 
 }

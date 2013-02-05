@@ -91,6 +91,22 @@ public class Settings {
 //	public static void initBoss(){
 //		SuperMotor.turnTo(0, false);
 //	}
+//
+//	
+//	public static void reset() {
+//		race = false;
+//		bridge = false;
+//		labyrinth = false;
+//		swamp = false;
+//		bluetooth = false;
+//		turntable = false;
+//		slider = false;
+//		rocker = false;
+//		plank_bridge = false;
+//		linefollow = false;
+//		colors = false;
+//		boss = false;
+//	}
 	
 	public static void calibrateLight(){
 		int[] lightValues = new int[LIGHT_CALIBRATION_SAMPLES];

@@ -12,7 +12,7 @@ public class P1_DriveForward  implements Behavior {
    }
    
    public boolean takeControl() {
-      return (Settings.labyrinth);
+      return (true);
    }
 
    public void suppress() {

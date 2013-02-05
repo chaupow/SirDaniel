@@ -25,7 +25,7 @@ public class p7_rocker implements Behavior{
 	public boolean takeControl(){
 		
 		//TODO barcode als takeControl
-		return Settings.rocker;
+//		return Settings.rocker;
 	}
 	
 	public void suppress(){

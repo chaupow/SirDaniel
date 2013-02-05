@@ -11,7 +11,7 @@ public class P6_travelBackwards implements Behavior {
 	@Override
 	public boolean takeControl() {
 		// TODO Auto-generated method stub
-		return (Settings.slider && Config.NumberOfTurns == 2);
+		return (Config.NumberOfTurns == 2);
 	}
 
 	@Override

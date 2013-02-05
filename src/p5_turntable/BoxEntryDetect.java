@@ -16,7 +16,7 @@ public class BoxEntryDetect implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		return (p4_LineFollower.Config.numberOfSearches == trigger && SensorCache.getInstance().normalizedLightValue < p4_LineFollower.Config.lightThreshold && Settings.turntable);
+		return (p4_LineFollower.Config.numberOfSearches == trigger && SensorCache.getInstance().normalizedLightValue < p4_LineFollower.Config.lightThreshold);
 	}
 
 	@Override

@@ -12,8 +12,9 @@ public class P2_DriveLeft implements Behavior {
    Movement movement = Movement.getInstance();
    
    public boolean takeControl() {
-	   //TODO return SensorCache.getInstance().NormalizedLightValue > 300;
-      return (Settings.bridge);
+//	   return SensorCache.getInstance().normalizedLightValue > 300;
+//      return (Settings.bridge);
+	   return true;
    }
 
    public void suppress() {
@@ -27,7 +28,7 @@ public class P2_DriveLeft implements Behavior {
 
 	   suppressed = false;
 	   LCD.drawString("driving", 0, 0);
-	   movement.arc(500, 360, true);
+	   movement.arc(450, 360, true);
      
 	   while(!suppressed){
 		   Thread.yield();

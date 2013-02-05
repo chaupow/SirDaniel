@@ -12,7 +12,7 @@ public class DriveInBox implements Behavior{
 
 	@Override
 	public boolean takeControl() {
-		return (p4_LineFollower.Config.random && Settings.turntable);
+		return (p4_LineFollower.Config.random);
 	}
 
 	@Override

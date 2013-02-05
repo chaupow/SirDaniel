@@ -1,5 +1,6 @@
 package p1_labyrinth;
 import lejos.nxt.Button;
+import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -8,8 +9,9 @@ import general.Movement;
 import general.Settings;
 import general.SirDanielArbitrator;
 
-public class P1 {
+public class P1 implements Behavior {
 		
+	static Thread t;
 	
    public static void main(String [] args) {
 	   
@@ -30,13 +32,27 @@ public class P1 {
 		Behavior read = new LineCounting();
 		Behavior [] b = {forward,correct, turnRight, turnLeft, read};
 		SirDanielArbitrator arby = new SirDanielArbitrator(b,true);
+		t =  new Thread(arby);
+
 		
-		Movement.getInstance().setTravelSpeed(180);
-		Thread t = new Thread(arby);
-		Button.waitForAnyPress();
-		t.start();
-		
-   }
+	}
+
+@Override
+public boolean takeControl() {
+	// TODO Auto-generated method stub
+	return true;
+}
+
+@Override
+public void action() {
+	LCD.drawString("I'm going to labyrinth", 0, 5);
+	t.start();
+}
+
+@Override
+public void suppress() {
+//	Settings.labyrinth = false;
+}
 
 
 }

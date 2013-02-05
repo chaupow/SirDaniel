@@ -20,34 +20,43 @@ import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import lejos.util.Delay;
 
-public class SuperMotorTest {
+public class SMTest {
 
-	static UltrasonicSensor sonic;
-	static int min_dist = 10;
-
-
+	
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+		UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 		
-		Behavior follow = new FollowLine();
-		Behavior search = new SearchLine();
-		//Behavior calibrate = new LightCalibration();
-		Behavior lineCount = new LineCounting();
+		Behavior b1 = new p0_Race.Race(sonic);
+		Behavior labyrinth = new p1_labyrinth.P1(sonic);
+		Behavior b2 = new DriveForward(2);
+		Behavior [] b = {b2,labyrinth,b1};
 		
-		Movement.getInstance().setTravelSpeed(70);
-		
-		Behavior [] b = {lineCount,search, follow};
 		SirDanielArbitrator arby = new SirDanielArbitrator(b);
+		BarcodeReader barcodes = new BarcodeReader();
 		
-		//Thread t = new Thread(arby);
 		Button.waitForAnyPress();
-		//t.start();
-		arby.run();
-	
-	}
+		SuperMotor.calibrate();
+
+		Settings.calibrateLight();
+		
+		SuperMotor.turnTo(90, false);
+		
+		Button.waitForAnyPress();
+
+		Thread barcode = new Thread(barcodes);
+		barcode.start();
+		
+		Thread t = new Thread(arby);
+		t.start();
+		
+		
+		
+		}
 	
 	
 

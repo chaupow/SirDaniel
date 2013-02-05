@@ -27,8 +27,7 @@ public class SensorCache {
 	public TouchSensor back = new TouchSensor(SensorPort.S1);
 	public LightSensor light = new LightSensor(SensorPort.S4);
 	
-	private int LightValueLightOn;
-	private int LightValueLightOff;
+	
 	public int normalizedLightValue;
 	public boolean bumperPressed;
 	public boolean backPressed;

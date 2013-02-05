@@ -2,11 +2,8 @@ package p8_Line;
 import general.Movement;
 import general.SensorCache;
 import general.SuperMotor;
-import p4_LineFollower.Config;
 import lejos.nxt.LCD;
-import lejos.nxt.Motor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
 public class P8_Lost implements Behavior {
 	
@@ -28,7 +25,7 @@ public class P8_Lost implements Behavior {
 		
 		public void action() {
 			suppressed = false;
-			int i = 0;
+			//int i = 0;
 			SuperMotor.turnTo(90, true);
 			LCD.clear();
 			LCD.drawString("Lost", 0, 3);

@@ -1,35 +1,51 @@
 package p8_Line;
 
-import p6_slider.P6_Correct;
-import lejos.nxt.Button;
-import lejos.nxt.LCD;
-import lejos.nxt.LightSensor;
-import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
-import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
-import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
-import general.Calibration;
-import general.DriveForward;
-import general.Movement;
-import general.SensorCache;
+import general.Section;
 import general.SirDanielArbitrator;
-import general.SuperMotor;
 
-public class P8_Line {
-	   public static void main(String [] args) {
+public class P8_Line implements Section {
+	
+	private SirDanielArbitrator arby;
+	private UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
+	
+	@Override
+	public void start() {
+		
+		Behavior findLine = new P8_FindLine();
+		Behavior foundLine = new P8_FoundLine();
+		Behavior lost = new P8_Lost();
+		Behavior findEnd = new P8_FindEnd();
+		Behavior avoidObstacle = new P8_AvoidObstacle(sonic);
+		
+		Behavior [] b = {foundLine, findLine, findEnd, lost, avoidObstacle};
+		
+		arby = new SirDanielArbitrator(b, true);
+		
+		Thread t = new Thread(arby);
+		
+		System.out.println("Line started");
+		t.start();
+	}
+
+	@Override
+	public void stop() {
+		arby.stop();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	   /*public static void main(String [] args) {
 		    
 			UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 			
-			Behavior findLine = new P8_FindLine();
-			Behavior foundLine = new P8_FoundLine();
-			Behavior lost = new P8_Lost();
-			Behavior findEnd = new P8_FindEnd();
-			Behavior avoidObstacle = new P8_AvoidObstacle(sonic);
-			
-			Behavior [] b = {foundLine, findLine, findEnd, lost, avoidObstacle};
 //			Arbitrator arby = new Arbitrator(b, true);
 			SirDanielArbitrator arby = new SirDanielArbitrator(b,true);
 			
@@ -48,6 +64,7 @@ public class P8_Line {
 			
 	   }
 
+*/
 
 
 }

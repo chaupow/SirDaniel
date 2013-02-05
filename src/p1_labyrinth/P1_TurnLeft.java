@@ -1,9 +1,9 @@
 package p1_labyrinth;
-import lejos.nxt.TouchSensor;
 import lejos.robotics.subsumption.Behavior;
 import general.Calibration;
 import general.Movement;
 import general.SensorCache;
+import general.Settings;
 
 
 public class P1_TurnLeft implements Behavior {
@@ -17,7 +17,7 @@ public class P1_TurnLeft implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (SensorCache.getInstance().bumperPressed && SensorCache.getInstance().normalizedLightValue < Calibration.THRESHOLD);
+		return (Settings.labyrinth && SensorCache.getInstance().bumperPressed && SensorCache.getInstance().normalizedLightValue < Calibration.THRESHOLD);
 	}
 	
 	public void action() {

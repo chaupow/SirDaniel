@@ -1,18 +1,18 @@
-package general;
+package p1_labyrinth;
+import general.Movement;
+import general.Settings;
 import lejos.robotics.subsumption.*;
 
-public class DriveForward  implements Behavior {
+public class P1_DriveForward  implements Behavior {
    private boolean suppressed = false;
-   private int speed;
 	Movement movement = Movement.getInstance();
    
-   public DriveForward(int speed){
-	   this.speed = speed;
-	   
+   public P1_DriveForward(double speed){
+	   Movement.getInstance().setTravelSpeed(speed);
    }
    
    public boolean takeControl() {
-      return true;
+      return (Settings.labyrinth);
    }
 
    public void suppress() {
@@ -21,7 +21,6 @@ public class DriveForward  implements Behavior {
 
    public void action() {
      suppressed = false;
-     movement.setSpeed(speed);
      movement.forward();
      while( !suppressed ) {
     	 Thread.yield();

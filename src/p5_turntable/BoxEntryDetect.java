@@ -1,6 +1,7 @@
 package p5_turntable;
 
 import general.SensorCache;
+import general.Settings;
 import general.SuperMotor;
 import lejos.robotics.subsumption.Behavior;
 
@@ -15,7 +16,7 @@ public class BoxEntryDetect implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		return p4_LineFollower.Config.numberOfSearches == trigger && SensorCache.getInstance().normalizedLightValue < p4_LineFollower.Config.lightThreshold;
+		return (p4_LineFollower.Config.numberOfSearches == trigger && SensorCache.getInstance().normalizedLightValue < p4_LineFollower.Config.lightThreshold && Settings.turntable);
 	}
 
 	@Override

@@ -6,39 +6,46 @@ import lejos.util.Delay;
 
 public class LineCounting implements Behavior {
 	
+	private boolean suppressed = false;
+	
 	private final int THRESHOLD = 100;
 	private final int TIME_FOR_SUFFIX = 1000;
 	
 	private int min = 1000;
-	private int max = 0;
-	private boolean rising = true;
+	private int max = 1000;
+	private boolean rising = false;
 	private int tempLineCount = 0;
 	private int finalLineCount = 0;
 	private long lastTimestamp = -1;
+	private LightSensor light; 
+	private int currentValue = 0;
+	private long currentTimestamp = 0;
+	
+	public LineCounting(){
+		light = SensorCache.getInstance().light;
+	}
 
 	@Override
 	public boolean takeControl() {
-		int currentValue = SensorCache.getInstance().normalizedLightValue;
-		long currentTimestamp = SensorCache.getInstance().timestamp;
+		
+		/*currentValue = cache.normalizedLightValue;
+		currentTimestamp = cache.timestamp;
 		
 		if (rising) {
-			if (currentValue > max) {
+			if (currentValue >= max) {
 				max = currentValue;
-			}
-			if (currentValue < max) {
+			} else {
 				rising = false;
 				min = max;
-			}
+			}			
 		} else {
-			if (currentValue < min) {
+			if (currentValue <= min) {
 				min = currentValue;
-			}
-			if (currentValue > min) {
+			} else {
 				rising = true;
 				if (max-min > THRESHOLD) {
 					lastTimestamp = currentTimestamp;
 					tempLineCount++;
-					LCD.drawString("Temp: " + tempLineCount, 0, 4);
 				}
 				max = min;
 			}
@@ -47,72 +54,87 @@ public class LineCounting implements Behavior {
 		if (currentTimestamp - lastTimestamp > TIME_FOR_SUFFIX) {
 			finalLineCount = tempLineCount;
 			tempLineCount = 0;
-			LCD.drawString("Final: " + finalLineCount, 0, 5);
 		}
-		return (finalLineCount >= 3);
+	return (finalLineCount >= 3);*/
+		return (Calibration.readCode && light.getNormalizedLightValue() > 300);
+	
 	}
 
 	@Override
 	public void action() {
 		
 		LCD.drawString("Lines: " + finalLineCount, 0, 1);
-		Button.waitForAnyPress();
 		
-		if (finalLineCount == 3) {
-			//Bluetoothtor
-		} else if (finalLineCount == 4) {
-			// setup
-			SuperMotor.turnTo(0, false);
-			// call
-		} else if (finalLineCount == 5) {
-			// Bridge
-			// setup
-			SuperMotor.turnTo(180, false);
-			// call
-		} else if (finalLineCount == 6) {
-			//Haengebruecke einfacher LineFollow
-			// setup
-			// call
-		} else if (finalLineCount == 7) {
-			// setup Labyrinth
-			SuperMotor.turnTo(0, false);
-			// call
-		} else if (finalLineCount == 8) {
-			// setup Farbenlesen
-			// call
-		} else if (finalLineCount == 9) {
-			// setup LineFollow mit allem
-			// call
-		} else if (finalLineCount == 10) {
-			// setup wippe
-			Calibration.rocker = true;
-			// call
-		} else if (finalLineCount == 11) {
-			// setup drehteller
-			// call
-		} else if (finalLineCount == 12) {
-			// setup rollen/slider
-			SuperMotor.turnTo(0, false);
-			// call
-		} else if (finalLineCount == 13) {
-			// setup start 
-			/*warte bis button gedrückt wurde, zähle bis zehn, starte Rennen*/
-			Delay.msDelay(10000);
-			// call
-		} else if (finalLineCount == 14) {
-			// setup Endboss!
-			// call
-		} else {
-			System.out.println("This shouldn't happen.");
+		Movement.getInstance().forward();	
+		
+		while (! suppressed) {
+			currentValue = light.getNormalizedLightValue();
+			currentTimestamp = SensorCache.getInstance().timestamp;
+			if (rising && !suppressed) {
+				if (currentValue >= max) {
+					max = currentValue;
+				} else {
+					rising = false;
+					min = max;
+				}			
+			} else {
+				if (currentValue <= min && !suppressed) {
+					min = currentValue;
+				} else {
+					rising = true;
+					if (max-min > THRESHOLD) {
+						lastTimestamp = currentTimestamp;
+						tempLineCount++;
+					}
+					max = min;
+				}
+			}
+			
+			if (!suppressed && currentTimestamp - lastTimestamp > TIME_FOR_SUFFIX) {
+				finalLineCount = tempLineCount;
+				tempLineCount = 0;
+				suppress();
+
+			}
 		}
 		
-		// reset line count after calling the actions.
-		finalLineCount = 0;
+		Movement.getInstance().stop();
+		
+		switch(finalLineCount){
+		
+		case 3: //bluetooth tor
+				break;
+		case 4: Calibration.labyrinth = true;
+				break;
+		case 5:	Calibration.bridge = true; //TODO Aendern, iwie noch anderes flag weil Bridge DriveRLeftArc das flag erst true setzt
+				break;
+		case 6:	//haengebruecke 
+				break;
+		case 7:	Calibration.labyrinth = true;
+				break;
+		case 8: //Farben
+				break;
+		case 9: //Linienfolger mit allem
+				break;
+		case 10: Calibration.rocker = true;
+				break;
+		case 11: //Drehteller
+				break;
+		case 12: Calibration.slider = true;
+				break;
+		case 13: //start
+				break;
+		case 14: //Endgegner
+				Calibration.readCode = false;
+				break;
+		}
+		
 	}
 
 	@Override
 	public void suppress() {
 		// TODO Auto-generated method stub
+		suppressed = true;
 		
 	}
 	

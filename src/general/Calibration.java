@@ -28,7 +28,7 @@ public class Calibration {
 	public static final int TRESHOLD_YELLOW = 600;
 	
 	
-	public static int finalLineCount = 0;
+	public static boolean readCode = true;
 	
 
 	/**Number of 5 degree turns the robot performed driving across the bridge**/
@@ -46,5 +46,7 @@ public class Calibration {
 		
 	/****/
 	public static boolean labyrinth = false;
+
+	public static boolean race = false;
 	
 }

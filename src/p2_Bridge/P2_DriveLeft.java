@@ -4,6 +4,7 @@ import lejos.robotics.subsumption.*;
 import general.Calibration;
 import general.Movement;
 import general.SensorCache;
+import general.Settings;
 
 public class P2_DriveLeft implements Behavior {
    private boolean suppressed = false;
@@ -12,7 +13,7 @@ public class P2_DriveLeft implements Behavior {
    
    public boolean takeControl() {
 	   //TODO return SensorCache.getInstance().NormalizedLightValue > 300;
-      return true;
+      return (Settings.bridge);
    }
 
    public void suppress() {

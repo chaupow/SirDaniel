@@ -2,6 +2,7 @@ package p5_turntable;
 
 import general.Movement;
 import general.SensorCache;
+import general.Settings;
 import lejos.nxt.LCD;
 import lejos.robotics.subsumption.Behavior;
 
@@ -11,7 +12,7 @@ public class DriveInBox implements Behavior{
 
 	@Override
 	public boolean takeControl() {
-		return p4_LineFollower.Config.random;
+		return (p4_LineFollower.Config.random && Settings.turntable);
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class P6 {
 		Calibration.slider = true;
 		SuperMotor.calibrate();
 		SuperMotor.turnTo(0, false);
-		Calibration.NumberOfTurns = 0;
+		Config.NumberOfTurns = 0;
 		
 		//TODO Linefollower rein
 		Behavior forward = new DriveForward(1);

@@ -38,14 +38,6 @@ public class SensorCache {
 		
 		timestamp = System.currentTimeMillis();
 		
-		//Fuehre Hell- und Dunkelmessung durch und nimm die Differenz
-		/*LightValueLightOn = light.getNormalizedLightValue();
-		light.setFloodlight(false);
-		LightValueLightOff = light.getNormalizedLightValue();
-		light.setFloodlight(true);
-		
-		normalizedLightValue = LightValueLightOn - LightValueLightOff;*/
-		
 		normalizedLightValue = light.getNormalizedLightValue();
 		bumperPressed = bumper.isPressed();
 		backPressed = back.isPressed();

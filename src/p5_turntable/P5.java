@@ -1,5 +1,6 @@
 package p5_turntable;
 
+import general.DriveForward;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
 import p4_LineFollower.FollowLine;
@@ -11,21 +12,18 @@ public class P5 {
 
 	public static void main(String[] args) {
 	
-	Behavior follow = new FollowLine();
-	Behavior search = new SearchLine();
-	Behavior boxEntry = new BoxEntryDetect(1, 0);
-	Behavior driveIn = new DriveInBox();
+	Behavior drive = new DriveForward(1);
 	Behavior turn = new TurnAround();
 	Behavior turnIt = new TurnIt();
 
-	Behavior [] b = {follow, boxEntry, driveIn, search, turn, turnIt};
+	Behavior [] b = {turnIt};
 	SirDanielArbitrator arby = new SirDanielArbitrator(b);
 
 	Thread t = new Thread(arby);
 	Button.waitForAnyPress();
 
-	SuperMotor.calibrate();
-	SuperMotor.turnTo(90, false);
+	//SuperMotor.calibrate();
+	//SuperMotor.turnTo(90, false);
 	t.start();
 	
 	}

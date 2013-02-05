@@ -1,4 +1,4 @@
-package p1_labyrinth;
+package p0_Race;
 import lejos.nxt.LCD;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
@@ -8,7 +8,7 @@ import general.SensorCache;
 import general.Settings;
 
 
-public class P1_TurnRight implements Behavior {
+public class P0_TurnRight implements Behavior {
 	
 	UltrasonicSensor sonic;
 	TouchSensor touch;
@@ -20,7 +20,7 @@ public class P1_TurnRight implements Behavior {
 	Movement movement = Movement.getInstance();
 	
 
-	public P1_TurnRight(UltrasonicSensor sonic, int speed, int rotationSpeed, int shouldBe, int minimumDifference) {
+	public P0_TurnRight(UltrasonicSensor sonic, int speed, int rotationSpeed, int shouldBe, int minimumDifference) {
 		this.sonic = sonic;
 		this.speed = speed;
 		this.rotationSpeed = rotationSpeed;
@@ -29,7 +29,7 @@ public class P1_TurnRight implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (sonic.getDistance() > (shouldBe + minimumDifference) && !SensorCache.getInstance().bumperPressed && Settings.labyrinth);
+		return (sonic.getDistance() > (shouldBe + minimumDifference) && !SensorCache.getInstance().bumperPressed && Settings.race);
 	}
 	
 	public void action() {

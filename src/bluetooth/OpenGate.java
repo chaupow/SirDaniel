@@ -2,12 +2,16 @@ package bluetooth;
 import lejos.robotics.subsumption.Behavior;
 
 public class OpenGate implements Behavior {
-	private boolean inFrontOfDoor = true;
+	BluetoothGate blgate;
 	private GateControl gate = new GateControl();
 
+	public OpenGate(BluetoothGate gate) {
+		this.blgate = gate;
+	}
+	
 	@Override
 	public boolean takeControl() {
-		return inFrontOfDoor;
+		return blgate.inFrontOfGate;
 	}
 
 	@Override
@@ -15,7 +19,7 @@ public class OpenGate implements Behavior {
 		while (!gate.connectionToGateSuccessful(GateCommon.GATE_3));
 		gate.openGate();
 		gate.disconnectFromGate();
-		inFrontOfDoor = false;
+		blgate.inFrontOfGate = false;
 	}
 
 	@Override

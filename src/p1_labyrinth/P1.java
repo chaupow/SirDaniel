@@ -23,7 +23,7 @@ public class P1 {
 		int shouldBe = 10;
 		int minimumDifference = 30;
 		
-		Calibration.labyrinth = true;
+		//Calibration.labyrinth = true;
 		
 		Behavior forward = new P1_DriveForward(1);
 		Behavior correct = new P1_Correct(sonic, min_dist);

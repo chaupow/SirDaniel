@@ -46,5 +46,7 @@ public class Calibration {
 		
 	/****/
 	public static boolean labyrinth = false;
+
+	public static boolean race = false;
 	
 }

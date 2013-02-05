@@ -64,7 +64,6 @@ public class LineCounting implements Behavior {
 	public void action() {
 		
 		LCD.drawString("Lines: " + finalLineCount, 0, 1);
-		Button.waitForAnyPress();
 		
 		Movement.getInstance().forward();	
 		
@@ -105,7 +104,7 @@ public class LineCounting implements Behavior {
 		
 		case 3: //bluetooth tor
 				break;
-		case 4: //sumpf
+		case 4: Calibration.labyrinth = true;
 				break;
 		case 5:	Calibration.bridge = true; //TODO Aendern, iwie noch anderes flag weil Bridge DriveRLeftArc das flag erst true setzt
 				break;

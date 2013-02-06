@@ -9,7 +9,7 @@ public class P2_EndOfBridge implements Behavior{
 	   private boolean suppressed = false;
 	   
 	   public boolean takeControl() {
-		   return (SensorCache.getInstance().normalizedLightValue > 90);
+		   return (SensorCache.getInstance().lightValue > 90);
 	   }
 
 	   public void suppress() {

@@ -48,6 +48,7 @@ public class Race implements Section {
 	}
 	
 	public void stop() {
+		System.out.println("Race really stopped.");
 		arby.stop();
 	}
 }

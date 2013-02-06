@@ -18,6 +18,7 @@ public class ColorButtons {
 	ColorGateControl gate = new ColorGateControl();
 	SirDanielArbitrator arby;
 	boolean lab = false;
+	boolean disconnected = false;
 	UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 	
 	static ColorButtons cb=null;

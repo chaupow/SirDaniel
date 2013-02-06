@@ -2,7 +2,6 @@ package p7_rocker;
 
 import general.Calibration;
 import general.Movement;
-import general.Settings;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 

@@ -3,4 +3,4 @@ SirDaniel
 
 Lego Mindstorm Praktikum
 
-![SirDaniel](milchmaedchen.github.com/SirDaniel/SirDaniel.jpg)
+![SirDaniel](https://raw.github.com/milchmaedchen/SirDaniel/master/SirDaniel.jpg)

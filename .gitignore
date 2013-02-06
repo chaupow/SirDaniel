@@ -10,3 +10,6 @@
 *.ear
 
 .*
+build.properties
+build.xml
+build_nxj_home.properties

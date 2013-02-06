@@ -12,7 +12,7 @@ public class P2_EndBridge implements Behavior{
 	   private boolean suppressed = false;
 	   
 	   public boolean takeControl() {
-		   return (SensorCache.getInstance().normalizedLightValue > Settings.LIGHT_THRESHOLD);
+		   return (SensorCache.getInstance().lightValue > Settings.LIGHT_THRESHOLD);
 	   }
 
 	   public void suppress() {

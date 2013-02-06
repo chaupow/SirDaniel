@@ -1,5 +1,5 @@
 package p1_labyrinth;
-import lejos.nxt.Button;
+
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;

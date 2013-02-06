@@ -1,9 +1,7 @@
 package p1_labyrinth;
-import lejos.nxt.LCD;
+
 import lejos.robotics.subsumption.*;
-import general.Calibration;
 import general.ClaudisMain;
-import general.Movement;
 import general.SensorCache;
 import general.Settings;
 

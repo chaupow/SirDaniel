@@ -1,10 +1,8 @@
 package p1_labyrinth;
+
 import lejos.robotics.subsumption.Behavior;
-import general.Calibration;
 import general.Movement;
 import general.SensorCache;
-import general.Settings;
-
 
 public class P1_TurnLeft implements Behavior {
 	

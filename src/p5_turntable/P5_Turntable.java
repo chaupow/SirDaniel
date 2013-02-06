@@ -28,7 +28,7 @@ public class P5_Turntable implements Behavior {
 		while (!SensorCache.getInstance().bumperPressed);
 		
 		Movement.getInstance().travel(-30);
-		Movement.getInstance().turn_left(160);
+		Movement.getInstance().turn_left(145);
 		
 		while (!turntableControl.connectionToTurntableSuccessful());
 		for (int i = 0; i < STEPS; i++) {

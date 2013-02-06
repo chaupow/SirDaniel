@@ -29,6 +29,7 @@ public class SensorCache {
 	
 	
 	public int normalizedLightValue;
+	public int lightValue;
 	public boolean bumperPressed;
 	public boolean backPressed;
 	public long timestamp;
@@ -36,7 +37,7 @@ public class SensorCache {
 	public void pollSensors() {
 		
 		timestamp = System.currentTimeMillis();
-		
+		lightValue = light.getLightValue();
 		normalizedLightValue = light.getNormalizedLightValue();
 		bumperPressed = bumper.isPressed();
 		backPressed = back.isPressed();

@@ -1,7 +1,7 @@
-package p9_btGate;
+package p10_btGate;
 import lejos.robotics.subsumption.Behavior;
 
-public class P9_Wait implements Behavior{
+public class P10_Wait implements Behavior{
 	boolean suppressed;
 	
 	@Override

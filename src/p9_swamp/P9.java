@@ -13,13 +13,13 @@ public class P9 {
 	private SirDanielArbitrator arby;
 	private UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 	
-	private int min_dist = 10;
+	private int min_dist = 15;
 
 	
    public void start() {
 	   System.out.println("Swamp started.");
     
-	    SuperMotor.turnTo(180, false);
+	    SuperMotor.turnTo(0, false);
 	    
 		//Calibration.labyrinth = true;
 //		Settings.labyrinth = true;
@@ -33,7 +33,7 @@ public class P9 {
 	}
    
    public void stop() {
-	   System.out.println("Labyrinth stopped.");
+	   System.out.println("Swamp stopped.");
 	   arby.stop();
    }
 

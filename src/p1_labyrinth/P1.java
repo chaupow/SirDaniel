@@ -25,7 +25,7 @@ public class P1 {
 		//Calibration.labyrinth = true;
 //		Settings.labyrinth = true;
 		
-		Behavior forward = new P1_DriveForward(100);
+		Behavior forward = new P1_DriveForward(180);
 		Behavior correct = new P1_Correct(sonic, min_dist);
 		Behavior turnRight = new P1_TurnRight(sonic, speed, rotationSpeed, shouldBe, minimumDifference);
 		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);

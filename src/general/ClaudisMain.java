@@ -23,7 +23,7 @@ public class ClaudisMain {
 	}
 	
 	public static void searchBarcode() {
-		movement.travel(-20);
+		movement.travel(-30);
 		lineCount = barcodeReader.run();
 		System.out.println("Barcode gelesen");
 //		Delay.msDelay(1000);

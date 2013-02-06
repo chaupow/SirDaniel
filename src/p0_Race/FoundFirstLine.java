@@ -6,20 +6,20 @@ import general.SensorCache;
 import general.Settings;
 import lejos.robotics.subsumption.Behavior;
 
-public class EndRace implements Behavior {
+public class FoundFirstLine implements Behavior {
 	
 
 	@Override
 	public boolean takeControl() {
 		// first stripe of barcode detected
-		return (SensorCache.getInstance().lightValue > Settings.LIGHT_THRESHOLD && Constants.foundFirstLine);
+		return (SensorCache.getInstance().lightValue > Settings.LIGHT_THRESHOLD && !Constants.foundFirstLine);
 	}
 
 	@Override
 	public void action() {
-		
-			System.out.println("Race Ende");
-			ClaudisMain.searchBarcode();
+		Movement movement = Movement.getInstance();
+		movement.travel(10);
+		Constants.foundFirstLine = true;
 	}
 
 	@Override

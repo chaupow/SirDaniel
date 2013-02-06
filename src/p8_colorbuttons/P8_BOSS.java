@@ -10,7 +10,7 @@ public class P8_BOSS implements Behavior{
 	Movement movement = Movement.getInstance();
 	SensorCache sc = SensorCache.getInstance();
 	
-	public void Behavior (ColorButtons cb) {
+	public P8_BOSS (ColorButtons cb) {
 		this.cb = cb;
 	}
 

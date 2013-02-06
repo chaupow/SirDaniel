@@ -20,7 +20,8 @@ public class P10 implements Section {
 		
 		Behavior gate = new P10_Gate();
 		Behavior adjust = new P10_Adjust();
-		Behavior [] b = {gate, adjust};
+		Behavior endGate = new P10_EndGate();
+		Behavior [] b = {gate, adjust, endGate};
 		
 		arby = new SirDanielArbitrator(b, true);
 		

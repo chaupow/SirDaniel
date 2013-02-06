@@ -31,13 +31,12 @@ public class P8_DriveThroughGate implements Behavior{
 			Thread.yield();
 		}
 		movement.stop();
-		if (!suppressed)movement.travel(50);
+		if (!suppressed)movement.travel(70);
 		if (!suppressed) {
-			movement.turn_left(90);
+			movement.turn_left(63);
 		}
-		Button.waitForAnyPress();
-		movement.travel(800);
-		while (!suppressed){
+		movement.travel(1400);
+		while (!suppressed && movement.isMoving()){
 			Thread.yield();
 		}
 		movement.stop();

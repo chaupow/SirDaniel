@@ -27,7 +27,8 @@ public class P8_PushButton implements Behavior{
 		LCD.drawString("Push Button", 1, 1);
 		suppressed = false;
 		SuperMotor.turnTo(180, true);
-		movement.turn_right(90);
+		
+		movement.turn_right(70);
 		movement.forward();
 		while (!suppressed) {
 			Thread.yield();

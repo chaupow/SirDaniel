@@ -62,7 +62,7 @@ public final class SuperMotor {
 		
 		long lastTime = System.currentTimeMillis();
 		long timePassed;
-		int power = 25;
+		int power = 30;
 		
 		boolean stalled = false;
 		int tachoCountC = -1;
@@ -100,7 +100,7 @@ public final class SuperMotor {
 	private static void calibrateLeft(){
 		long lastTime = System.currentTimeMillis();
 		long timePassed;
-		int power = 25;
+		int power = 30;
 		boolean stalled = false;
 		int tachoCountC = -100;
 

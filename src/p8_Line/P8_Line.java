@@ -49,7 +49,11 @@ public class P8_Line {
 		arby.stop();
 		if (calledBy == 0) {
 			P5.getInstance().start(true);
-		} else {
+		}
+		else if (calledBy == 1) {
+			p8_colorbuttons.ColorButtons.getInstance().start();
+		}
+		else {
 			ClaudisMain.searchBarcode();
 		}
 	}

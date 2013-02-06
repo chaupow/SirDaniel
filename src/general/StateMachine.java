@@ -42,4 +42,20 @@ public class StateMachine {
 		}
 	}
 	
+	public void abortState() {
+		switch (state) {
+//		case gate: System.out.println("Gate"); break;
+//		case swamp: System.out.println("Swamp"); break;
+		case bridge:  System.out.println("Abort Bridge"); bridge.stop(); break;
+//		case line: System.out.println("Line"); break;
+		case labyrinth:  System.out.println("Abort Labyrinth"); labyrinth.stop(); break;
+//		case colorGate: System.out.println("ColorGate"); break;
+//		case rocker: System.out.println("Rocker"); p7_rocker.p7_rocker.start(); break;
+		case turntable: System.out.println("Abort Turntable"); turntable.stop(); break;
+//		case slider: System.out.println("Slider"); p6_slider.P6.start(); break;
+		case race: System.out.println("Abort Race"); race.stop(); break;
+//		case boss: System.out.println("Boss"); break;
+		}
+	}
+	
 }

@@ -14,7 +14,7 @@ public class Settings {
 	//initRace, ...
 	//reset
 	public enum State {race, bridge, labyrinth, swamp, gate, turntable, slider, line, rocker, colorGate, boss};
-	public static int LIGHT_THRESHOLD = 450;
+	public static int LIGHT_THRESHOLD = 90;
 	
 	public static void calibrateLight(){
 		int[] lightValues = new int[LIGHT_CALIBRATION_SAMPLES];

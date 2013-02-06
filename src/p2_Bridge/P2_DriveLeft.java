@@ -1,9 +1,11 @@
 package p2_Bridge;
 
 import lejos.nxt.LCD;
+import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.*;
 import general.Calibration;
 import general.Movement;
+import general.SensorCache;
 
 public class P2_DriveLeft implements Behavior {
    private boolean suppressed = false;
@@ -23,6 +25,8 @@ public class P2_DriveLeft implements Behavior {
    public void action() {
 
 	   Calibration.NumberOfTurns = 0;
+	   
+	   if(SensorCache.getInstance().lightValue > 30) Config.foundBridge = true;
 
 	   suppressed = false;
 	   LCD.drawString("driving", 0, 0);

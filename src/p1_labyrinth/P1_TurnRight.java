@@ -32,7 +32,9 @@ public class P1_TurnRight implements Behavior {
 		//movement.setSpeed(speed);
 
 		LCD.drawString("steering" , 1, 1);
-		movement.arcForward(-60);		
+		//movement.arcForward(-60);	
+		Movement.getInstance().arc(-80, -180, true);
+
 	}
 	
 	public void suppress() {

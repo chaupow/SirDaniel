@@ -1,13 +1,9 @@
 package p4_LineFollower;
 
-import lejos.nxt.Button;
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
-import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.util.Delay;
-import general.SensorCache;
-import general.SuperMotor;
 
 public class test {
 	public static void main(String [] args) {

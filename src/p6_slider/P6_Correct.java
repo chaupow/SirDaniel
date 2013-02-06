@@ -1,7 +1,6 @@
 package p6_slider;
 
 import general.Movement;
-import general.Settings;
 import lejos.nxt.LCD;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;

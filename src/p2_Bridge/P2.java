@@ -1,10 +1,8 @@
 package p2_Bridge;
-import general.Calibration;
+
 import general.Movement;
-import general.Settings;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
-import lejos.nxt.Button;
 import lejos.robotics.subsumption.Behavior;
 
 

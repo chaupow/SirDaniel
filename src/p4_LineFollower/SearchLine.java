@@ -8,7 +8,6 @@ import lejos.nxt.LightSensor;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
 public class SearchLine implements Behavior {
 	Movement movement;

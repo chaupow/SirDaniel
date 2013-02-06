@@ -3,7 +3,6 @@ package p3_LineFollowerDeprecated;
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 import general.Movement;
 
 

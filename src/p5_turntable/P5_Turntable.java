@@ -39,7 +39,7 @@ public class P5_Turntable implements Behavior {
 		System.out.println("Waiting 10s.");
 		Delay.msDelay(20000);
 		
-		Movement.getInstance().travel(75);
+		Movement.getInstance().travel(50);
 		
 		P5.getInstance().stop();
 		

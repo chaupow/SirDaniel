@@ -17,16 +17,16 @@ public class P0_TurnLeft implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (SensorCache.getInstance().bumperPressed);
+		return (SensorCache.getInstance().bumperPressed && Constants.alreadyStopped);
 	}
 	
 	public void action() {
 		suppressed = false;
-		Constants.alreadyStopped = false;
 		movement.setTravelSpeed(100);
 
 		movement.arcBackward(-40);
 		movement.turn_left(90);		
+		Constants.alreadyStopped = false;
 	}
 	
 	public void suppress() {

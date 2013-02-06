@@ -4,6 +4,7 @@ import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
+import general.ClaudisMain;
 import general.LineCounting;
 import general.Movement;
 import general.Settings;
@@ -33,7 +34,8 @@ public class P1 {
 		Behavior correct = new P1_Correct(sonic, min_dist);
 		Behavior turnRight = new P1_TurnRight(sonic, speed, rotationSpeed, shouldBe, minimumDifference);
 		Behavior turnLeft = new P1_TurnLeft(speed, rotationSpeed);
-		Behavior [] b = {forward,correct, turnRight, turnLeft};
+		Behavior endLabyrinth = new P1_EndLabyrinth();
+		Behavior [] b = {forward,correct, turnRight, turnLeft, endLabyrinth};
 		arby = new SirDanielArbitrator(b,true);
 		Thread t =  new Thread(arby);
 		t.start();

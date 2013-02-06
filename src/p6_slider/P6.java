@@ -1,12 +1,9 @@
 package p6_slider;
 
-import p0_Race.P0_DriveForward;
 import p1_labyrinth.P1_DriveForward;
-import p5_turntable.P5;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
-import general.DriveForward;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
 

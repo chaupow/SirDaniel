@@ -29,10 +29,10 @@ public class P8_AvoidObstacle implements Behavior {
 		movement.stop();
 		Delay.msDelay(1000);
 		if (sonic.getDistance() < threshold) {
-			movement.turn_left(70);
+			movement.turn_right(70);
 			
 			while (!Motor.C.isMoving() && SensorCache.getInstance().normalizedLightValue < P8_Config.lightThreshold && !suppressed) {
-				movement.steer(-50, -5, true);
+				movement.steer(50, 5, true);
 			}
 		}
 	}

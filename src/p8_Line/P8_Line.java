@@ -50,6 +50,9 @@ public class P8_Line {
 			System.out.println("Line started");
 			Settings.calibrateLight();
 			SuperMotor.turnTo(90, false);
+			// damit die Linie auch gefunden wird
+			Movement.getInstance().travel(40);
+			
 			t.start();
 //		}
 	}

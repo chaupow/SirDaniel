@@ -22,27 +22,9 @@ public class P10_Adjust implements Behavior {
 	@Override
 	public void action() {
 		System.out.println("adjust");
-		int distance = sonar.getDistance() - TURN_DISTANCE;
+		Movement.getInstance().forward();
 		while (!suppressed) {
-			if (distance > INFINITY) {
-				System.out.println("infinity");
-				Movement.getInstance().setTravelSpeed(100);
-				Movement.getInstance().forward();
-			} else {
-				if (distance < 0) {
-					System.out.println("> distanz");
-//					while (!Motor.C.isMoving() && !suppressed) {
-//						Movement.getInstance().steer(-25, -5, true);
-						Movement.getInstance().steer(25, -2*distance, true);
-//					}
-				} else {
-					System.out.println("< distanz");
-//					while (!Motor.C.isMoving() && !suppressed) {
-//						Movement.getInstance().steer(25, 5, true);
-						Movement.getInstance().steer(-25, -2*distance, true);
-//					}
-				}
-			}
+			Thread.yield();
 		}
 		
 	}

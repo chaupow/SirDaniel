@@ -17,6 +17,7 @@ public class P10 implements Section {
 	public void start() {
 		
 		SuperMotor.turnTo(180, false);
+		Config.gateHasOpened = false;
 		
 		Behavior gate = new P10_Gate();
 		Behavior adjust = new P10_Adjust();

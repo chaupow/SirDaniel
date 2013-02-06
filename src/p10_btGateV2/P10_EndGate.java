@@ -8,7 +8,7 @@ public class P10_EndGate implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return (SensorCache.getInstance().normalizedLightValue > Settings.LIGHT_THRESHOLD);
+		return (SensorCache.getInstance().lightValue > Settings.LIGHT_THRESHOLD && Config.gateHasOpened);
 	}
 
 	@Override

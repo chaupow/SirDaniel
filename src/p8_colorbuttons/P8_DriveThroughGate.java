@@ -33,15 +33,15 @@ public class P8_DriveThroughGate implements Behavior{
 		movement.stop();
 		if (!suppressed)movement.travel(70);
 		if (!suppressed) {
-			movement.turn_left(63);
+			movement.turn_left(80);
 		}
-		movement.travel(1400);
-		while (!suppressed && movement.isMoving()){
-			Thread.yield();
-		}
-		movement.stop();
-		cb.gate.disconnectFromGate();
-		cb.boss = true;
+		double rspeed = movement.getRotateSpeed();
+		double tspeed = movement.getTravelSpeed();
+		movement.setRotateSpeed(rspeed+50);
+		movement.setTravelSpeed(tspeed+50);
+		cb.lab = true;
+		
+		//cb.gate.disconnectFromGate();
 		
 	}
 

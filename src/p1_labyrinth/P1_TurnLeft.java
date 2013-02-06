@@ -17,7 +17,7 @@ public class P1_TurnLeft implements Behavior {
 	}
 	
 	public boolean takeControl() {
-		return (SensorCache.getInstance().bumperPressed && SensorCache.getInstance().normalizedLightValue < Calibration.THRESHOLD);
+		return (SensorCache.getInstance().bumperPressed);
 	}
 	
 	public void action() {

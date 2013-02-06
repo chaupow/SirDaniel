@@ -17,9 +17,9 @@ public class P2 {
 //	  Settings.bridge = true;
 //	  Calibration.bridge = true;
 		SuperMotor.turnTo(180, true);
-		movement.travel(100);
-		movement.turn_right(70);
-		movement.travel(150);
+		movement.travel(200);
+		movement.turn_right(90);
+		movement.travel(200);
 		
 	   // constant values
 	   Behavior driveLeft = new P2_DriveLeft();

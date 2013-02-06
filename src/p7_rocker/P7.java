@@ -24,7 +24,7 @@ public class P7 {
 	public void start() {
 		
 		
-		Behavior rocker = new p7_rocker(140,100,sonic);		
+		Behavior rocker = new p7_rocker(1400,100,sonic);		
 		Behavior [] b = {rocker};
 		
 		SuperMotor.turnTo(90, false);

@@ -1,4 +1,4 @@
-package p9_btGate;
+package p10_btGate;
 
 import general.Movement;
 import general.Section;
@@ -7,7 +7,7 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
-public class P9 implements Section {
+public class P10 implements Section {
 	
 	private UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 	private SirDanielArbitrator arby;
@@ -18,9 +18,9 @@ public class P9 implements Section {
 	public void start() {
 		Movement.getInstance().setTravelSpeed(300);
 		
-		Behavior throughGate = new P9_DriveThrough(sonic, DISTANCE_THRESHOLD, this);
-		Behavior openGate = new P9_OpenGate(this);
-		Behavior wait = new P9_Wait();
+		Behavior throughGate = new P10_DriveThrough(sonic, DISTANCE_THRESHOLD, this);
+		Behavior openGate = new P10_OpenGate(this);
+		Behavior wait = new P10_Wait();
 		Behavior [] bArray = {wait, throughGate, openGate};
 		arby = new SirDanielArbitrator(bArray, true);
 		

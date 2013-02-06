@@ -34,7 +34,7 @@ public class P2_AvoidAbyss implements Behavior {
     	// Movement.getInstance().travel(300);
     	Movement.getInstance().turn_left(75);
     	
-    	Movement.getInstance().forward();
+    	Movement.getInstance().travel(100);
     	Calibration.NumberOfTurns = 0;
      }
    }

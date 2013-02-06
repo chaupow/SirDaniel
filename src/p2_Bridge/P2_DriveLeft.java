@@ -27,7 +27,7 @@ public class P2_DriveLeft implements Behavior {
 
 	   suppressed = false;
 	   LCD.drawString("driving", 0, 0);
-	   movement.arc(450, 360, true);
+	   movement.arc(400, 360, true);
      
 	   while(!suppressed){
 		   Thread.yield();

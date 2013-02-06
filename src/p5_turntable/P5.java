@@ -2,15 +2,12 @@ package p5_turntable;
 
 import p8_Line.P8_Line;
 import lejos.robotics.subsumption.Behavior;
-import general.Movement;
-import general.Section;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
 
 public class P5 {
 	
 	private SirDanielArbitrator arby;
-//	private boolean afterLine = false;
 	
 	private static P5 instance = null;
 
@@ -46,14 +43,5 @@ public class P5 {
 		arby.stop();
 		P8_Line.getInstance().start(1);
 	}
-	
-//	public void setAfterLine(boolean value) {
-//		afterLine = value;
-//	}
-//	
-//	public boolean getAfterLine() {
-//		return afterLine;
-//	}
-	
 }
 

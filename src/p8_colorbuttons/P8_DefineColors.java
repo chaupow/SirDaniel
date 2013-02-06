@@ -26,7 +26,8 @@ public class P8_DefineColors implements Behavior{
 
 	@Override
 	public void action() {
-
+		LCD.clear();
+		LCD.drawString("Define", 1, 1);
 		movement.setTravelSpeed(80);
 		LCD.clear();
 		LCD.drawString("DefineColor", 1, 1);

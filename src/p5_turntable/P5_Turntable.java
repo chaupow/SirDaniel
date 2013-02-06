@@ -28,7 +28,7 @@ public class P5_Turntable implements Behavior {
 		while (!SensorCache.getInstance().bumperPressed);
 		
 		Movement.getInstance().travel(-30);
-		Movement.getInstance().turn_left(160);
+		Movement.getInstance().turn_left(145);
 		
 		while (!turntableControl.connectionToTurntableSuccessful());
 		for (int i = 0; i < STEPS; i++) {
@@ -39,7 +39,7 @@ public class P5_Turntable implements Behavior {
 		System.out.println("Waiting 10s.");
 		Delay.msDelay(20000);
 		
-		Movement.getInstance().travel(75);
+		Movement.getInstance().travel(50);
 		
 		P5.getInstance().stop();
 		

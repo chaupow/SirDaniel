@@ -1,5 +1,6 @@
 package p8_Line;
 
+import p4_LineFollower.Config;
 import p5_turntable.P5;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
@@ -7,7 +8,9 @@ import lejos.robotics.subsumption.Behavior;
 import general.ClaudisMain;
 import general.Movement;
 import general.Section;
+import general.Settings;
 import general.SirDanielArbitrator;
+import general.SuperMotor;
 
 public class P8_Line {
 	
@@ -28,6 +31,10 @@ public class P8_Line {
 	public void start(int calledBy) {
 		this.calledBy = calledBy;
 		
+			P8_Config.numberOfSearches = 0;
+			P8_Config.leftTurn = true;
+			P8_Config.lost = false;
+		
 			Behavior findLine = new P8_FindLine();
 			Behavior foundLine = new P8_FoundLine();
 			Behavior lost = new P8_Lost();
@@ -41,6 +48,8 @@ public class P8_Line {
 			Thread t = new Thread(arby);
 			
 			System.out.println("Line started");
+			Settings.calibrateLight();
+			SuperMotor.turnTo(90, false);
 			t.start();
 //		}
 	}
@@ -49,9 +58,6 @@ public class P8_Line {
 		arby.stop();
 		if (calledBy == 0) {
 			P5.getInstance().start(true);
-		}
-		else if (calledBy == 1) {
-			p8_colorbuttons.ColorButtons.getInstance().start();
 		}
 		else {
 			ClaudisMain.searchBarcode();

@@ -24,7 +24,7 @@ public class P8_AvoidObstacle implements Behavior {
 	}
 	
 	public void action() {
-		P8_Config.leftTurn = true;
+		P8_Config.leftTurn = false;
 		LCD.drawString("avoid obstacle", 0, 0);
 		movement.stop();
 		Delay.msDelay(1000);
@@ -32,7 +32,7 @@ public class P8_AvoidObstacle implements Behavior {
 			movement.turn_right(70);
 			
 			while (!Motor.C.isMoving() && SensorCache.getInstance().normalizedLightValue < P8_Config.lightThreshold && !suppressed) {
-				movement.steer(50, 5, true);
+				movement.steer(40, 5, true);
 			}
 		}
 	}

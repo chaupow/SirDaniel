@@ -29,12 +29,12 @@ public class P2 {
 	   arby = new SirDanielArbitrator(b, true);
 	   
 	   Thread t = new Thread(arby);
-//	   Button.waitForAnyPress();
 	   System.out.println("Bridge started");
 	   t.start();
    }
 	
 	public void stop() {
 		arby.stop();
+		System.out.println("Bridge really stopped.");
 	}
 }

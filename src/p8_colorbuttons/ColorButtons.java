@@ -1,5 +1,7 @@
 package p8_colorbuttons;
 
+import p8_Line.P8_Line;
+import general.ClaudisMain;
 import general.Movement;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
@@ -14,8 +16,23 @@ public class ColorButtons {
 	public int [] average = new int[3];
 	public int blackLines = -1;
 	ColorGateControl gate = new ColorGateControl();
+	SirDanielArbitrator arby;
+	static ColorButtons cb = null;
 	
-	public void run() {
+	public static ColorButtons getInstance(){
+		if (cb == null)
+			return new ColorButtons();
+		else
+			return cb;
+	}
+	
+	private ColorButtons (){
+		
+	}
+	
+	public void start() {
+		P8_Line.getInstance().start(1);
+		
 		Behavior talkToGate = new P8_TalkToGate(this, gate);
 		Behavior findColor = new P8_FindColor(this);
 		Behavior defineColors = new P8_DefineColors(this);
@@ -26,15 +43,19 @@ public class ColorButtons {
 		
 		SuperMotor.turnTo(90, false);
 		Behavior [] bArray = {defineColors, driveOver, setColors, findColor, pushButton, throughGate, talkToGate};
-		SirDanielArbitrator arby = new SirDanielArbitrator(bArray, true);
+		arby = new SirDanielArbitrator(bArray, true);
 		Thread t = new Thread(arby);
 		t.start();
+	}
+	
+	public void stop(){
+		arby.stop();
 	}
 	
 	public static void main (String[] args) {
 		SuperMotor.calibrate();
 		Button.waitForAnyPress();
 		ColorButtons cb = new ColorButtons();
-		cb.run();
+		cb.start();
 	} 
 }

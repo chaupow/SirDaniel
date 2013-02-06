@@ -36,7 +36,7 @@ public class P0_TurnRight implements Behavior {
 		LCD.drawString("steering" , 0, 2);
 		//movement.arcForward(-60);
 		//Movement.getInstance().turn_right(70);
-		Movement.getInstance().arc(-100, 180, true);
+		Movement.getInstance().arc(-80, -180, true);
 		
 	}
 	

@@ -1,8 +1,6 @@
 package p4_LineFollower;
 
 import general.Movement;
-import general.SensorCache;
-import general.SuperMotor;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 

@@ -1,6 +1,6 @@
 package p1_labyrinth;
+
 import general.Movement;
-import general.Settings;
 import lejos.robotics.subsumption.*;
 
 public class P1_DriveForward  implements Behavior {

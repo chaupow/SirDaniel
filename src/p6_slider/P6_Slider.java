@@ -2,8 +2,6 @@ package p6_slider;
 
 import general.Movement;
 import general.SensorCache;
-import general.Settings;
-import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Behavior;
 
 public class P6_Slider implements Behavior {

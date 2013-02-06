@@ -1,13 +1,8 @@
 package p1_labyrinth;
-import lejos.nxt.Button;
-import lejos.nxt.LCD;
+
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
-import general.ClaudisMain;
-import general.LineCounting;
-import general.Movement;
-import general.Settings;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
 

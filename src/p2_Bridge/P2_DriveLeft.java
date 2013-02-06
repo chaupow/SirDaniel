@@ -1,10 +1,9 @@
 package p2_Bridge;
+
 import lejos.nxt.LCD;
 import lejos.robotics.subsumption.*;
 import general.Calibration;
 import general.Movement;
-import general.SensorCache;
-import general.Settings;
 
 public class P2_DriveLeft implements Behavior {
    private boolean suppressed = false;

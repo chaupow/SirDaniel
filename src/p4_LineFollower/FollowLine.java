@@ -2,11 +2,8 @@ package p4_LineFollower;
 
 import general.Movement;
 import general.SensorCache;
-import general.SuperMotor;
 import lejos.nxt.LCD;
-import lejos.nxt.LightSensor;
 import lejos.robotics.subsumption.Behavior;
-import lejos.util.Delay;
 
 public class FollowLine implements Behavior {
 	Movement movement;

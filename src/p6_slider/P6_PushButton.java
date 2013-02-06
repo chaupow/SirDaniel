@@ -3,7 +3,6 @@ package p6_slider;
 import lejos.robotics.subsumption.Behavior;
 import general.Movement;
 import general.SensorCache;
-import general.Settings;
 
 public class P6_PushButton implements Behavior {
 	

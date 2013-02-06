@@ -1,8 +1,6 @@
 package general;
 
-
 import lejos.nxt.Button;
-import lejos.nxt.LCD;
 
 public class SMTest {
 

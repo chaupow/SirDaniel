@@ -1,11 +1,10 @@
 package p2_Bridge;
+
 import lejos.nxt.LCD;
 import lejos.robotics.subsumption.*;
-import lejos.util.Delay;
 import general.Calibration;
 import general.Movement;
 import general.SensorCache;
-import general.Settings;
 
 public class P2_AvoidAbyss implements Behavior {
    private boolean suppressed = false;

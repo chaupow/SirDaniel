@@ -1,12 +1,5 @@
 package p4_LineFollower;
 
-
-import p1_labyrinth.P1_CorrectLeft;
-import p1_labyrinth.P1_CorrectRight;
-import p1_labyrinth.P1_TurnLeft;
-import p1_labyrinth.P1_TurnRight;
-import general.DriveForward;
-import general.SensorCache;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
 import lejos.nxt.Button;

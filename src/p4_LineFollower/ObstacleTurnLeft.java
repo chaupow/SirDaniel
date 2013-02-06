@@ -1,5 +1,5 @@
 package p4_LineFollower;
-import lejos.nxt.TouchSensor;
+
 import lejos.robotics.subsumption.Behavior;
 import general.Calibration;
 import general.Movement;

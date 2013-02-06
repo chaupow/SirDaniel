@@ -12,7 +12,7 @@ public class P6_PushButton implements Behavior {
 	@Override
 	public boolean takeControl() {
 		front = SensorCache.getInstance().bumperPressed;
-		return (front && SensorCache.getInstance().normalizedLightValue < 20);
+		return (front && SensorCache.getInstance().lightValue < 20);
 		
 		}
 
@@ -21,10 +21,18 @@ public class P6_PushButton implements Behavior {
 		
 		if (front) {
 			
-			Movement.getInstance().turn_left(90);
-			Config.NumberOfTurns++;
+			if(Config.NumberOfTurns < 2) {
+
+				Movement.getInstance().turn_left(110);
+				Config.NumberOfTurns++;
+			} else {
+				Movement.getInstance().travel(-20);
+			}
+			
+			
 			
 		} 
+		
 		
 	}
 

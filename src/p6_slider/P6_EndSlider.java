@@ -9,7 +9,7 @@ public class P6_EndSlider implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return (SensorCache.getInstance().normalizedLightValue > Settings.LIGHT_THRESHOLD && Config.NumberOfTurns >= 2);
+		return (SensorCache.getInstance().lightValue > Settings.LIGHT_THRESHOLD && Config.NumberOfTurns >= 2);
 	}
 
 	@Override

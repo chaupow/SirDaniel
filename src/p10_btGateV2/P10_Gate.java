@@ -19,6 +19,8 @@ public class P10_Gate implements Behavior {
 		gate.openGate();
 		gate.disconnectFromGate();
 		
+		Config.gateHasOpened = true;
+		
 	}
 
 	@Override

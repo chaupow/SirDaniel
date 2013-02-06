@@ -8,18 +8,16 @@ import lejos.robotics.subsumption.Behavior;
 public class P10_Adjust implements Behavior {
 	
 	private UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S3);
-	private static boolean hasAdjusted = false;
 	
 	private static final int TURN_DISTANCE = 10;
 
 	@Override
 	public boolean takeControl() {
-		return !hasAdjusted;
+		return Config.gateHasOpened;
 	}
 
 	@Override
 	public void action() {
-		hasAdjusted = true;
 		
 		int distance = sonar.getDistance();
 		

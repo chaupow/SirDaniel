@@ -18,7 +18,7 @@ public class P8_DriveThroughGate implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		return sc.backPressed;
+		return sc.bumperPressed;
 	}
 
 	@Override
@@ -26,17 +26,19 @@ public class P8_DriveThroughGate implements Behavior{
 		LCD.clear();
 		LCD.drawString("Drive Through", 1, 1);
 		suppressed = false;
-		movement.forward();
-		while (!suppressed && !sc.bumperPressed){
+		movement.backward();
+		while (!suppressed && !sc.backPressed){
 			Thread.yield();
 		}
 		movement.stop();
-		if (!suppressed)movement.travel(-70);
+		if (!suppressed)movement.travel(70);
 		if (!suppressed) {
-			movement.turn_right(80);
+			movement.turn_left(80);
 		}
-		movement.setTravelSpeed(300);
-		movement.setRotateSpeed(300);
+		double rspeed = movement.getRotateSpeed();
+		double tspeed = movement.getTravelSpeed();
+		movement.setRotateSpeed(rspeed+50);
+		movement.setTravelSpeed(tspeed+50);
 		cb.lab = true;
 		
 		//cb.gate.disconnectFromGate();

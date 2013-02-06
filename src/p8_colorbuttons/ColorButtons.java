@@ -19,6 +19,18 @@ public class ColorButtons {
 	SirDanielArbitrator arby;
 	boolean lab = false;
 	UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
+	
+	static ColorButtons cb=null;
+	
+	private ColorButtons(){}
+	
+	public static ColorButtons getInstance(){
+		if (cb == null) {
+			cb = new ColorButtons();
+		}
+		return cb;
+	}
+	
 
 	int speed = 1;
 	int rotationSpeed = 1;
@@ -55,7 +67,7 @@ public class ColorButtons {
 	public static void main (String[] args) {
 		SuperMotor.calibrate();
 		Button.waitForAnyPress();
-		ColorButtons cb = new ColorButtons();
+		ColorButtons cb = ColorButtons.getInstance();
 		cb.start();
 	} 
 }

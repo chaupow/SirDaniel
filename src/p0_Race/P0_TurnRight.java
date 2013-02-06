@@ -12,8 +12,6 @@ public class P0_TurnRight implements Behavior {
 	
 	UltrasonicSensor sonic;
 	TouchSensor touch;
-	int speed;
-	int rotationSpeed;
 	int shouldBe; // i.e. 10
 	int minimumDifference; // i.e. 20 (--> reacts at value 10 + 20 = 30)
 	boolean suppressed;
@@ -22,8 +20,8 @@ public class P0_TurnRight implements Behavior {
 
 	public P0_TurnRight(UltrasonicSensor sonic, int speed, int rotationSpeed, int shouldBe, int minimumDifference) {
 		this.sonic = sonic;
-		this.speed = speed;
-		this.rotationSpeed = rotationSpeed;
+		movement.setSpeed(speed);
+		movement.setRotationSpeed(rotationSpeed);
 		this.shouldBe = shouldBe;
 		this.minimumDifference = minimumDifference;
 	}
@@ -34,8 +32,6 @@ public class P0_TurnRight implements Behavior {
 	
 	public void action() {
 		suppressed = false;
-		movement.setTravelSpeed(100);
-		movement.setRotationSpeed(rotationSpeed);
 		
 		LCD.clear();
 		LCD.drawString("dist: " + sonic.getDistance(), 0, 4);

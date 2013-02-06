@@ -10,7 +10,7 @@ public class BarcodeReader {
 //	@Override
 //	public void run() {
 	public int run() {
-		movement.setTravelSpeed(100);
+		movement.setTravelSpeed(150);
 		movement.forward();
 		
 		System.out.println("Looking for Barcodes.");

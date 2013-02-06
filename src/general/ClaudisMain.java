@@ -10,12 +10,13 @@ public class ClaudisMain {
 	static ButtonListener buttonListener = new ButtonListener(stateMachine);
 	static int lineCount;
 	static Movement movement = Movement.getInstance();
-	static Thread t;
+//	static Thread t;
 	
 	public static void main(String[] args) {
 		Button.waitForAnyPress();
-		t = new Thread(buttonListener);
-		t.start();
+//		t = new Thread(buttonListener);
+//		t.start();
+		buttonListener.start();
 		SuperMotor.calibrate();
 		searchBarcode();		
 	}
@@ -42,7 +43,7 @@ public class ClaudisMain {
 	
 	public static void restart() {
 		Button.waitForAnyPress();
-		t.run();
+		buttonListener.shouldRun = true;
 		searchBarcode();
 	}
 }

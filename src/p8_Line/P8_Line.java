@@ -7,6 +7,7 @@ import lejos.robotics.subsumption.Behavior;
 import general.ClaudisMain;
 import general.Movement;
 import general.Section;
+import general.Settings;
 import general.SirDanielArbitrator;
 
 public class P8_Line {
@@ -41,6 +42,7 @@ public class P8_Line {
 			Thread t = new Thread(arby);
 			
 			System.out.println("Line started");
+			Settings.calibrateLight();
 			t.start();
 //		}
 	}
@@ -49,9 +51,6 @@ public class P8_Line {
 		arby.stop();
 		if (calledBy == 0) {
 			P5.getInstance().start(true);
-		}
-		else if (calledBy == 1) {
-			p8_colorbuttons.ColorButtons.getInstance().start();
 		}
 		else {
 			ClaudisMain.searchBarcode();

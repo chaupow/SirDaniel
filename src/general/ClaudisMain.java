@@ -10,20 +10,20 @@ public class ClaudisMain {
 	static ButtonListener buttonListener = new ButtonListener(stateMachine);
 	static int lineCount;
 	static Movement movement = Movement.getInstance();
-//	static Thread t;
 	
 	public static void main(String[] args) {
 		Button.waitForAnyPress();
-//		t = new Thread(buttonListener);
-//		t.start();
-		buttonListener.start();
+		Settings.calibrateLight();
+		Button.waitForAnyPress();
 		SuperMotor.calibrate();
 		SuperMotor.turnTo(90, false);
+		buttonListener.start();
+		
 		searchBarcode();		
 	}
 	
 	public static void searchBarcode() {
-		movement.travel(-20);
+		movement.travel(-30);
 		lineCount = barcodeReader.run();
 		System.out.println("Barcode gelesen");
 //		Delay.msDelay(1000);

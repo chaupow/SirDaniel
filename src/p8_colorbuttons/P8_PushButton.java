@@ -23,12 +23,12 @@ public class P8_PushButton implements Behavior{
 
 	@Override
 	public void action() {
-		suppressed = false;
 		LCD.clear();
-		LCD.drawString("Am I right?", 1, 1);
-		Button.waitForAnyPress();
+		LCD.drawString("Push Button", 1, 1);
+		suppressed = false;
 		SuperMotor.turnTo(180, true);
-		movement.turn_right(90);
+		
+		movement.turn_right(70);
 		movement.forward();
 		while (!suppressed) {
 			Thread.yield();

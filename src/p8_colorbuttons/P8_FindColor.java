@@ -25,6 +25,7 @@ public class P8_FindColor implements Behavior{
 
 	@Override
 	public void action() {
+		
 		LCD.clear();
 		LCD.drawString("FindColor",1, 1);
 		suppressed = false;
@@ -37,7 +38,6 @@ public class P8_FindColor implements Behavior{
 			cb.blackLines = P8_Config.red;
 		
 		System.out.println(cb.blackLines+" "+cb.requestedColor);
-		Button.waitForAnyPress();
 		/////////
 		boolean onBlack = false;
 		movement.backward();
@@ -49,7 +49,6 @@ public class P8_FindColor implements Behavior{
 				 LCD.drawString("I counted a black line "+cb.blackLines, 1, 1);
 				 LCD.drawString(cb.blackLines+"", 1, 2);
 				 movement.stop();
-				 Button.waitForAnyPress();
 				 LCD.clear();
 				 movement.backward();
 			 }

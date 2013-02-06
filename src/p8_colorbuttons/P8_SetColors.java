@@ -21,6 +21,8 @@ public class P8_SetColors implements Behavior{
 
 	@Override
 	public void action() {
+		LCD.clear();
+		LCD.drawString("Set COlor", 1, 1);
 		Movement.getInstance().stop();
 		P8_Config.green = 0;
 		P8_Config.red = 0;
@@ -40,7 +42,6 @@ public class P8_SetColors implements Behavior{
 		LCD.drawString("yellow:"+P8_Config.yellow+cb.average[P8_Config.yellow], 1, 2);
 		LCD.drawString("red:"+P8_Config.red+cb.average[P8_Config.red], 1, 3);
 		
-		Button.waitForAnyPress();
 		cb.colorsSet = true;
 	}
 

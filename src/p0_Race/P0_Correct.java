@@ -28,13 +28,13 @@ public class P0_Correct implements Behavior{
 
 			LCD.drawString("Dist: " + dist, 0, 0);
 			LCD.drawString("Steering left ", 0, 1);
-			Movement.getInstance().steer(25, -2*dist, true);
+			Movement.getInstance().steer(25, -3*dist, true);
 		} else {
 			LCD.drawString("Dist: " + dist, 0, 4);
 			LCD.drawString("Steering right ", 0, 5);
 			
-			Movement.getInstance().steer(-25, -2*dist, true);
-		}
+			Movement.getInstance().steer(-25, -3*dist, true);
+		} 
 	
 	}
 

@@ -48,8 +48,12 @@ public class P8_Line {
 			Thread t = new Thread(arby);
 			
 			System.out.println("Line started");
-			Settings.calibrateLight();
+			SuperMotor.calibrate();
 			SuperMotor.turnTo(90, false);
+			// damit die Linie auch gefunden wird
+			Movement.getInstance().setTravelSpeed(360);
+			Movement.getInstance().travel(20);
+			
 			t.start();
 //		}
 	}

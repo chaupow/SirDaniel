@@ -1,6 +1,7 @@
 package p10_btGateV2;
 
 import general.Movement;
+import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -10,6 +11,7 @@ public class P10_Adjust implements Behavior {
 	private UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S3);
 	
 	private static final int TURN_DISTANCE = 10;
+	private static final int INFINITY = 30;
 
 	@Override
 	public boolean takeControl() {
@@ -21,10 +23,19 @@ public class P10_Adjust implements Behavior {
 		
 		int distance = sonar.getDistance();
 		
-		if (distance > TURN_DISTANCE) {
-			Movement.getInstance().steer(-30, -5, true);
+		if (distance > INFINITY) {
+			Movement.getInstance().setTravelSpeed(100);
+			Movement.getInstance().forward();
 		} else {
-			Movement.getInstance().steer(30, 5, true);
+			if (distance > TURN_DISTANCE) {
+				while (!Motor.C.isMoving()) {
+					Movement.getInstance().steer(-30, -5, true);
+				}
+			} else {
+				while (!Motor.C.isMoving()) {
+					Movement.getInstance().steer(30, 5, true);
+				}
+			}
 		}
 		
 	}

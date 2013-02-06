@@ -19,10 +19,7 @@ public class P8_FindEnd implements Behavior {
 		suppressed = false;
 		movement.travel(30);
 		LCD.drawString("Ende", 0, 5);
-//		while (!suppressed && SensorCache.getInstance().normalizedLightValue >= threshold) {
-//			movement.travel(10, true);
-//		}
-		//TODO Ende Variable setzen!
+		P8_Line.getInstance().stop();
 	}
 	
 	public void suppress() {

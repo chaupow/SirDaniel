@@ -13,7 +13,6 @@ public class P5_Turntable implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		//TODO only when the line is over.
 		return true;
 	}
 
@@ -37,8 +36,7 @@ public class P5_Turntable implements Behavior {
 		
 		Movement.getInstance().travel(100);
 		
-		
-		
+		P5.getInstance().stop();
 		
 	}
 

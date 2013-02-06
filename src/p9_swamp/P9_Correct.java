@@ -1,41 +1,43 @@
-package p6_slider;
+package p9_swamp;
 
 import general.Movement;
 import lejos.nxt.LCD;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
-public class P6_Correct implements Behavior {
+public class P9_Correct implements Behavior {
 	
 	UltrasonicSensor sonic;
+	int min_dist = 0;
 	int dist = 0;
-	int angle = 0;
 	
-	public P6_Correct(UltrasonicSensor sonic, int min_dist){
-		this.sonic = sonic;	
-		dist = sonic.getDistance();
-		angle = dist - min_dist;
+	public P9_Correct(UltrasonicSensor sonic, int min_dist){
+		this.sonic = sonic;
+		this.min_dist = min_dist;		
 		
 	}
 	
 	@Override
 	public boolean takeControl() {
-		return (angle != 0 );
+		
+		dist = sonic.getDistance() - min_dist;
+
+		return (dist != 0);
 	}
 
 	@Override
 	public void action() {
 		
-		if (angle < 0) {
+		if (dist < 0) {
 
 			LCD.drawString("Dist: " + dist, 0, 0);
 			LCD.drawString("Steering left ", 0, 1);
-			Movement.getInstance().steer(20, -3*angle, true);
+			Movement.getInstance().steer(-25, 2*dist, true);
 		} else {
 			LCD.drawString("Dist: " + dist, 0, 4);
 			LCD.drawString("Steering right ", 0, 5);
 			
-			Movement.getInstance().steer(-20, -3*angle, true);
+			Movement.getInstance().steer(25, 2*dist, true);
 		}
 	
 	}

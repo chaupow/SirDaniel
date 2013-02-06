@@ -19,14 +19,15 @@ public class P9 {
    public void start() {
 	   System.out.println("Swamp started.");
     
-	    SuperMotor.turnTo(0, false);
+	    SuperMotor.turnTo(180, false);
 	    
 		//Calibration.labyrinth = true;
 //		Settings.labyrinth = true;
 		
 		Behavior forward = new P1_DriveForward(150);
-		Behavior correct = new P1_Correct(sonic, min_dist);
-		Behavior [] b = {forward,correct};
+		Behavior correct = new P9_Correct(sonic, min_dist);
+		Behavior endSwamp = new EndSwamp();
+		Behavior [] b = {forward,correct, endSwamp};
 		arby = new SirDanielArbitrator(b,true);
 		Thread t =  new Thread(arby);
 		t.start();

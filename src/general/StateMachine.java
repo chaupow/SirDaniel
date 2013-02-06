@@ -16,26 +16,24 @@ public class StateMachine {
 	P8_Line line = P8_Line.getInstance();
 	P5 turntable = P5.getInstance();
 	
+	
 	public StateMachine() {
-		this.state = State.race;
+		this.state = null;
 	}
 	
 	public void setState(State newState) {
-		this.state = newState;
-		
-		// stop all other levels
-//		bridge.stop();	
-//		labyrinth.stop();
+		if (state != null) abortState();
+		this.state = newState;		
 		
 		switch (state) {
 //		case gate: System.out.println("Gate"); break;
 //		case swamp: System.out.println("Swamp"); break;
-		case bridge:  System.out.println("Bridge"); race.stop(); bridge.start(); break;
-//		case line: System.out.println("Line"); break;
-		case labyrinth:  System.out.println("Labyrinth"); bridge.stop(); labyrinth.start(); break;
+		case bridge:  System.out.println("Bridge"); bridge.start(); break;
+		case line: System.out.println("Line"); line.start(1); break;
+		case labyrinth:  System.out.println("Labyrinth"); labyrinth.start(); break;
 //		case colorGate: System.out.println("ColorGate"); break;
 //		case rocker: System.out.println("Rocker"); p7_rocker.p7_rocker.start(); break;
-		case turntable: System.out.println("Turntable"); labyrinth.stop(); turntable.start(false); break;
+		case turntable: System.out.println("Turntable"); turntable.start(false); break;
 //		case slider: System.out.println("Slider"); p6_slider.P6.start(); break;
 		case race: System.out.println("Race"); race.start(); break;
 //		case boss: System.out.println("Boss"); break;
@@ -47,7 +45,7 @@ public class StateMachine {
 //		case gate: System.out.println("Gate"); break;
 //		case swamp: System.out.println("Swamp"); break;
 		case bridge:  System.out.println("Abort Bridge"); bridge.stop(); break;
-//		case line: System.out.println("Line"); break;
+		case line: System.out.println("Abort Line"); line.stop(); break;
 		case labyrinth:  System.out.println("Abort Labyrinth"); labyrinth.stop(); break;
 //		case colorGate: System.out.println("ColorGate"); break;
 //		case rocker: System.out.println("Rocker"); p7_rocker.p7_rocker.start(); break;
@@ -56,6 +54,7 @@ public class StateMachine {
 		case race: System.out.println("Abort Race"); race.stop(); break;
 //		case boss: System.out.println("Boss"); break;
 		}
+		state = null;
 	}
 	
 }

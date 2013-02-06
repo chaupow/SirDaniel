@@ -13,17 +13,24 @@ public class SMTest {
 	 */
 	public static void main(String[] args) {
 
-		/*int light;
+		
 		Button.waitForAnyPress();
 		Settings.calibrateLight();	
+		SuperMotor.calibrate();
 		
-		while (Button.ENTER.isUp()){
-			light = SensorCache.getInstance().light.getLightValue();
-			LCD.drawString("Licht: " + light, 0, 1);
-			LCD.refresh();
-		}*/
-
+		Button.waitForAnyPress();
+		p2_Bridge.P2 p2 = new p2_Bridge.P2();
+		p2.start();
 		
+		
+		/*
+		Button.waitForAnyPress();
+		Settings.calibrateLight();
+		SuperMotor.calibrate();
+		
+		p6_slider.P6 p6 = new p6_slider.P6();
+		p6.start();
+		*/
 		}
 	
 	

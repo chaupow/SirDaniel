@@ -1,17 +1,17 @@
-package bluetooth;
+package p10_btGate;
 
 import general.Movement;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
-public class DriveThroughGate implements Behavior{
+public class P10_DriveThrough implements Behavior{
 	UltrasonicSensor sonic;
 	int distanceThreshold;
 	boolean suppressed;
 	Movement movement = Movement.getInstance();
-	BluetoothGate gate;
+	P10 gate;
 
-	public DriveThroughGate(UltrasonicSensor sonic, int distanceThreshold, BluetoothGate gate) {
+	public P10_DriveThrough(UltrasonicSensor sonic, int distanceThreshold, P10 gate) {
 		this.sonic = sonic;
 		this.distanceThreshold = distanceThreshold;
 		this.gate = gate;

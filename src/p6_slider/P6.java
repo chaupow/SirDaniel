@@ -25,7 +25,7 @@ public class P6 {
 		Behavior button = new P6_PushButton();
 		Behavior slider = new P6_Slider();
 		
-		Behavior [] b = {forward, correct, button};
+		Behavior [] b = {forward, correct, button, slider};
 		arby = new SirDanielArbitrator(b, true);
 		
 		Thread t = new Thread (arby);

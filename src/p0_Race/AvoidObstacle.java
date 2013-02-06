@@ -18,7 +18,7 @@ public class AvoidObstacle implements Behavior {
 		
 		@Override
 		public boolean takeControl() {
-			return (cache.bumperPressed && Constants.alreadyStopped);
+			return (cache.bumperPressed && !Constants.alreadyStopped);
 		}
 
 		@Override

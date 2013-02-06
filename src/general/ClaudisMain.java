@@ -7,11 +7,15 @@ import lejos.util.Delay;
 public class ClaudisMain {
 	static StateMachine stateMachine = new StateMachine();
 	static BarcodeReader barcodeReader = new BarcodeReader();
+	static ButtonListener buttonListener = new ButtonListener(stateMachine);
 	static int lineCount;
 	static Movement movement = Movement.getInstance();
+	static Thread t;
 	
 	public static void main(String[] args) {
 		Button.waitForAnyPress();
+		t = new Thread(buttonListener);
+		t.start();
 		SuperMotor.calibrate();
 		searchBarcode();		
 	}
@@ -37,8 +41,8 @@ public class ClaudisMain {
 	}
 	
 	public static void restart() {
-		movement.stop();
 		Button.waitForAnyPress();
+		t.run();
 		searchBarcode();
 	}
 }

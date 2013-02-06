@@ -4,6 +4,7 @@ import bluetooth.TurnControl;
 import general.Movement;
 import general.SensorCache;
 import lejos.robotics.subsumption.Behavior;
+import lejos.util.Delay;
 
 public class P5_Turntable implements Behavior {
 	
@@ -13,7 +14,6 @@ public class P5_Turntable implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		//TODO only when the line is over.
 		return true;
 	}
 
@@ -22,7 +22,7 @@ public class P5_Turntable implements Behavior {
 		
 		TurnControl turntableControl = new TurnControl();
 		
-		Movement.getInstance().setTravelSpeed(200);
+		Movement.getInstance().setTravelSpeed(75);
 		Movement.getInstance().forward();
 		
 		while (!SensorCache.getInstance().bumperPressed);
@@ -35,10 +35,13 @@ public class P5_Turntable implements Behavior {
 			turntableControl.turnClockwise(turnAngle);
 		}
 		
-		Movement.getInstance().travel(100);
+		// wait for the turntable to turn.
+		System.out.println("Waiting 10s.");
+		Delay.msDelay(10000);
 		
+		Movement.getInstance().travel(75);
 		
-		
+		P5.getInstance().stop();
 		
 	}
 

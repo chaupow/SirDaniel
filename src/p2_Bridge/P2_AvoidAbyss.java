@@ -15,7 +15,7 @@ public class P2_AvoidAbyss implements Behavior {
 	   
 //	   LCD.drawString("LV: " + SensorCache.getInstance().normalizedLightValue , 0, 3);
 	   
-      return (SensorCache.getInstance().normalizedLightValue < 300);
+      return (SensorCache.getInstance().lightValue < 20);
    }
 
    public void suppress() {
@@ -33,6 +33,9 @@ public class P2_AvoidAbyss implements Behavior {
     	 //TODO richtige Distanz!
     	// Movement.getInstance().travel(300);
     	Movement.getInstance().turn_left(75);
+    	
+    	Movement.getInstance().travel(100);
+    	Calibration.NumberOfTurns = 0;
      }
    }
 }

@@ -1,11 +1,14 @@
-package bluetooth;
+package p10_btGate;
+
+import bluetooth.GateCommon;
+import bluetooth.GateControl;
 import lejos.robotics.subsumption.Behavior;
 
-public class OpenGate implements Behavior {
-	BluetoothGate blgate;
+public class P10_OpenGate implements Behavior {
+	P10 blgate;
 	private GateControl gate = new GateControl();
 
-	public OpenGate(BluetoothGate gate) {
+	public P10_OpenGate(P10 gate) {
 		this.blgate = gate;
 	}
 	

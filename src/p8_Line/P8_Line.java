@@ -1,38 +1,57 @@
 package p8_Line;
 
+import p5_turntable.P5;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
+import general.ClaudisMain;
+import general.Movement;
 import general.Section;
 import general.SirDanielArbitrator;
 
-public class P8_Line implements Section {
+public class P8_Line {
 	
 	private SirDanielArbitrator arby;
 	private UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
+	int calledBy = 0;
 	
-	@Override
-	public void start() {
+	private static P8_Line instance = null;
+	
+
+	public static P8_Line getInstance() {
+		if(instance == null) {
+			instance = new P8_Line();
+		}
+		return instance;
+	}
+	
+	public void start(int calledBy) {
+		this.calledBy = calledBy;
 		
-		Behavior findLine = new P8_FindLine();
-		Behavior foundLine = new P8_FoundLine();
-		Behavior lost = new P8_Lost();
-		Behavior findEnd = new P8_FindEnd();
-		Behavior avoidObstacle = new P8_AvoidObstacle(sonic);
-		
-		Behavior [] b = {foundLine, findLine, findEnd, lost, avoidObstacle};
-		
-		arby = new SirDanielArbitrator(b, true);
-		
-		Thread t = new Thread(arby);
-		
-		System.out.println("Line started");
-		t.start();
+			Behavior findLine = new P8_FindLine();
+			Behavior foundLine = new P8_FoundLine();
+			Behavior lost = new P8_Lost();
+			Behavior findEnd = new P8_FindEnd();
+			Behavior avoidObstacle = new P8_AvoidObstacle(sonic);
+			
+			Behavior [] b = {foundLine, findLine, findEnd, lost, avoidObstacle};
+			
+			arby = new SirDanielArbitrator(b, true);
+			
+			Thread t = new Thread(arby);
+			
+			System.out.println("Line started");
+			t.start();
+//		}
 	}
 
-	@Override
 	public void stop() {
 		arby.stop();
+		if (calledBy == 0) {
+			P5.getInstance().start(true);
+		} else {
+			ClaudisMain.searchBarcode();
+		}
 	}
 	
 	

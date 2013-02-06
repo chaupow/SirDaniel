@@ -24,6 +24,7 @@ public class Race implements Section {
 	public void start() {
 		LCD.clear();
 		SuperMotor.turnTo(0, false);
+		Constants.alreadyStopped = false;
 		
 		Behavior forward = new P0_DriveForward(200);
 		Behavior correct = new P0_Correct(sonar, MINIMUM_DISTANCE);

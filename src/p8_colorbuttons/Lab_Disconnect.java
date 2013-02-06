@@ -1,6 +1,7 @@
 package p8_colorbuttons;
 
 import general.SensorCache;
+import general.Settings;
 import lejos.robotics.subsumption.Behavior;
 
 public class Lab_Disconnect implements Behavior{
@@ -12,7 +13,7 @@ public class Lab_Disconnect implements Behavior{
 
 	@Override
 	public boolean takeControl() {
-		return cb.lab && SensorCache.getInstance().lightValue > 90 && !cb.disconnected;
+		return cb.lab && SensorCache.getInstance().lightValue > Settings.LIGHT_THRESHOLD && !cb.disconnected;
 	}
 
 	@Override

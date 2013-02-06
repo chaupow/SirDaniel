@@ -34,7 +34,7 @@ public class p7_rocker implements Behavior{
 		//TODO sonic wert anpassen
 		if(sonic.getDistance() > 20) {
 			Movement.getInstance().setTravelSpeed(travelSpeed);
-			Movement.getInstance().travel(distance, false);		
+			Movement.getInstance().travel(distance, false);	
 			P7.getInstance().stop();
 			P8_Line.getInstance().start(1);			
 		}

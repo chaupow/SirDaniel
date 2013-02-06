@@ -1,7 +1,7 @@
 package general;
 
 import p0_Race.Race;
-import p10_btGate.P10;
+import p10_btGateV2.P10;
 import p1_labyrinth.P1;
 import p2_Bridge.P2;
 import p5_turntable.P5;
@@ -19,7 +19,7 @@ public class StateMachine {
 	Race race = new Race();
 	P8_Line line = P8_Line.getInstance();
 	P5 turntable = P5.getInstance();
-	P6 slider = new P6();
+	P6 slider = P6.getInstance();
 	P10 gate = new P10();
 	
 	

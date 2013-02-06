@@ -1,6 +1,7 @@
 package p8_colorbuttons;
 
 
+import general.Movement;
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
 import lejos.robotics.subsumption.Behavior;
@@ -23,6 +24,7 @@ public class P8_TalkToGate implements Behavior{
 	public void action() {
 		LCD.clear();
 		LCD.drawString("Talk to gate", 1, 1);
+		Movement.getInstance().turn_right(15);
 		while (!gate.connectionToColorGateSuccessful()) {System.out.println("Connecting");}
 		// 0-green, 1-yellow, 2-red
 		cb.requestedColor = gate.readColor();

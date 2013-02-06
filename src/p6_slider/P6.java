@@ -28,7 +28,6 @@ public class P6 {
 		Config.NumberOfTurns = 0;
 		SuperMotor.turnTo(0, false);
 
-		//TODO Linefollower rein
 		Behavior forward = new DriveForward(1);
 		Behavior correct = new P6_Correct(sonic, MIN_DIST);
 		Behavior button = new P6_PushButton();

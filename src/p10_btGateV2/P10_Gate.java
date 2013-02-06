@@ -8,7 +8,7 @@ public class P10_Gate implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return true;
+		return !Config.gateHasOpened;
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class P10_Gate implements Behavior {
 		gate.disconnectFromGate();
 		
 		Config.gateHasOpened = true;
-		
+		System.out.println("lala");
 	}
 
 	@Override

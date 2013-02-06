@@ -20,6 +20,7 @@ public class P10_Adjust implements Behavior {
 
 	@Override
 	public void action() {
+		System.out.println("adjust");
 		
 		int distance = sonar.getDistance();
 		

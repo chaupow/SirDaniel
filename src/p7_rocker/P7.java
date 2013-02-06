@@ -1,5 +1,6 @@
 package p7_rocker;
 
+import p6_slider.P6;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -10,6 +11,15 @@ public class P7 {
 	
 	SirDanielArbitrator arby;
 	UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
+	
+	private static P7 instance = null;
+
+	public static P7 getInstance() {
+		if(instance == null) {
+			instance = new P7();
+		}
+		return instance;
+	}
 	
 	public void start() {
 		

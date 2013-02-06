@@ -10,7 +10,7 @@ public class P5_Turntable implements Behavior {
 	
 	// ideally this is a divisor of 120;
 	private static final int STEPS = 15;
-	private static final int turnAngle = 115/STEPS;
+	private static final int turnAngle = 120/STEPS;
 
 	@Override
 	public boolean takeControl() {
@@ -28,7 +28,7 @@ public class P5_Turntable implements Behavior {
 		while (!SensorCache.getInstance().bumperPressed);
 		
 		Movement.getInstance().travel(-30);
-		Movement.getInstance().turn_left(180);
+		Movement.getInstance().turn_left(170);
 		
 		while (!turntableControl.connectionToTurntableSuccessful());
 		for (int i = 0; i < STEPS; i++) {
@@ -37,7 +37,7 @@ public class P5_Turntable implements Behavior {
 		
 		// wait for the turntable to turn.
 		System.out.println("Waiting 10s.");
-		Delay.msDelay(10000);
+		Delay.msDelay(20000);
 		
 		Movement.getInstance().travel(75);
 		

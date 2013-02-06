@@ -28,8 +28,8 @@ public class P8_PushButton implements Behavior{
 		suppressed = false;
 		SuperMotor.turnTo(180, true);
 		
-		movement.turn_right(70);
-		movement.forward();
+		movement.turn_left(70);
+		movement.backward();
 		while (!suppressed) {
 			Thread.yield();
 		}

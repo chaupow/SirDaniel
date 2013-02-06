@@ -1,7 +1,7 @@
-package bluetooth;
+package p9_btGate;
 import lejos.robotics.subsumption.Behavior;
 
-public class WaitForGate implements Behavior{
+public class P9_Wait implements Behavior{
 	boolean suppressed;
 	
 	@Override

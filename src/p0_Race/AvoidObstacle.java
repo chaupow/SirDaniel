@@ -9,7 +9,7 @@ public class AvoidObstacle implements Behavior {
 
 		SensorCache cache = SensorCache.getInstance();
 		int min_dist = 0;
-		int delay = 50;
+		int delay = 150;
 		Movement movement;
 		
 		public AvoidObstacle(){

@@ -17,7 +17,7 @@ public class Race implements Section {
 	
 	private static final int SPEED = 1;
 	private static final int ROTATION_SPEED = 1;
-	private static final int MINIMUM_DISTANCE = 10;
+	private static final int MINIMUM_DISTANCE = 13;
 	private static final int TARGET_DISTANCE = 10;
 	private static final int CURVE_DIFFERENCE = 30;
 	
@@ -26,13 +26,13 @@ public class Race implements Section {
 		SuperMotor.turnTo(0, false);
 		Constants.alreadyStopped = false;
 		
-		Behavior forward = new P0_DriveForward(200);
+		Behavior forward = new P0_DriveForward(80);
 		Behavior correct = new P0_Correct(sonar, MINIMUM_DISTANCE);
 		Behavior turnRight = new P0_TurnRight(sonar, SPEED, ROTATION_SPEED, TARGET_DISTANCE, CURVE_DIFFERENCE);
 		Behavior turnLeft = new P0_TurnLeft(SPEED, ROTATION_SPEED);
 		Behavior avoidObstacle = new AvoidObstacle();
 		Behavior endOfRace = new EndRace();
-		Behavior [] b = {forward, correct, turnRight, turnLeft, avoidObstacle, endOfRace};
+		Behavior [] b = {forward, correct, turnRight,turnLeft, avoidObstacle, endOfRace};
 		
 		arby = new SirDanielArbitrator(b, true);
 		

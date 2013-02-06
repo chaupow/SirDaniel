@@ -5,12 +5,10 @@ import general.Movement;
 
 public class P0_DriveForward implements Behavior {
 	   private boolean suppressed = false;
-	   private int speed;
-		Movement movement = Movement.getInstance();
 	   
 	   public P0_DriveForward(int speed){
-		   this.speed = speed;
-		   
+		 Movement.getInstance().setSpeed(speed);
+
 	   }
 	   
 	   public boolean takeControl() {
@@ -23,8 +21,7 @@ public class P0_DriveForward implements Behavior {
 
 	   public void action() {
 	     suppressed = false;
-	     movement.setSpeed(speed);
-	     movement.forward();
+	     Movement.getInstance().forward();
 	     while( !suppressed ) {
 	    	 Thread.yield();
 	     }

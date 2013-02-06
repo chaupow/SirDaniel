@@ -1,5 +1,6 @@
 package p7_rocker;
 
+import p8_Line.P8_Line;
 import general.Movement;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -21,8 +22,7 @@ public class p7_rocker implements Behavior{
 	
 	
 	public boolean takeControl(){
-		
-	return true;
+		return true;
 	}
 	
 	public void suppress(){
@@ -32,11 +32,11 @@ public class p7_rocker implements Behavior{
 	public void action(){
 		
 		//TODO sonic wert anpassen
-		if(sonic.getDistance() > 20) {
-
+		if(sonic.getDistance() > 40) {
 			Movement.getInstance().setTravelSpeed(travelSpeed);
-			Movement.getInstance().travel(distance);		
-			
+			Movement.getInstance().travel(distance, false);	
+			P7.getInstance().stop();
+			P8_Line.getInstance().start(1);			
 		}
 		
 	}

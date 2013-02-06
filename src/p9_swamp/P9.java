@@ -13,7 +13,7 @@ public class P9 {
 	private SirDanielArbitrator arby;
 	private UltrasonicSensor sonic = new UltrasonicSensor(SensorPort.S3);
 	
-	private int min_dist = 15;
+	private int min_dist = 13;
 
 	
    public void start() {
@@ -24,7 +24,7 @@ public class P9 {
 		//Calibration.labyrinth = true;
 //		Settings.labyrinth = true;
 		
-		Behavior forward = new P1_DriveForward(200);
+		Behavior forward = new P1_DriveForward(150);
 		Behavior correct = new P1_Correct(sonic, min_dist);
 		Behavior [] b = {forward,correct};
 		arby = new SirDanielArbitrator(b,true);

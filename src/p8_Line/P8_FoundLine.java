@@ -27,6 +27,7 @@ public class P8_FoundLine implements Behavior {
 //			LCD.drawString("Lost genullt", 0, 7);
 //		}
 		P8_Config.numberOfSearches = 0;
+		P8_Config.lost = false;
 		LCD.clear();
 	
 		LCD.drawString("FoundLine", 0, 0);

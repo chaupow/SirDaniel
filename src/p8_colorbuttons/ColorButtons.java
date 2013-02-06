@@ -41,6 +41,7 @@ public class ColorButtons {
 
 	public void start(boolean afterLine) {
 		if (!afterLine) {
+			Movement.getInstance().turn_right(20);
 			P8_Line.getInstance().start(2); // 0 == called by turntable
 		} else {
 			Behavior talkToGate = new P8_TalkToGate(this, gate);

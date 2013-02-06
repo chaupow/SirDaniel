@@ -51,7 +51,7 @@ public class P8_Line {
 			Settings.calibrateLight();
 			SuperMotor.turnTo(90, false);
 			// damit die Linie auch gefunden wird
-			Movement.getInstance().travel(40);
+			Movement.getInstance().travel(20);
 			
 			t.start();
 //		}

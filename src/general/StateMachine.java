@@ -8,6 +8,7 @@ import p5_turntable.P5;
 import p6_slider.P6;
 import p7_rocker.P7;
 import p8_Line.P8_Line;
+import p8_colorbuttons.ColorButtons;
 import p9_swamp.P9;
 import general.Settings.State;
 
@@ -23,7 +24,7 @@ public class StateMachine {
 	P6 slider = P6.getInstance();
 	P10 gate = new P10();
 	P7 rocker = P7.getInstance();
-	
+	ColorButtons colorGate = ColorButtons.getInstance();	
 	
 	public StateMachine() {
 		this.state = null;
@@ -39,7 +40,7 @@ public class StateMachine {
 		case bridge:  System.out.println("Bridge"); bridge.start(); break;
 		case line: System.out.println("Line"); line.start(1); break;
 		case labyrinth:  System.out.println("Labyrinth"); labyrinth.start(); break;
-		case colorGate: System.out.println("ColorGate"); break;
+		case colorGate: System.out.println("ColorGate"); colorGate.start(false); break;
 		case rocker: System.out.println("Rocker"); rocker.start(); break;
 		case turntable: System.out.println("Turntable"); turntable.start(false); break;
 		case slider: System.out.println("Slider"); slider.start(); break;
@@ -55,7 +56,7 @@ public class StateMachine {
 		case bridge:  System.out.println("Abort Bridge"); bridge.stop(); break;
 		case line: System.out.println("Abort Line"); line.stop(); break;
 		case labyrinth:  System.out.println("Abort Labyrinth"); labyrinth.stop(); break;
-//		case colorGate: System.out.println("ColorGate"); break;
+		case colorGate: System.out.println("ColorGate"); colorGate.stop(); break;
 		case rocker: System.out.println("Abort Rocker"); rocker.stop(); break;
 		case turntable: System.out.println("Abort Turntable"); turntable.stop(); break;
 		case slider: System.out.println("Abort Slider"); slider.stop(); break;

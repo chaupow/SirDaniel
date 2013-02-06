@@ -2,6 +2,7 @@ package p8_Line;
 
 import p4_LineFollower.Config;
 import p5_turntable.P5;
+import p8_colorbuttons.ColorButtons;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
@@ -63,7 +64,9 @@ public class P8_Line {
 		if (calledBy == 0) {
 			P5.getInstance().start(true);
 		}
-		else {
+		else if (calledBy == 2) {
+			ColorButtons.getInstance().start(true);
+		} else {
 			ClaudisMain.searchBarcode();
 		}
 	}

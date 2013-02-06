@@ -1,11 +1,11 @@
-package p9_btGate;
+package p10_btGate;
 
 import general.ClaudisMain;
 import general.SensorCache;
 import general.Settings;
 import lejos.robotics.subsumption.Behavior;
 
-public class P9_EndGate implements Behavior {
+public class P10_EndGate implements Behavior {
 
 	@Override
 	public boolean takeControl() {

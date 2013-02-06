@@ -1,11 +1,10 @@
 package p2_Bridge;
+
 import lejos.nxt.LCD;
 import lejos.robotics.subsumption.*;
-import lejos.util.Delay;
 import general.Calibration;
 import general.Movement;
 import general.SensorCache;
-import general.Settings;
 
 public class P2_AvoidAbyss implements Behavior {
    private boolean suppressed = false;
@@ -32,9 +31,9 @@ public class P2_AvoidAbyss implements Behavior {
      if(Calibration.NumberOfTurns > 15) {
     	 //TODO richtige Distanz!
     	// Movement.getInstance().travel(300);
-    	Movement.getInstance().turn_left(75);
+    	Movement.getInstance().turn_left(55);
     	
-    	Movement.getInstance().travel(100);
+    	Movement.getInstance().travel(110);
     	Calibration.NumberOfTurns = 0;
      }
    }

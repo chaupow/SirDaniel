@@ -4,10 +4,6 @@ import general.SensorCache;
 import general.SirDanielArbitrator;
 import general.SuperMotor;
 import lejos.nxt.Button;
-import lejos.nxt.LightSensor;
-import lejos.nxt.SensorPort;
-import lejos.nxt.TouchSensor;
-import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 
 public class Gap {

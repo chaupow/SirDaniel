@@ -3,8 +3,6 @@ package general;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
-import lejos.robotics.Color;
-
 
 public class SensorCache {
 

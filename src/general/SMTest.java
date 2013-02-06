@@ -1,8 +1,6 @@
 package general;
 
-
 import lejos.nxt.Button;
-import lejos.nxt.LCD;
 
 public class SMTest {
 
@@ -13,16 +11,17 @@ public class SMTest {
 	 */
 	public static void main(String[] args) {
 
-		
-		Button.waitForAnyPress();
+		//Bridge
+		/*Button.waitForAnyPress();
 		Settings.calibrateLight();	
 		SuperMotor.calibrate();
 		
 		Button.waitForAnyPress();
 		p2_Bridge.P2 p2 = new p2_Bridge.P2();
-		p2.start();
+		p2.start();*/
 		
 		
+		//Slider
 		/*
 		Button.waitForAnyPress();
 		Settings.calibrateLight();
@@ -31,6 +30,12 @@ public class SMTest {
 		p6_slider.P6 p6 = new p6_slider.P6();
 		p6.start();
 		*/
+		
+		//Race
+		
+		Button.waitForAnyPress();
+		Settings.calibrateLight();
+		SuperMotor.calibrate();
 		}
 	
 	

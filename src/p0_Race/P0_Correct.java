@@ -1,6 +1,5 @@
 package p0_Race;
 
-import general.Calibration;
 import general.Movement;
 import lejos.nxt.LCD;
 import lejos.nxt.UltrasonicSensor;

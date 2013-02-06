@@ -5,8 +5,6 @@ import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.subsumption.Behavior;
 import general.Movement;
 import general.SensorCache;
-import general.Settings;
-
 
 public class P1_TurnRight implements Behavior {
 	

@@ -54,9 +54,10 @@ public class ColorButtons {
 			Behavior labcorrect = new Lab_Correct(sonic, min_dist, this);
 			Behavior labturnRight = new Lab_TurnLeft(sonic, speed, rotationSpeed, shouldBe, minimumDifference, this);
 			Behavior labturnLeft = new Lab_TurnRight(speed, rotationSpeed, this);
+			Behavior labdisconnect = new Lab_Disconnect(this);
 	
 			SuperMotor.turnTo(90, false);
-			Behavior [] bArray = {defineColors, driveOver, setColors, findColor, pushButton, throughGate, talkToGate, labforward,labcorrect, labturnRight, labturnLeft};
+			Behavior [] bArray = {defineColors, driveOver, setColors, findColor, pushButton, throughGate, talkToGate, labforward,labcorrect, labturnRight, labturnLeft, labdisconnect};
 			arby = new SirDanielArbitrator(bArray, true);
 			Thread t = new Thread(arby);
 			t.start();

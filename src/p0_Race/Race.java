@@ -13,10 +13,10 @@ import general.SuperMotor;
 public class Race implements Section {
 	
 	private SirDanielArbitrator arby;
-	private UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S4);
+	private UltrasonicSensor sonar = new UltrasonicSensor(SensorPort.S3);
 	
-	private static final int SPEED = 1;
-	private static final int ROTATION_SPEED = 1;
+	private static final int SPEED = 2;
+	private static final int ROTATION_SPEED = 2;
 	private static final int MINIMUM_DISTANCE = 10;
 	private static final int TARGET_DISTANCE = 10;
 	private static final int CURVE_DIFFERENCE = 30;

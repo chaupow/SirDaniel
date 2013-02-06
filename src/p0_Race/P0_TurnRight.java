@@ -36,8 +36,10 @@ public class P0_TurnRight implements Behavior {
 		suppressed = false;
 		movement.setTravelSpeed(100);
 		movement.setRotationSpeed(rotationSpeed);
-
-		LCD.drawString("steering" , 1, 1);
+		
+		LCD.clear();
+		LCD.drawString("dist: " + sonic.getDistance(), 0, 4);
+		LCD.drawString("steering" , 0, 1);
 		movement.arcForward(-60);
 		
 	}

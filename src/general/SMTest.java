@@ -38,6 +38,10 @@ public class SMTest {
 		Button.waitForAnyPress();
 		Settings.calibrateLight();
 		SuperMotor.calibrate();
+		
+		Button.waitForAnyPress();
+		p0_Race.Race race = new p0_Race.Race();
+		race.start();
 		}
 	
 	

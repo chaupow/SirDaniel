@@ -18,12 +18,13 @@ public class ColorButtons {
 	ColorGateControl gate = new ColorGateControl();
 	SirDanielArbitrator arby;
 	static ColorButtons cb = null;
+	boolean boss = false;
 	
 	public static ColorButtons getInstance(){
-		if (cb == null)
-			return new ColorButtons();
-		else
-			return cb;
+		if (cb == null) {
+			cb = new ColorButtons();
+		}
+		return cb;
 	}
 	
 	private ColorButtons (){
@@ -31,7 +32,6 @@ public class ColorButtons {
 	}
 	
 	public void start() {
-		P8_Line.getInstance().start(1);
 		
 		Behavior talkToGate = new P8_TalkToGate(this, gate);
 		Behavior findColor = new P8_FindColor(this);
@@ -40,11 +40,13 @@ public class ColorButtons {
 		Behavior setColors = new P8_SetColors(this);
 		Behavior pushButton = new P8_PushButton(this);
 		Behavior throughGate = new P8_DriveThroughGate(this);
+		Behavior boss = new P8_BOSS();
 		
 		SuperMotor.turnTo(90, false);
-		Behavior [] bArray = {defineColors, driveOver, setColors, findColor, pushButton, throughGate, talkToGate};
+		Behavior [] bArray = {defineColors, driveOver, setColors, findColor, pushButton, throughGate, talkToGate, boss};
 		arby = new SirDanielArbitrator(bArray, true);
 		Thread t = new Thread(arby);
+		System.out.println("I will start now");
 		t.start();
 	}
 	
@@ -55,7 +57,7 @@ public class ColorButtons {
 	public static void main (String[] args) {
 		SuperMotor.calibrate();
 		Button.waitForAnyPress();
-		ColorButtons cb = new ColorButtons();
-		cb.start();
+		System.out.println("I will get Instance now");
+		ColorButtons.getInstance().start();
 	} 
 }
